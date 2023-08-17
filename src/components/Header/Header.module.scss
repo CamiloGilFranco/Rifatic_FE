@@ -1,0 +1,49 @@
+@use "../../styles/variables.module.scss";
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
+
+.container {
+  background-color: variables.$violeta;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.title {
+  font-family: "Concert One", cursive;
+  font-size: 50px;
+  color: variables.$blanco-puro;
+}
+
+.buttons_container {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button {
+  background-color: variables.$morado;
+  font-size: 20px;
+  color: variables.$blanco-puro;
+  width: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  cursor: pointer;
+
+  &:hover {
+    color: variables.$negro-azulado;
+    background-color: variables.$blanco-oscuro;
+    border: 1px solid variables.$negro-puro;
+  }
+}
