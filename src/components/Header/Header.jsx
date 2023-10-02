@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
@@ -10,17 +9,15 @@ const Header = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo_container}>
-        <Image src={logo} width="" height={55} alt />
+        <img src={logo} alt="" className={styles.logo} />
         <span className={styles.title}>RIFATIC</span>
       </div>
       <div className={styles.buttons_container}>
         <span className={styles.button}>Iniciar sesión</span>
         <span className={styles.button}>Regístrate</span>
         <span className={styles.button}>Donar</span>
-        <Image
+        <img
           src={theme ? sun : moon}
-          width={30}
-          height=""
           alt="dark theme"
           onClick={() => setTheme(!theme)}
           className={styles.theme_button}
