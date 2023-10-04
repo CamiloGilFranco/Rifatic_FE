@@ -1,0 +1,17 @@
+.main_banner_component {
+  background-color: darkblue;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.logo {
+  height: 200px;
+}
+
+.text {
+  font-size: 50px;
+  max-width: 300px;
+  text-align: center;
+}
