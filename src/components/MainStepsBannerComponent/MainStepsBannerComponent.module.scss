@@ -2,10 +2,17 @@
 
 .main_steps_banner {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main_steps_banner_cards {
+  display: flex;
   padding: 50px;
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 30px;
+  width: 100%;
 }
 
 .single_container {
@@ -38,4 +45,10 @@
 .item_text {
   text-align: center;
   margin: 0 10px;
+}
+
+.warning_message {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
