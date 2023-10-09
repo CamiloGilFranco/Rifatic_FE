@@ -6,6 +6,8 @@
   height: 70px;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 }
 
 .logo_container {
@@ -41,6 +43,10 @@
   height: 50px;
   cursor: pointer;
 
+  @media (max-width: 770px) {
+    display: none;
+  }
+
   &:hover {
     color: variables.$negro-azulado;
     background-color: variables.$blanco-oscuro;
@@ -51,8 +57,40 @@
 .theme_button {
   cursor: pointer;
   height: 50%;
+
+  @media (max-width: 770px) {
+    display: none;
+  }
 }
 
 .logo {
   height: 80%;
+}
+
+.burger_container {
+  height: 50px;
+  width: 50px;
+  background-color: variables.$morado;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 770px) {
+    display: flex;
+  }
+
+  &:hover {
+    background-color: #421d7a;
+  }
+}
+
+.burger {
+  height: 30px;
+}
+
+.burger_active {
+  background-color: #421d7a;
 }
