@@ -1,18 +1,14 @@
 import styles from "./App.module.scss";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import MainBannerComponent from "./components/MainBannerComponent/MainBannerComponent";
-import MainStepsBannerComponent from "./components/MainStepsBannerComponent/MainStepsBannerComponent";
-import WhyUseComponent from "./components/WhyUseComponent/WhyUseComponent";
+import { Routes, Route } from "react-router-dom";
+import { routes } from "./constants/routes";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <div>
-      <Header />
-      <MainBannerComponent />
-      <MainStepsBannerComponent />
-      <WhyUseComponent />
-      <Footer />
+      <Routes>
+        <Route path={routes.home} element={<Home />} />
+      </Routes>
     </div>
   );
 }
