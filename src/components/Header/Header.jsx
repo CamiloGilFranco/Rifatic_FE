@@ -35,9 +35,12 @@ const Header = () => {
           <img src={burger} alt="" className={styles.burger} />
         </div>
       </div>
-      {mobileMenu ? (
-        <HeaderMenuComponent theme={theme} setTheme={setTheme} />
-      ) : null}
+
+      <HeaderMenuComponent
+        theme={theme}
+        setTheme={setTheme}
+        mobileMenu={mobileMenu}
+      />
     </div>
   );
 };
