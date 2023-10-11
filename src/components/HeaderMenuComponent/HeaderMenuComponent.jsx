@@ -1,8 +1,11 @@
 import styles from "./HeaderMenuComponent.module.scss";
 import sun from "../../assets/light_theme.svg";
 import moon from "../../assets/dark_theme.svg";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants/routes";
 
 const HeaderMenuComponent = ({ theme, setTheme, mobileMenu }) => {
+  const navigate = useNavigate();
   return (
     <div
       className={`${styles.header_menu} ${
@@ -12,7 +15,12 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu }) => {
       <div className={styles.background}></div>
       <div className={styles.menu_container}>
         <span className={styles.item}>Iniciar sesión</span>
-        <span className={styles.item}>Regístrate</span>
+        <span
+          className={styles.item}
+          onClick={() => navigate(routes.registrate)}
+        >
+          Regístrate
+        </span>
         <span className={styles.item}>Donar</span>
         <img
           src={theme ? sun : moon}
