@@ -24,7 +24,12 @@ const Header = () => {
         <span className={styles.title}>RIFATIC</span>
       </div>
       <div className={styles.buttons_container}>
-        <span className={styles.button}>Iniciar sesión</span>
+        <span
+          className={styles.button}
+          onClick={() => navigate(routes.iniciar_sesion)}
+        >
+          Iniciar sesión
+        </span>
         <span
           className={styles.button}
           onClick={() => navigate(routes.registrate)}

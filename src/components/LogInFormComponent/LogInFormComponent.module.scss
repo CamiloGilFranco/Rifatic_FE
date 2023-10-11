@@ -1,0 +1,8 @@
+@use "../../styles/variables.module.scss" as v;
+
+.log_in_form_component {
+  min-height: calc(100vh - 270px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
