@@ -1,0 +1,68 @@
+@use "../../styles/variables.module.scss" as v;
+
+.why_use_component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkcyan;
+}
+
+.title {
+  font-size: 30px;
+  margin: 15px 0;
+}
+
+.content_container {
+  display: flex;
+  width: 100%;
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+  }
+}
+
+.image_container {
+  display: flex;
+  width: 40%;
+  overflow: hidden;
+
+  @media (max-width: 730px) {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+.image {
+  height: 500px;
+
+  @media (max-width: 730px) {
+    object-fit: cover;
+  }
+}
+
+.items_container {
+  width: 60%;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-evenly;
+
+  @media (max-width: 730px) {
+    width: 100%;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.item_icon {
+  height: 40px;
+}
+
+.item_text {
+  margin-left: 15px;
+  font-size: 18px;
+}
