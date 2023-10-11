@@ -14,7 +14,12 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu }) => {
     >
       <div className={styles.background}></div>
       <div className={styles.menu_container}>
-        <span className={styles.item}>Iniciar sesión</span>
+        <span
+          className={styles.item}
+          onClick={() => navigate(routes.iniciar_sesion)}
+        >
+          Iniciar sesión
+        </span>
         <span
           className={styles.item}
           onClick={() => navigate(routes.registrate)}

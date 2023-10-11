@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./RegisterFormComponent.module.scss";
+import logo from "../../assets/logo.png";
 
 const RegisterFormComponent = () => {
   const [name, setName] = useState("");
@@ -72,6 +73,7 @@ const RegisterFormComponent = () => {
 
   return (
     <div className={styles.register_form_component}>
+      <img src={logo} alt="" className={styles.logo} />
       <h2 className={styles.title}>Regístrate Aquí</h2>
       <form action="" className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="sign-in-name-input" className={styles.label}>

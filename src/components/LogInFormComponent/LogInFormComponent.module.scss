@@ -1,6 +1,6 @@
 @use "../../styles/variables.module.scss" as v;
 
-.register_form_component {
+.log_in_form_component {
   min-height: calc(100vh - 270px);
   display: flex;
   flex-direction: column;
@@ -44,11 +44,6 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid black;
-}
-
-.error_message {
-  color: red;
-  font-weight: 600;
 }
 
 .submit_button {
