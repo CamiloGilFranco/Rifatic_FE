@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./RegisterFormComponent.module.scss";
 import logo from "../../assets/logo.png";
+import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
 
 const RegisterFormComponent = () => {
   const [name, setName] = useState("");
@@ -17,6 +18,7 @@ const RegisterFormComponent = () => {
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false);
   const [errorTerms, setErrorTerms] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -194,13 +196,16 @@ const RegisterFormComponent = () => {
           <input
             type="checkbox"
             className={styles.checkbox}
-            value={terms}
+            checked={terms}
             placeholder="Confirmar Contraseña"
             onChange={(e) => setTerms(!terms)}
           />
           <label htmlFor="" className={styles.checkbox_message}>
             Acepto la{" "}
-            <span className={styles.terms_conditions_link}>
+            <span
+              className={styles.terms_conditions_link}
+              onClick={() => setShowModal(true)}
+            >
               Política de privacidad y Términos y Condiciones
             </span>
           </label>
@@ -217,6 +222,12 @@ const RegisterFormComponent = () => {
           className={styles.submit_button}
         />
       </form>
+      {showModal ? (
+        <TermsAndConditionsModalComponent
+          setTerms={setTerms}
+          setShowModal={setShowModal}
+        />
+      ) : null}
     </div>
   );
 };
