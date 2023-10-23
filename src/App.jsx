@@ -4,6 +4,8 @@ import { routes } from "./constants/routes";
 import Home from "./pages/Home/Home";
 import Registrate from "./pages/registrate/registrate";
 import Iniciar_sesion from "./pages/iniciar-sesion/iniciar-sesion";
+import toastStyle from "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -13,6 +15,11 @@ function App() {
         <Route path={routes.registrate} element={<Registrate />} />
         <Route path={routes.iniciar_sesion} element={<Iniciar_sesion />} />
       </Routes>
+      <ToastContainer
+        className={toastStyle}
+        position="bottom-center"
+        theme="colored"
+      />
     </div>
   );
 }

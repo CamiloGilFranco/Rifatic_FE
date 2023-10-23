@@ -2,8 +2,10 @@ import { useState } from "react";
 import styles from "./RegisterFormComponent.module.scss";
 import logo from "../../assets/logo.png";
 import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-const RegisterFormComponent = () => {
+const RegisterFormComponent = ({ setShowForm, setSecureCode }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,8 +21,11 @@ const RegisterFormComponent = () => {
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false);
   const [errorTerms, setErrorTerms] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const handleSubmit = (e) => {
+  const api = import.meta.env.VITE_API_URL;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let isValid = true;
@@ -77,6 +82,24 @@ const RegisterFormComponent = () => {
 
     if (!isValid) {
       return;
+    }
+
+    try {
+      setLoader(true);
+
+      const response = await axios.post(`${api}local/new-user`, {
+        name,
+        last_name: lastName,
+        phone,
+        email,
+        password,
+      });
+
+      setSecureCode(response.data.code);
+      setShowForm(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("No se puedo crear tu usuario, inténtalo de nuevo mas tarde");
     }
 
     console.log("R");
