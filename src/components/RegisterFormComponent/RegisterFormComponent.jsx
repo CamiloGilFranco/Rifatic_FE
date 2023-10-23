@@ -9,12 +9,14 @@ const RegisterFormComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [terms, setTerms] = useState(false);
   const [errorName, setErrorName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false);
+  const [errorTerms, setErrorTerms] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,6 +64,13 @@ const RegisterFormComponent = () => {
       isValid = false;
     } else {
       setErrorConfirmPassword(false);
+    }
+
+    if (!terms) {
+      setErrorTerms(true);
+      isValid = false;
+    } else {
+      setErrorTerms(false);
     }
 
     if (!isValid) {
@@ -178,6 +187,27 @@ const RegisterFormComponent = () => {
         {errorConfirmPassword ? (
           <span className={styles.error_message}>
             *Las contraseñas no coinciden
+          </span>
+        ) : null}
+
+        <div className={styles.terms_conditions_check_container}>
+          <input
+            type="checkbox"
+            className={styles.checkbox}
+            value={terms}
+            placeholder="Confirmar Contraseña"
+            onChange={(e) => setTerms(!terms)}
+          />
+          <label htmlFor="" className={styles.checkbox_message}>
+            Acepto la{" "}
+            <span className={styles.terms_conditions_link}>
+              Política de privacidad y Términos y Condiciones
+            </span>
+          </label>
+        </div>
+        {errorTerms ? (
+          <span className={styles.error_message}>
+            *Debes aceptar la Política de privacidad y Términos y Condiciones
           </span>
         ) : null}
 
