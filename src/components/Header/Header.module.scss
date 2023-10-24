@@ -54,6 +54,28 @@
   }
 }
 
+.button_session_active {
+  background-color: variables.$morado;
+  font-size: 20px;
+  color: variables.$blanco-puro;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  cursor: pointer;
+
+  @media (max-width: 770px) {
+    display: none;
+  }
+
+  &:hover {
+    color: variables.$negro-azulado;
+    background-color: variables.$blanco-oscuro;
+    border: 1px solid variables.$negro-puro;
+  }
+}
+
 .theme_button {
   cursor: pointer;
   height: 50%;

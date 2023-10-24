@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sun from "../../assets/light_theme.svg";
 import moon from "../../assets/dark_theme.svg";
 import burger from "../../assets/burger.svg";
@@ -11,8 +11,21 @@ import { routes } from "../../constants/routes";
 const Header = () => {
   const [theme, setTheme] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const role = localStorage.getItem("_role");
+    const user = localStorage.getItem("_user");
+    const tkn = localStorage.getItem("_tkn");
+
+    if (!!role && !!user && !!tkn) {
+      setLogged(true);
+    } else {
+      setLogged(false);
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -24,18 +37,30 @@ const Header = () => {
         <span className={styles.title}>RIFATIC</span>
       </div>
       <div className={styles.buttons_container}>
-        <span
-          className={styles.button}
-          onClick={() => navigate(routes.iniciar_sesion)}
-        >
-          Iniciar sesión
-        </span>
-        <span
-          className={styles.button}
-          onClick={() => navigate(routes.registrate)}
-        >
-          Regístrate
-        </span>
+        {!logged ? (
+          <span
+            className={styles.button}
+            onClick={() => navigate(routes.iniciar_sesion)}
+          >
+            Iniciar sesión
+          </span>
+        ) : (
+          <span
+            className={styles.button_session_active}
+            onClick={() => navigate(routes.home)}
+          >
+            {localStorage.getItem("_user")}
+          </span>
+        )}
+
+        {!logged ? (
+          <span
+            className={styles.button}
+            onClick={() => navigate(routes.registrate)}
+          >
+            Regístrate
+          </span>
+        ) : null}
         <span className={styles.button}>Donar</span>
         <img
           src={theme ? sun : moon}
@@ -57,6 +82,7 @@ const Header = () => {
         theme={theme}
         setTheme={setTheme}
         mobileMenu={mobileMenu}
+        logged={logged}
       />
     </div>
   );
