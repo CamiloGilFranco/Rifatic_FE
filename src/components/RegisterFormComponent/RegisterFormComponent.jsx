@@ -5,7 +5,7 @@ import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponen
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const RegisterFormComponent = ({ setShowForm, setSecureCode }) => {
+const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -95,14 +95,12 @@ const RegisterFormComponent = ({ setShowForm, setSecureCode }) => {
         password,
       });
 
-      setSecureCode(response.data.code);
+      setToken(response.data.token);
       setShowForm(false);
     } catch (error) {
       console.log(error);
       toast.error("No se puedo crear tu usuario, inténtalo de nuevo mas tarde");
     }
-
-    console.log("R");
   };
 
   return (

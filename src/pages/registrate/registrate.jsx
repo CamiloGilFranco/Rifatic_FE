@@ -6,19 +6,15 @@ import RegisterCodeConfirmationComponent from "../../components/Registercodeconf
 
 const Registrate = () => {
   const [showForm, setShowForm] = useState(true);
-  const [secureCode, setSecureCode] = useState("");
+  const [token, setToken] = useState("");
 
-  console.log(secureCode);
   return (
     <div>
       <Header />
       {showForm ? (
-        <RegisterFormComponent
-          setShowForm={setShowForm}
-          setSecureCode={setSecureCode}
-        />
+        <RegisterFormComponent setShowForm={setShowForm} setToken={setToken} />
       ) : (
-        <RegisterCodeConfirmationComponent />
+        <RegisterCodeConfirmationComponent token={token} />
       )}
 
       <Footer />
