@@ -4,9 +4,8 @@ import down from "../../assets/down.svg";
 import { useState } from "react";
 import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
 
-const UserNavBarComponent = () => {
+const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
-  const [optionSelected, setOptionSelected] = useState(1);
 
   return (
     <div className={styles.user_nav_bar}>

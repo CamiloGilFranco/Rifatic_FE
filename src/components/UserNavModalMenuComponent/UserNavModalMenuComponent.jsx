@@ -7,7 +7,7 @@ const UserNavModalMenuComponent = ({
 }) => {
   return (
     <div
-      className={`${showNavMenu ? styles.user_nav_modal : styles.hide_menu}`}
+      className={`${!showNavMenu ? styles.hide_menu : styles.user_nav_modal}`}
     >
       <button
         className={`${styles.user_nav_modal_button} ${
