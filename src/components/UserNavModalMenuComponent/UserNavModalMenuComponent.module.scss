@@ -1,0 +1,73 @@
+@use "../../styles/variables.module.scss" as v;
+
+.user_nav_modal {
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+  background-color: v.$morado;
+  border-top: 1px black solid;
+  animation-name: showList;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.hide_menu {
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+  background-color: v.$morado;
+  border-top: 1px black solid;
+  animation-name: hideList;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  overflow-y: hidden;
+  display: flex;
+}
+
+@keyframes showList {
+  from {
+    display: none;
+    height: 0;
+  }
+
+  to {
+    height: 281px;
+  }
+}
+
+@keyframes hideList {
+  from {
+    height: 281px;
+  }
+
+  to {
+    height: 0;
+    display: none;
+  }
+}
+
+.user_nav_modal_button {
+  min-height: 50px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: v.$violeta;
+  cursor: pointer;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.menu_button_active {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid grey;
+  border-right: 2px solid grey;
+  background-color: v.$negro-azulado;
+}
