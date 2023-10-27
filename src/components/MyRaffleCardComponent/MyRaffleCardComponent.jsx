@@ -1,7 +1,9 @@
 import styles from "./MyRaffleCardComponent.module.scss";
 import options from "../../assets/options.svg";
+import { useState } from "react";
 
 const MyRaffleCardComponent = () => {
+  const [optionsMenu, setOptionsMenu] = useState(false);
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
@@ -50,6 +52,10 @@ const MyRaffleCardComponent = () => {
       <span className={styles.raffle_state}>Activo</span>
       <span className={styles.raffle_winner_title}>Numero Ganador</span>
       <span className={styles.raffle_winner_number}>058</span>
+      <div className={styles.buttons_container}>
+        <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
+        <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
+      </div>
     </div>
   );
 };
