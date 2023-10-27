@@ -1,17 +1,25 @@
 import styles from "./MyRaffleCardComponent.module.scss";
-import options from "../../assets/options.svg";
+import share from "../../assets/share.svg";
 import { useState } from "react";
+import facebook from "../../assets/facebook.svg";
+import instagram from "../../assets/instagram.svg";
+import copy from "../../assets/copy.svg";
+import wpp from "../../assets/wpp.svg";
 
 const MyRaffleCardComponent = () => {
   const [optionsMenu, setOptionsMenu] = useState(false);
+
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
         <h1 className={styles.raffle_title}>
           esta es mi primera rifa y estoy muy feliz de presentarla y venderla{" "}
         </h1>
-        <div className={styles.options_icon_container}>
-          <img src={options} alt="" className={styles.options_icon} />
+        <div
+          className={styles.options_icon_container}
+          onClick={() => setOptionsMenu(!optionsMenu)}
+        >
+          <img src={share} alt="" className={styles.options_icon} />
         </div>
       </div>
       <span className={styles.raffle_id}>ID: jktydytvluigi6yrdsrtdcik</span>
@@ -56,6 +64,26 @@ const MyRaffleCardComponent = () => {
         <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
         <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
       </div>
+      {optionsMenu ? (
+        <div className={styles.share_list}>
+          <div className={styles.list_item}>
+            <img src={wpp} alt="" className={styles.item_icon} />
+            <span className={styles.item_text}>WhatsApp</span>
+          </div>
+          <div className={styles.list_item}>
+            <img src={facebook} alt="" className={styles.item_icon} />
+            <span className={styles.item_text}>Facebook</span>
+          </div>
+          <div className={styles.list_item}>
+            <img src={instagram} alt="" className={styles.item_icon} />
+            <span className={styles.item_text}>Instagram</span>
+          </div>
+          <div className={styles.list_item}>
+            <img src={copy} alt="" className={styles.item_icon} />
+            <span className={styles.item_text}>Copiar Link</span>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
