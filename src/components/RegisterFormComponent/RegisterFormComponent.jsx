@@ -1,22 +1,31 @@
 import { useState } from "react";
 import styles from "./RegisterFormComponent.module.scss";
 import logo from "../../assets/logo.png";
+import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-const RegisterFormComponent = () => {
+const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [terms, setTerms] = useState(false);
   const [errorName, setErrorName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false);
+  const [errorTerms, setErrorTerms] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const handleSubmit = (e) => {
+  const api = import.meta.env.VITE_API_URL;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let isValid = true;
@@ -64,11 +73,34 @@ const RegisterFormComponent = () => {
       setErrorConfirmPassword(false);
     }
 
+    if (!terms) {
+      setErrorTerms(true);
+      isValid = false;
+    } else {
+      setErrorTerms(false);
+    }
+
     if (!isValid) {
       return;
     }
 
-    console.log("R");
+    try {
+      setLoader(true);
+
+      const response = await axios.post(`${api}local/new-user`, {
+        name,
+        last_name: lastName,
+        phone,
+        email,
+        password,
+      });
+
+      setToken(response.data.token);
+      setShowForm(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("No se puedo crear tu usuario, inténtalo de nuevo mas tarde");
+    }
   };
 
   return (
@@ -181,12 +213,42 @@ const RegisterFormComponent = () => {
           </span>
         ) : null}
 
+        <div className={styles.terms_conditions_check_container}>
+          <input
+            type="checkbox"
+            className={styles.checkbox}
+            checked={terms}
+            placeholder="Confirmar Contraseña"
+            onChange={(e) => setTerms(!terms)}
+          />
+          <label htmlFor="" className={styles.checkbox_message}>
+            Acepto la{" "}
+            <span
+              className={styles.terms_conditions_link}
+              onClick={() => setShowModal(true)}
+            >
+              Política de privacidad y Términos y Condiciones
+            </span>
+          </label>
+        </div>
+        {errorTerms ? (
+          <span className={styles.error_message}>
+            *Debes aceptar la Política de privacidad y Términos y Condiciones
+          </span>
+        ) : null}
+
         <input
           type="submit"
           value={"Registrarme"}
           className={styles.submit_button}
         />
       </form>
+      {showModal ? (
+        <TermsAndConditionsModalComponent
+          setTerms={setTerms}
+          setShowModal={setShowModal}
+        />
+      ) : null}
     </div>
   );
 };

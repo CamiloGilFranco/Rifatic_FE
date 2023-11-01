@@ -46,6 +46,29 @@
   border: 1px solid black;
 }
 
+.terms_conditions_check_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.checkbox {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox_message {
+  margin-left: 10px;
+}
+
+.terms_conditions_link {
+  cursor: pointer;
+  color: v.$morado;
+  font-weight: 600;
+}
+
 .error_message {
   color: red;
   font-weight: 600;

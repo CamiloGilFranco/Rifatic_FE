@@ -1,0 +1,87 @@
+@use "../../styles/variables.module.scss" as v;
+
+.user_nav_bar_main {
+  height: 60px;
+  display: flex;
+  background-color: v.$morado;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.user_name {
+  background-color: v.$violeta;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  padding: 5px;
+  border: 1px black solid;
+  text-align: center;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.nav_buttons_container1 {
+  display: flex;
+  gap: 5px;
+  height: 100%;
+
+  @media (max-width: 730px) {
+    display: none;
+  }
+}
+
+.nav_buttons_container2 {
+  display: none;
+  gap: 5px;
+  height: 100%;
+
+  @media (max-width: 730px) {
+    display: flex;
+  }
+}
+
+.nav_button {
+  width: 100px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: v.$violeta;
+  color: white;
+  cursor: pointer;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.menu_button {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  background-color: v.$violeta;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.menu_button_active {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid grey;
+  border-right: 2px solid grey;
+  background-color: v.$negro-azulado;
+}
+
+.arrow_icon {
+  width: 30px;
+}

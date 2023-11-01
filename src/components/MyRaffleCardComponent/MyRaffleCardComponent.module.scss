@@ -1,0 +1,104 @@
+@use "../../styles/variables.module.scss" as v;
+
+.my_raffle_card {
+  width: 350px;
+  border: 3px solid v.$morado;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.first_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.raffle_title {
+  font-size: 16px;
+  width: calc(100% - 30px);
+}
+
+.options_icon_container {
+  background-color: cornflowerblue;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.options_icon {
+  height: 18px;
+}
+
+.raffle_id {
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.raffle_image {
+  max-width: 100%;
+  max-height: 200px;
+  margin: 15px 0;
+}
+
+.raffle_description {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.raffle_details {
+  margin-bottom: 15px;
+}
+
+.single_detail {
+  font-weight: 700;
+}
+
+.ticket_price {
+  margin-bottom: 15px;
+}
+
+.tickets_amount_title {
+  font-weight: 700;
+}
+
+.tickets_amount {
+  margin-bottom: 5px;
+}
+
+.tickets_info_container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.tickets_info_sub_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.raffle_state {
+  background-color: red;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.raffle_winner_title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.raffle_winner_number {
+  font-weight: 700;
+  font-size: 20px;
+}
