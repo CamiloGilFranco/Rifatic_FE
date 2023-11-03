@@ -4,8 +4,9 @@ import moon from "../../assets/dark_theme.svg";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 
-const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged }) => {
+const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
   const navigate = useNavigate();
+
   return (
     <div
       className={`${styles.header_menu} ${
@@ -22,7 +23,13 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged }) => {
             Iniciar sesión
           </span>
         ) : (
-          <span className={styles.item} onClick={() => navigate(routes.home)}>
+          <span
+            className={styles.item}
+            onClick={() => {
+              navigate(`${routes.user}${path}`);
+              console.log("ioughaosih");
+            }}
+          >
             {localStorage.getItem("_user")}
           </span>
         )}

@@ -3,9 +3,24 @@ import up from "../../assets/up.svg";
 import down from "../../assets/down.svg";
 import { useState } from "react";
 import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants/routes";
 
 const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setOptionSelected(5);
+
+    localStorage.removeItem("_role");
+    localStorage.removeItem("_user");
+    localStorage.removeItem("_tkn");
+    localStorage.removeItem("_pth");
+
+    navigate(routes.home);
+  };
 
   return (
     <div className={styles.user_nav_bar}>
@@ -48,7 +63,7 @@ const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
             className={`${styles.nav_button} ${
               optionSelected === 5 ? styles.menu_button_active : ""
             }`}
-            onClick={() => setOptionSelected(5)}
+            onClick={handleLogout}
           >
             Cerrar Sesión
           </button>

@@ -12,6 +12,7 @@ const Header = () => {
   const [theme, setTheme] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [logged, setLogged] = useState(false);
+  const [path, setPath] = useState("");
 
   const navigate = useNavigate();
 
@@ -19,8 +20,11 @@ const Header = () => {
     const role = localStorage.getItem("_role");
     const user = localStorage.getItem("_user");
     const tkn = localStorage.getItem("_tkn");
+    const pth = localStorage.getItem("_pth");
 
-    if (!!role && !!user && !!tkn) {
+    setPath(pth);
+
+    if (!!role && !!user && !!tkn && !!pth) {
       setLogged(true);
     } else {
       setLogged(false);
@@ -47,7 +51,7 @@ const Header = () => {
         ) : (
           <span
             className={styles.button_session_active}
-            onClick={() => navigate(routes.home)}
+            onClick={() => navigate(`${routes.user}${path}`)}
           >
             {localStorage.getItem("_user")}
           </span>
@@ -83,6 +87,7 @@ const Header = () => {
         setTheme={setTheme}
         mobileMenu={mobileMenu}
         logged={logged}
+        path={path}
       />
     </div>
   );
