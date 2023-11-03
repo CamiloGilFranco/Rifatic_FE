@@ -6,15 +6,37 @@ import instagram from "../../assets/instagram.svg";
 import copy from "../../assets/copy.svg";
 import wpp from "../../assets/wpp.svg";
 
-const MyRaffleCardComponent = () => {
+const MyRaffleCardComponent = ({
+  title,
+  id,
+  image,
+  description,
+  drawDate,
+  numberOfDigits,
+  lottery,
+  ticketPrice,
+  state,
+  winningNumber,
+}) => {
   const [optionsMenu, setOptionsMenu] = useState(false);
+
+  const raffleState = () => {
+    switch (state) {
+      case "finished":
+        return "Finalizado";
+      case "canceled":
+        return "Cancelado";
+      case "in progress":
+        return "En Progreso";
+      default:
+        return "";
+    }
+  };
 
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
-        <h1 className={styles.raffle_title}>
-          esta es mi primera rifa y estoy muy feliz de presentarla y venderla{" "}
-        </h1>
+        <h1 className={styles.raffle_title}>{title}</h1>
         <div
           className={styles.options_icon_container}
           onClick={() => setOptionsMenu(!optionsMenu)}
@@ -22,28 +44,20 @@ const MyRaffleCardComponent = () => {
           <img src={share} alt="" className={styles.options_icon} />
         </div>
       </div>
-      <span className={styles.raffle_id}>ID: jktydytvluigi6yrdsrtdcik</span>
-      <img
-        src="https://i.pinimg.com/564x/a1/ca/18/a1ca183bcdccc08288e8f1e9195d36a2.jpg"
-        alt=""
-        className={styles.raffle_image}
-      />
-      <p className={styles.raffle_description}>
-        En la orilla del mar, las olas besaban la arena dorada. El sol se
-        ocultaba lentamente en el horizonte, tiñendo el cielo de tonos cálidos.
-        Las gaviotas revoloteaban en busca de su última comida del día. Un
-        momento de paz y belleza que nunca olvidaré. La lluvia caía con fuerza
-        sobre el tejado, creando una sinfonía de gotas. En la penumbra, una
-        velada
-      </p>
+      <span className={styles.raffle_id}>ID: {id}</span>
+      <img src={image} alt="" className={styles.raffle_image} />
+      <p className={styles.raffle_description}>{description}</p>
       <p className={styles.raffle_details}>
-        Juega el <span className={styles.single_detail}>00/00/00</span>, con las
-        ultimas <span className={styles.single_detail}>X</span> cifras de la{" "}
-        <span className={styles.single_detail}>Lotería X</span>
+        Juega el <span className={styles.single_detail}>{drawDate}</span>, con
+        las ultimas{" "}
+        <span className={styles.single_detail}>{numberOfDigits}</span> cifras de
+        la <span className={styles.single_detail}>{lottery}</span>
       </p>
       <p className={styles.ticket_price}>
         Valor de cada boleta:{" "}
-        <span className={styles.single_detail}>$5.000</span>
+        <span className={styles.single_detail}>
+          ${ticketPrice.toLocaleString()}
+        </span>
       </p>
       <span className={styles.tickets_amount_title}>Cantidad de boletas</span>
       <span className={styles.tickets_amount}>100</span>
@@ -57,9 +71,9 @@ const MyRaffleCardComponent = () => {
           <span className={styles.tickets_amount}>20</span>
         </div>
       </div>
-      <span className={styles.raffle_state}>Activo</span>
+      <span className={styles.raffle_state}>{raffleState()}</span>
       <span className={styles.raffle_winner_title}>Numero Ganador</span>
-      <span className={styles.raffle_winner_number}>058</span>
+      <span className={styles.raffle_winner_number}>{winningNumber}</span>
       <div className={styles.buttons_container}>
         <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
         <span className={styles.cancel_raffle}>Cancelar Sorteo</span>

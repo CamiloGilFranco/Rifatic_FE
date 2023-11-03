@@ -6,7 +6,12 @@ import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModal
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 
-const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
+const UserNavBarComponent = ({
+  optionSelected,
+  setOptionSelected,
+  name,
+  lastName,
+}) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -25,7 +30,7 @@ const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
   return (
     <div className={styles.user_nav_bar}>
       <div className={styles.user_nav_bar_main}>
-        <span className={styles.user_name}>Adrian Camilo Gil Franco</span>
+        <span className={styles.user_name}>{`${name} ${lastName}`}</span>
         <div className={styles.nav_buttons_container1}>
           <button
             className={`${styles.nav_button} ${

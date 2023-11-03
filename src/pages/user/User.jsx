@@ -6,17 +6,28 @@ import styles from "./User.module.scss";
 import MyRafflesComponent from "../../components/MyRafflesComponent/MyRafflesComponent";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const User = () => {
   const [optionSelected, setOptionSelected] = useState(1);
+  const [userData, setUserData] = useState({});
 
   const api = import.meta.env.VITE_API_URL;
   const params = useParams();
-
-  console.log(params);
+  const token = localStorage.getItem("_tkn");
 
   const getUserInfo = async () => {
-    const response = await axios.get();
+    try {
+      const response = await axios.get(`${api}users/path`, {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { path: params.userPath },
+      });
+
+      setUserData(response.data.userData);
+    } catch (error) {
+      console.log(error);
+      toast.error("Ocurrió un error, inténtalo de nuevo mas tarde");
+    }
   };
 
   useEffect(() => {
@@ -29,8 +40,10 @@ const User = () => {
       <UserNavBarComponent
         optionSelected={optionSelected}
         setOptionSelected={setOptionSelected}
+        name={userData.name}
+        lastName={userData.last_name}
       />
-      <MyRafflesComponent />
+      <MyRafflesComponent giveaways={userData.giveaways} />
       <Footer />
     </div>
   );
