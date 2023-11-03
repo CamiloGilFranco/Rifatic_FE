@@ -33,6 +33,10 @@ const MyRaffleCardComponent = ({
     }
   };
 
+  const numberOfTickets = () => {
+    return 1 * 10 ** parseInt(numberOfDigits);
+  };
+
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
@@ -60,7 +64,7 @@ const MyRaffleCardComponent = ({
         </span>
       </p>
       <span className={styles.tickets_amount_title}>Cantidad de boletas</span>
-      <span className={styles.tickets_amount}>100</span>
+      <span className={styles.tickets_amount}>{numberOfTickets()}</span>
       <div className={styles.tickets_info_container}>
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Disponibles</span>
