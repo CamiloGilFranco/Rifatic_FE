@@ -1,0 +1,85 @@
+@use "../../styles/variables.module.scss" as v;
+
+.create_giveaway {
+  min-height: calc(100vh - 350px);
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 50px;
+  flex-wrap: wrap;
+}
+
+.new_raffle_form {
+  background-color: orangered;
+  border: 2px solid v.$negro-azulado;
+  min-width: 360px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.card_title {
+  align-self: center;
+}
+
+.label {
+}
+
+.one_line_input {
+}
+
+.image_icon_container {
+  background-color: v.$violeta;
+  cursor: pointer;
+  align-self: center;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_icon {
+  width: 50px;
+  height: 50px;
+}
+
+.file_input {
+  display: none;
+}
+
+.image_explanation {
+  text-align: center;
+  font-size: 10px;
+  max-width: 300px;
+  align-self: center;
+}
+
+.layout_link {
+  font-weight: 700;
+  color: v.$violeta;
+  text-decoration: none;
+}
+
+.textarea_description {
+  resize: none;
+  height: 100px;
+}
+
+.lottery_select {
+}
+
+.date_input {
+}
+
+.number_of_digits_select {
+}
+
+.container_right {
+  background-color: brown;
+  width: 360px;
+  min-width: 360px;
+}

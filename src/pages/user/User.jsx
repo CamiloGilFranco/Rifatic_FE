@@ -7,6 +7,7 @@ import MyRafflesComponent from "../../components/MyRafflesComponent/MyRafflesCom
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import CreateGiveawayComponent from "../../components/CreateGiveawayComponent/CreateGiveawayComponent";
 
 const User = () => {
   const [optionSelected, setOptionSelected] = useState(1);
@@ -34,6 +35,17 @@ const User = () => {
     getUserInfo();
   }, []);
 
+  const showUserComponent = () => {
+    switch (optionSelected) {
+      case 1:
+        return <MyRafflesComponent giveaways={userData.giveaways} />;
+      case 2:
+        return <CreateGiveawayComponent />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className={styles.users_page}>
       <Header />
@@ -43,7 +55,7 @@ const User = () => {
         name={userData.name}
         lastName={userData.last_name}
       />
-      <MyRafflesComponent giveaways={userData.giveaways} />
+      {showUserComponent()}
       <Footer />
     </div>
   );
