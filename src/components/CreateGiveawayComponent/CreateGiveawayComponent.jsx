@@ -19,7 +19,12 @@ const CreateGiveawayComponent = () => {
         <label htmlFor="" className={styles.label}>
           Titulo del Premio
         </label>
-        <input type="text" className={styles.one_line_input} />
+        <input
+          type="text"
+          className={styles.one_line_input}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <label
           htmlFor="new-raffle-image-input"
           className={styles.image_icon_container}
@@ -45,9 +50,17 @@ const CreateGiveawayComponent = () => {
         <label htmlFor="" className={styles.label}>
           Descripción
         </label>
-        <textarea className={styles.textarea_description}></textarea>
+        <textarea
+          className={styles.textarea_description}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
         <label>Lotería</label>
-        <select className={styles.lottery_select}>
+        <select
+          className={styles.lottery_select}
+          value={lottery}
+          onChange={(e) => setLottery(e.target.value)}
+        >
           <option value="- - -">Elige Una</option>
           <option value="Lotería de Cundinamarca">
             Lotería de Cundinamarca
@@ -63,9 +76,18 @@ const CreateGiveawayComponent = () => {
         <label htmlFor="" className={styles.label}>
           Fecha del Sorteo
         </label>
-        <input type="date" className={styles.date_input} />
+        <input
+          type="date"
+          className={styles.date_input}
+          value={drawDate}
+          onChange={(e) => setDrawDate(e.target.value)}
+        />
         <label htmlFor="">Numero de Cifras</label>
-        <select className={styles.number_of_digits_select}>
+        <select
+          className={styles.number_of_digits_select}
+          value={numberOfDigits}
+          onChange={(e) => setNumberOfDigits(e.target.value)}
+        >
           <option value="- - -">Elige Una</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -75,7 +97,11 @@ const CreateGiveawayComponent = () => {
         <label htmlFor="" className={styles.label}>
           Precio de Cada Boleta
         </label>
-        <input type="number" />
+        <input
+          type="number"
+          value={ticketPrice}
+          onChange={(e) => setTicketPrice(e.target.value)}
+        />
       </form>
       <div className={styles.container_right}></div>
     </div>
