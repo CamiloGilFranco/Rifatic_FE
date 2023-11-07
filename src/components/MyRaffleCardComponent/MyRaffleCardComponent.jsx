@@ -5,6 +5,7 @@ import facebook from "../../assets/facebook.svg";
 import instagram from "../../assets/instagram.svg";
 import copy from "../../assets/copy.svg";
 import wpp from "../../assets/wpp.svg";
+import imageGeneric from "../../assets/image-generic.svg";
 
 const MyRaffleCardComponent = ({
   title,
@@ -34,36 +35,53 @@ const MyRaffleCardComponent = ({
   };
 
   const numberOfTickets = () => {
-    return 1 * 10 ** parseInt(numberOfDigits);
+    return !numberOfTickets ? 1 * 10 ** parseInt(numberOfDigits) : "0";
   };
 
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
-        <h1 className={styles.raffle_title}>{title}</h1>
-        <div
-          className={styles.options_icon_container}
-          onClick={() => setOptionsMenu(!optionsMenu)}
-        >
-          <img src={share} alt="" className={styles.options_icon} />
-        </div>
+        {!!title ? (
+          <h1 className={styles.raffle_title}>{title}</h1>
+        ) : (
+          <h1 className={styles.raffle_title}>- - -</h1>
+        )}
+        {!!state ? (
+          <div
+            className={styles.options_icon_container}
+            onClick={() => setOptionsMenu(!optionsMenu)}
+          >
+            <img src={share} alt="" className={styles.options_icon} />
+          </div>
+        ) : null}
       </div>
-      <span className={styles.raffle_id}>ID: {id}</span>
-      <img src={image} alt="" className={styles.raffle_image} />
-      <p className={styles.raffle_description}>{description}</p>
+      {!!state ? (
+        <span className={styles.raffle_id}>ID: {id}</span>
+      ) : (
+        <span className={styles.raffle_id}>ID: - - - </span>
+      )}
+      <img src={image || imageGeneric} alt="" className={styles.raffle_image} />
+      {description ? (
+        <p className={styles.raffle_description}>{description}</p>
+      ) : (
+        "- - -"
+      )}
       <p className={styles.raffle_details}>
-        Juega el <span className={styles.single_detail}>{drawDate}</span>, con
-        las ultimas{" "}
-        <span className={styles.single_detail}>{numberOfDigits}</span> cifras de
-        la <span className={styles.single_detail}>{lottery}</span>
+        Juega el{" "}
+        <span className={styles.single_detail}>{drawDate || "00/00/00"}</span>,
+        con las ultimas{" "}
+        <span className={styles.single_detail}>{numberOfDigits || "0"}</span>{" "}
+        cifras de la{" "}
+        <span className={styles.single_detail}>{lottery || "- - -"}</span>
       </p>
       <p className={styles.ticket_price}>
         Valor de cada boleta:{" "}
         <span className={styles.single_detail}>
-          ${ticketPrice.toLocaleString()}
+          ${ticketPrice ? ticketPrice.toLocaleString() : "0"}
         </span>
       </p>
       <span className={styles.tickets_amount_title}>Cantidad de boletas</span>
+
       <span className={styles.tickets_amount}>{numberOfTickets()}</span>
       <div className={styles.tickets_info_container}>
         <div className={styles.tickets_info_sub_container}>
@@ -75,13 +93,25 @@ const MyRaffleCardComponent = ({
           <span className={styles.tickets_amount}>20</span>
         </div>
       </div>
-      <span className={styles.raffle_state}>{raffleState()}</span>
-      <span className={styles.raffle_winner_title}>Numero Ganador</span>
-      <span className={styles.raffle_winner_number}>{winningNumber}</span>
-      <div className={styles.buttons_container}>
-        <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
-        <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
-      </div>
+      {!!state ? (
+        <span className={styles.raffle_state}>{raffleState()}</span>
+      ) : null}
+      {!!state ? (
+        <span className={styles.raffle_winner_title}>Numero Ganador</span>
+      ) : (
+        <span className={styles.raffle_winner_title}>Ganancia Estimada</span>
+      )}
+      {!!state ? (
+        <span className={styles.raffle_winner_number}>{winningNumber}</span>
+      ) : (
+        <span className={styles.raffle_winner_number}>numero x</span>
+      )}
+      {!!state ? (
+        <div className={styles.buttons_container}>
+          <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
+          <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
+        </div>
+      ) : null}
       {optionsMenu ? (
         <div className={styles.share_list}>
           <div className={styles.list_item}>

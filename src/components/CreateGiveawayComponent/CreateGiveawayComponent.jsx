@@ -103,7 +103,17 @@ const CreateGiveawayComponent = () => {
           onChange={(e) => setTicketPrice(e.target.value)}
         />
       </form>
-      <div className={styles.container_right}></div>
+      <div className={styles.container_right}>
+        <MyRaffleCardComponent
+          title={title}
+          /* image={raffle.image} */
+          description={description}
+          drawDate={drawDate}
+          numberOfDigits={numberOfDigits}
+          lottery={lottery}
+          ticketPrice={ticketPrice}
+        />
+      </div>
     </div>
   );
 };
