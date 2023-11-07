@@ -34,6 +34,8 @@ const MyRaffleCardComponent = ({
     }
   };
 
+  console.log(typeof image);
+
   const numberOfTickets = () => {
     return !numberOfTickets ? 1 * 10 ** parseInt(numberOfDigits) : "0";
   };
@@ -60,7 +62,17 @@ const MyRaffleCardComponent = ({
       ) : (
         <span className={styles.raffle_id}>ID: - - - </span>
       )}
-      <img src={image || imageGeneric} alt="" className={styles.raffle_image} />
+      <img
+        src={
+          !!image && typeof image === "string"
+            ? image
+            : !!image
+            ? URL.createObjectURL(image)
+            : imageGeneric
+        }
+        alt=""
+        className={styles.raffle_image}
+      />
       {description ? (
         <p className={styles.raffle_description}>{description}</p>
       ) : (

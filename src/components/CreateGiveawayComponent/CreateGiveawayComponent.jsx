@@ -33,8 +33,14 @@ const CreateGiveawayComponent = () => {
         </label>
         <input
           type="file"
+          accept="image/*"
+          multiple={false}
+          name="raffle-image-input"
           id="new-raffle-image-input"
           className={styles.file_input}
+          onChange={(event) => {
+            setImage(event.target.files[0]);
+          }}
         />
         <p className={styles.image_explanation}>
           Aumenta tus ventas con una imagen de calidad, puedes usar alguna
@@ -106,7 +112,7 @@ const CreateGiveawayComponent = () => {
       <div className={styles.container_right}>
         <MyRaffleCardComponent
           title={title}
-          /* image={raffle.image} */
+          image={image}
           description={description}
           drawDate={drawDate}
           numberOfDigits={numberOfDigits}
