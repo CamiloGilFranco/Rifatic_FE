@@ -5,10 +5,10 @@ import { useState } from "react";
 
 const CreateGiveawayComponent = () => {
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(undefined);
   const [description, setDescription] = useState("");
   const [lottery, setLottery] = useState("- - -");
-  const [drawDate, setDrawDate] = useState(null);
+  const [drawDate, setDrawDate] = useState(undefined);
   const [numberOfDigits, setNumberOfDigits] = useState("- - -");
   const [ticketPrice, setTicketPrice] = useState("");
 
@@ -42,6 +42,7 @@ const CreateGiveawayComponent = () => {
             setImage(event.target.files[0]);
           }}
         />
+        <span className={styles.image_name}>{!!image ? image.name : ""}</span>
         <p className={styles.image_explanation}>
           Aumenta tus ventas con una imagen de calidad, puedes usar alguna
           plantilla{" "}
@@ -49,6 +50,7 @@ const CreateGiveawayComponent = () => {
             href="https://www.canva.com/templates/?query=sorteo"
             className={styles.layout_link}
             target="_blank"
+            rel="noreferrer"
           >
             AQUÍ
           </a>
@@ -61,9 +63,9 @@ const CreateGiveawayComponent = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-        <label>Lotería</label>
+        <label className={styles.label}>Lotería</label>
         <select
-          className={styles.lottery_select}
+          className={styles.one_line_input}
           value={lottery}
           onChange={(e) => setLottery(e.target.value)}
         >
@@ -84,13 +86,15 @@ const CreateGiveawayComponent = () => {
         </label>
         <input
           type="date"
-          className={styles.date_input}
+          className={styles.one_line_input}
           value={drawDate}
           onChange={(e) => setDrawDate(e.target.value)}
         />
-        <label htmlFor="">Numero de Cifras</label>
+        <label htmlFor="" className={styles.label}>
+          Numero de Cifras
+        </label>
         <select
-          className={styles.number_of_digits_select}
+          className={styles.one_line_input}
           value={numberOfDigits}
           onChange={(e) => setNumberOfDigits(e.target.value)}
         >
@@ -106,10 +110,12 @@ const CreateGiveawayComponent = () => {
         <input
           type="number"
           value={ticketPrice}
+          className={styles.one_line_input}
           onChange={(e) => setTicketPrice(e.target.value)}
         />
       </form>
       <div className={styles.container_right}>
+        <h2 className={styles.card_title}>Vista Previa</h2>
         <MyRaffleCardComponent
           title={title}
           image={image}
@@ -120,6 +126,7 @@ const CreateGiveawayComponent = () => {
           ticketPrice={ticketPrice}
         />
       </div>
+      <div className={styles.terms_conditions_container}></div>
     </div>
   );
 };

@@ -34,11 +34,11 @@ const MyRaffleCardComponent = ({
     }
   };
 
-  console.log(typeof image);
-
   const numberOfTickets = () => {
-    return !numberOfTickets ? 1 * 10 ** parseInt(numberOfDigits) : "0";
+    return numberOfDigits === "- - -" ? 0 : 1 * 10 ** parseInt(numberOfDigits);
   };
+
+  console.log(ticketPrice);
 
   return (
     <div className={styles.my_raffle_card}>
@@ -93,16 +93,19 @@ const MyRaffleCardComponent = ({
         </span>
       </p>
       <span className={styles.tickets_amount_title}>Cantidad de boletas</span>
-
       <span className={styles.tickets_amount}>{numberOfTickets()}</span>
       <div className={styles.tickets_info_container}>
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Disponibles</span>
-          <span className={styles.tickets_amount}>80</span>
+          <span className={styles.tickets_amount}>
+            {state ? "en espera" : numberOfTickets()}
+          </span>
         </div>
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Vendidas</span>
-          <span className={styles.tickets_amount}>20</span>
+          <span className={styles.tickets_amount}>
+            {state ? "en espera" : "0"}
+          </span>
         </div>
       </div>
       {!!state ? (
@@ -116,7 +119,12 @@ const MyRaffleCardComponent = ({
       {!!state ? (
         <span className={styles.raffle_winner_number}>{winningNumber}</span>
       ) : (
-        <span className={styles.raffle_winner_number}>numero x</span>
+        <span className={styles.raffle_winner_number}>
+          $
+          {!!ticketPrice
+            ? (numberOfTickets() * parseInt(ticketPrice)).toLocaleString()
+            : 0}
+        </span>
       )}
       {!!state ? (
         <div className={styles.buttons_container}>

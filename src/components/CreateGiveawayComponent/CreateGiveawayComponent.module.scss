@@ -2,22 +2,26 @@
 
 .create_giveaway {
   min-height: calc(100vh - 350px);
-  background-color: aqua;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 30px 50px;
   flex-wrap: wrap;
+  background-color: aquamarine;
 }
 
 .new_raffle_form {
-  background-color: orangered;
   border: 2px solid v.$negro-azulado;
   min-width: 360px;
   width: 50%;
   display: flex;
   flex-direction: column;
   padding: 15px;
+  border-radius: 20px;
+
+  @media (max-width: 860px) {
+    width: calc(50% + 370px);
+  }
 }
 
 .card_title {
@@ -25,9 +29,14 @@
 }
 
 .label {
+  margin-top: 15px;
 }
 
 .one_line_input {
+  font-size: 18px;
+  border: solid grey 2px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .image_icon_container {
@@ -40,6 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 15px;
 }
 
 .image_icon {
@@ -58,6 +68,13 @@
   align-self: center;
 }
 
+.image_name {
+  color: v.$negro-azulado;
+  align-self: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 .layout_link {
   font-weight: 700;
   color: v.$violeta;
@@ -67,19 +84,24 @@
 .textarea_description {
   resize: none;
   height: 100px;
-}
-
-.lottery_select {
-}
-
-.date_input {
-}
-
-.number_of_digits_select {
+  font-size: 18px;
+  border: solid grey 2px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .container_right {
-  background-color: brown;
   width: 350px;
   min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.terms_conditions_container {
+  width: calc(50% + 370px);
+  height: 100px;
+  background-color: chartreuse;
+  min-width: 360px;
 }
