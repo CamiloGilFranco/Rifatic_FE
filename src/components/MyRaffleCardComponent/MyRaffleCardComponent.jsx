@@ -18,6 +18,7 @@ const MyRaffleCardComponent = ({
   ticketPrice,
   state,
   winningNumber,
+  showPhone,
 }) => {
   const [optionsMenu, setOptionsMenu] = useState(false);
 
@@ -124,6 +125,12 @@ const MyRaffleCardComponent = ({
             : 0}
         </span>
       )}
+      {showPhone ? (
+        <span className={styles.contact_span}>
+          Contacto:{" "}
+          <span className={styles.contact_number}>numero temporal</span>
+        </span>
+      ) : null}
       {!!state ? (
         <div className={styles.buttons_container}>
           <span className={styles.go_to_raffle_details}>Ver Sorteo</span>

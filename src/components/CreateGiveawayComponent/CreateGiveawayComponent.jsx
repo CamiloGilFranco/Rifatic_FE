@@ -11,6 +11,7 @@ const CreateGiveawayComponent = () => {
   const [drawDate, setDrawDate] = useState(undefined);
   const [numberOfDigits, setNumberOfDigits] = useState("- - -");
   const [ticketPrice, setTicketPrice] = useState("");
+  const [showPhone, setShowPhone] = useState(false);
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [titleError, setTitleError] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -224,6 +225,19 @@ const CreateGiveawayComponent = () => {
             **Debes escribir el valor de cada boleta
           </span>
         ) : null}
+        <div className={styles.check_phone_container}>
+          <input
+            type="checkbox"
+            checked={showPhone}
+            onChange={() => setShowPhone(!showPhone)}
+            className={styles.terms_checkbox}
+            id="new-raffle-show-phone"
+          />
+          <label htmlFor="new-raffle-show-phone" className={styles.phone_label}>
+            ¿Mostrar mi numero de teléfono para que posibles compradores me
+            contacten?
+          </label>
+        </div>
       </form>
       <div className={styles.container_right}>
         <h2 className={styles.card_title}>Vista Previa</h2>
@@ -235,6 +249,7 @@ const CreateGiveawayComponent = () => {
           numberOfDigits={numberOfDigits}
           lottery={lottery}
           ticketPrice={ticketPrice}
+          showPhone={showPhone}
         />
       </div>
       <div className={styles.terms_conditions_container}>

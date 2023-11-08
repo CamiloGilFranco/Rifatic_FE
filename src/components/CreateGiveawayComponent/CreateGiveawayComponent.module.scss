@@ -100,6 +100,22 @@
   border-radius: 5px;
 }
 
+.check_phone_container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone_label {
+  width: calc(100% - 23px);
+}
+
+.terms_checkbox {
+  width: 18px;
+  height: 18px;
+}
+
 .container_right {
   width: 350px;
   min-width: 350px;
@@ -127,11 +143,6 @@
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.terms_checkbox {
-  width: 18px;
-  height: 18px;
 }
 
 .terms_label {
