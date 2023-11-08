@@ -7,7 +7,6 @@
   gap: 20px;
   padding: 30px 50px;
   flex-wrap: wrap;
-  background-color: aquamarine;
 }
 
 .new_raffle_form {
@@ -39,6 +38,13 @@
   border-radius: 5px;
 }
 
+.error_message {
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .image_icon_container {
   background-color: v.$violeta;
   cursor: pointer;
@@ -50,6 +56,10 @@
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+
+  &:hover {
+    background-color: v.$morado;
+  }
 }
 
 .image_icon {
@@ -101,7 +111,48 @@
 
 .terms_conditions_container {
   width: calc(50% + 370px);
-  height: 100px;
-  background-color: chartreuse;
+  background-color: v.$amarillo;
   min-width: 360px;
+  border: solid 3px v.$naranja;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.check_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.terms_checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.terms_label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.create_raffle_button {
+  background-color: v.$violeta;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px 0;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  align-self: center;
+
+  &:hover {
+    background-color: v.$morado;
+  }
 }

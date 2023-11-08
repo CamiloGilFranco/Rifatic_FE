@@ -38,8 +38,6 @@ const MyRaffleCardComponent = ({
     return numberOfDigits === "- - -" ? 0 : 1 * 10 ** parseInt(numberOfDigits);
   };
 
-  console.log(ticketPrice);
-
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
