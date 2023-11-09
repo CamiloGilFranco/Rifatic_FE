@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
 import { useEffect, useState } from "react";
 
-const MyRafflesComponent = ({ giveaways }) => {
+const MyRafflesComponent = ({ giveaways, phoneNumber }) => {
   const [showList, setShowList] = useState(false);
 
   useEffect(() => {
@@ -30,6 +30,8 @@ const MyRafflesComponent = ({ giveaways }) => {
                 ticketPrice={raffle.ticket_price}
                 state={raffle.state}
                 winningNumber={raffle.winning_number}
+                showPhone={raffle.show_phone}
+                phoneNumber={phoneNumber}
               />
             );
           })}

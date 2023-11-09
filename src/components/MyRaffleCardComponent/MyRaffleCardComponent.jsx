@@ -19,6 +19,7 @@ const MyRaffleCardComponent = ({
   state,
   winningNumber,
   showPhone,
+  phoneNumber,
 }) => {
   const [optionsMenu, setOptionsMenu] = useState(false);
 
@@ -127,8 +128,7 @@ const MyRaffleCardComponent = ({
       )}
       {showPhone ? (
         <span className={styles.contact_span}>
-          Contacto:{" "}
-          <span className={styles.contact_number}>numero temporal</span>
+          Contacto: <span className={styles.contact_number}>{phoneNumber}</span>
         </span>
       ) : null}
       {!!state ? (

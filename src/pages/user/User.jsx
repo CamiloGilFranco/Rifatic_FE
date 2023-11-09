@@ -38,9 +38,14 @@ const User = () => {
   const showUserComponent = () => {
     switch (optionSelected) {
       case 1:
-        return <MyRafflesComponent giveaways={userData.giveaways} />;
+        return (
+          <MyRafflesComponent
+            giveaways={userData.giveaways}
+            phoneNumber={userData.phone}
+          />
+        );
       case 2:
-        return <CreateGiveawayComponent />;
+        return <CreateGiveawayComponent phoneNumber={userData.phone} />;
       default:
         return null;
     }

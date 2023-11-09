@@ -3,7 +3,7 @@ import addImage from "../../assets/image.svg";
 import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
 import { useState } from "react";
 
-const CreateGiveawayComponent = () => {
+const CreateGiveawayComponent = ({ phoneNumber }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(undefined);
   const [description, setDescription] = useState("");
@@ -250,6 +250,7 @@ const CreateGiveawayComponent = () => {
           lottery={lottery}
           ticketPrice={ticketPrice}
           showPhone={showPhone}
+          phoneNumber={phoneNumber}
         />
       </div>
       <div className={styles.terms_conditions_container}>
