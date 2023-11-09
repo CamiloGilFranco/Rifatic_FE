@@ -12,6 +12,12 @@ const MyRafflesComponent = ({ giveaways, phoneNumber }) => {
     }
   }, [giveaways]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, []);
+
   return (
     <div className={styles.my_raffles}>
       {showList ? (

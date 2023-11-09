@@ -2,13 +2,21 @@ import styles from "./CreateGiveawayComponent.module.scss";
 import addImage from "../../assets/image.svg";
 import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-const CreateGiveawayComponent = ({ phoneNumber }) => {
+const CreateGiveawayComponent = ({
+  phoneNumber,
+  userData,
+  setUserData,
+  setOptionSelected,
+}) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(undefined);
   const [description, setDescription] = useState("");
   const [lottery, setLottery] = useState("- - -");
-  const [drawDate, setDrawDate] = useState(undefined);
+  const [drawDate, setDrawDate] = useState("");
   const [numberOfDigits, setNumberOfDigits] = useState("- - -");
   const [ticketPrice, setTicketPrice] = useState("");
   const [showPhone, setShowPhone] = useState(false);
@@ -22,7 +30,10 @@ const CreateGiveawayComponent = ({ phoneNumber }) => {
   const [ticketPriceError, setTicketPriceError] = useState(false);
   const [termsAndConditionsError, setTermsAndConditionsError] = useState(false);
 
-  const handleSubmit = () => {
+  const api = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("_tkn");
+
+  const handleSubmit = async () => {
     let isValid = true;
 
     if (!title) {
@@ -85,7 +96,52 @@ const CreateGiveawayComponent = ({ phoneNumber }) => {
       return;
     }
 
-    console.log("R");
+    const areYouSure = await Swal.fire({
+      title: "¿Estas seguro de crear tu rifa con los datos suministrados?",
+      text: "No podrás modificarlos una vez creada la rifa",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#6d28d9",
+      cancelButtonColor: "#ef4444",
+      confirmButtonText: `Continuar`,
+      cancelButtonText: `Cancelar`,
+    });
+
+    if (!areYouSure.isConfirmed) {
+      return;
+    }
+
+    try {
+      const data = new FormData();
+      data.append("title", title);
+      data.append("description", description);
+      data.append("lottery", lottery);
+      data.append("draw_date", drawDate);
+      data.append("number_of_digits", numberOfDigits);
+      data.append("ticket_price", ticketPrice);
+      data.append("show_phone", showPhone);
+      data.append("image", image, "image");
+
+      const response = await axios.post(`${api}giveaways`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newGiveawaysList = [
+        response.data.newGiveaway,
+        ...userData.giveaways,
+      ];
+
+      setUserData({ ...userData, giveaways: newGiveawaysList });
+
+      toast.success("Tu rifa fue creada!!!");
+      setOptionSelected(1);
+    } catch (error) {
+      console.log(error);
+      toast.error("Algo salio mal, inténtalo de nuevo mas tarde");
+    }
   };
 
   return (

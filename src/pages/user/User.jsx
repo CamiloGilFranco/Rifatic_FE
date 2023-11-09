@@ -45,7 +45,14 @@ const User = () => {
           />
         );
       case 2:
-        return <CreateGiveawayComponent phoneNumber={userData.phone} />;
+        return (
+          <CreateGiveawayComponent
+            phoneNumber={userData.phone}
+            userData={userData}
+            setUserData={setUserData}
+            setOptionSelected={setOptionSelected}
+          />
+        );
       default:
         return null;
     }
