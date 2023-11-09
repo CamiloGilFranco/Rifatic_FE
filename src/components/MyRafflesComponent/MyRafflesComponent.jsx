@@ -7,7 +7,7 @@ const MyRafflesComponent = ({ giveaways, phoneNumber }) => {
   const [showList, setShowList] = useState(false);
 
   useEffect(() => {
-    if (giveaways) {
+    if (giveaways && giveaways.length !== 0) {
       setShowList(true);
     }
   }, [giveaways]);

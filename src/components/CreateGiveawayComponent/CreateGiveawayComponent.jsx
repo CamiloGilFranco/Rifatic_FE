@@ -36,6 +36,8 @@ const CreateGiveawayComponent = ({
   const api = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("_tkn");
 
+  console.log(new Date(drawDate));
+
   useEffect(() => {
     setDate(null);
     setDrawDate("");
