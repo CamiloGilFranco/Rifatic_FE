@@ -1,10 +1,12 @@
 import styles from "./CreateGiveawayComponent.module.scss";
 import addImage from "../../assets/image.svg";
 import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -17,6 +19,7 @@ const CreateGiveawayComponent = ({
   const [description, setDescription] = useState("");
   const [lottery, setLottery] = useState("- - -");
   const [drawDate, setDrawDate] = useState("");
+  const [date, setDate] = useState(null);
   const [numberOfDigits, setNumberOfDigits] = useState("- - -");
   const [ticketPrice, setTicketPrice] = useState("");
   const [showPhone, setShowPhone] = useState(false);
@@ -32,6 +35,29 @@ const CreateGiveawayComponent = ({
 
   const api = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("_tkn");
+
+  useEffect(() => {
+    setDate(null);
+    setDrawDate("");
+  }, [lottery]);
+
+  useEffect(() => {
+    if (date) {
+      let day = date.getDate().toString();
+      let month = (date.getMonth() + 1).toString();
+      let year = date.getFullYear().toString();
+
+      if (day.length === 1) {
+        day = `0${day}`;
+      }
+
+      if (month.length === 1) {
+        month = `0${month}`;
+      }
+
+      setDrawDate(`${day}/${month}/${year}`);
+    }
+  }, [date]);
 
   const handleSubmit = async () => {
     let isValid = true;
@@ -144,6 +170,26 @@ const CreateGiveawayComponent = ({
     }
   };
 
+  const filterDay = (date) => {
+    const day = date.getDay();
+    switch (lottery) {
+      case "Lotería de Cundinamarca":
+        return day === 1;
+      case "Lotería de La Cruz Roja":
+        return day === 2;
+      case "Lotería del Meta":
+        return day === 3;
+      case "Lotería de Bogotá":
+        return day === 4;
+      case "Lotería de Medellin":
+        return day === 5;
+      case "Lotería de Boyacá":
+        return day === 6;
+      default:
+        return day === 8;
+    }
+  };
+
   return (
     <div className={styles.create_giveaway}>
       <form className={styles.new_raffle_form}>
@@ -236,11 +282,15 @@ const CreateGiveawayComponent = ({
         <label htmlFor="" className={styles.label}>
           Fecha del Sorteo
         </label>
-        <input
-          type="date"
+        <DatePicker
+          showIcon
+          selected={date}
+          onChange={(date) => setDate(date)}
           className={styles.one_line_input}
-          value={drawDate}
-          onChange={(e) => setDrawDate(e.target.value)}
+          minDate={new Date()}
+          placeholderText="00/00/0000"
+          filterDate={filterDay}
+          dateFormat="dd/MM/yyyy"
         />
         {drawDateError ? (
           <span className={styles.error_message}>
