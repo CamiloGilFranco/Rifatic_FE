@@ -1,0 +1,170 @@
+@use "../../styles/variables.module.scss" as v;
+
+.create_giveaway {
+  min-height: calc(100vh - 350px);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 50px;
+  flex-wrap: wrap;
+}
+
+.new_raffle_form {
+  border: 2px solid v.$negro-azulado;
+  min-width: 360px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 20px;
+
+  @media (max-width: 860px) {
+    width: calc(50% + 370px);
+  }
+}
+
+.card_title {
+  align-self: center;
+}
+
+.label {
+  margin-top: 15px;
+}
+
+.one_line_input {
+  font-size: 18px;
+  border: solid grey 2px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.error_message {
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.image_icon_container {
+  background-color: v.$violeta;
+  cursor: pointer;
+  align-self: center;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+
+  &:hover {
+    background-color: v.$morado;
+  }
+}
+
+.image_icon {
+  width: 50px;
+  height: 50px;
+}
+
+.file_input {
+  display: none;
+}
+
+.image_explanation {
+  text-align: center;
+  font-size: 10px;
+  max-width: 300px;
+  align-self: center;
+}
+
+.image_name {
+  color: v.$negro-azulado;
+  align-self: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.layout_link {
+  font-weight: 700;
+  color: v.$violeta;
+  text-decoration: none;
+}
+
+.textarea_description {
+  resize: none;
+  height: 100px;
+  font-size: 18px;
+  border: solid grey 2px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.check_phone_container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone_label {
+  width: calc(100% - 23px);
+}
+
+.terms_checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.container_right {
+  width: 350px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.terms_conditions_container {
+  width: calc(50% + 370px);
+  background-color: v.$amarillo;
+  min-width: 360px;
+  border: solid 3px v.$naranja;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.check_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.terms_label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.create_raffle_button {
+  background-color: v.$violeta;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px 0;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  align-self: center;
+
+  &:hover {
+    background-color: v.$morado;
+  }
+}

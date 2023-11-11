@@ -21,14 +21,16 @@ const LogInFormComponent = () => {
         email,
         password,
       });
-      console.log(response.data.data);
+
+      const path = response.data.data.path;
 
       localStorage.setItem("_role", response.data.data.role);
       localStorage.setItem("_user", response.data.data.email);
       localStorage.setItem("_tkn", response.data.data.token);
+      localStorage.setItem("_pth", path);
 
       toast.success("Sesión iniciada");
-      navigate(routes.home);
+      navigate(`${routes.user}${path}`);
     } catch (error) {
       console.log(error);
       toast.error("Ocurrió un problema, inténtalo de nuevo mas tarde");

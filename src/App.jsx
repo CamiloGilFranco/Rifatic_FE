@@ -15,7 +15,7 @@ function App() {
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.registrate} element={<Registrate />} />
         <Route path={routes.iniciar_sesion} element={<Iniciar_sesion />} />
-        <Route path={routes.user} element={<User />} />
+        <Route path={routes.userRoute} element={<User />} />
       </Routes>
       <ToastContainer
         className={toastStyle}

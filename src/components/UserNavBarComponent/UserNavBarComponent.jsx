@@ -3,14 +3,34 @@ import up from "../../assets/up.svg";
 import down from "../../assets/down.svg";
 import { useState } from "react";
 import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants/routes";
 
-const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
+const UserNavBarComponent = ({
+  optionSelected,
+  setOptionSelected,
+  name,
+  lastName,
+}) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setOptionSelected(5);
+
+    localStorage.removeItem("_role");
+    localStorage.removeItem("_user");
+    localStorage.removeItem("_tkn");
+    localStorage.removeItem("_pth");
+
+    navigate(routes.home);
+  };
 
   return (
     <div className={styles.user_nav_bar}>
       <div className={styles.user_nav_bar_main}>
-        <span className={styles.user_name}>Adrian Camilo Gil Franco</span>
+        <span className={styles.user_name}>{`${name} ${lastName}`}</span>
         <div className={styles.nav_buttons_container1}>
           <button
             className={`${styles.nav_button} ${
@@ -48,7 +68,7 @@ const UserNavBarComponent = ({ optionSelected, setOptionSelected }) => {
             className={`${styles.nav_button} ${
               optionSelected === 5 ? styles.menu_button_active : ""
             }`}
-            onClick={() => setOptionSelected(5)}
+            onClick={handleLogout}
           >
             Cerrar Sesión
           </button>
