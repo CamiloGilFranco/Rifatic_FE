@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CreateGiveawayComponent from "../../components/CreateGiveawayComponent/CreateGiveawayComponent";
+import ReportProblem from "../../components/ReportProblem/ReportProblem";
 
 const User = () => {
   const [optionSelected, setOptionSelected] = useState(1);
@@ -53,6 +54,8 @@ const User = () => {
             setOptionSelected={setOptionSelected}
           />
         );
+      case 4:
+        return <ReportProblem />;
       default:
         return null;
     }
