@@ -5,32 +5,35 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
+import { envVariables } from "../../constants/envVariables";
+import userOptions from "../../constants/userOtions";
 
 const LogInFormComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const api = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${api}local/login`, {
+      const response = await axios.post(`${envVariables.API_URL}local/login`, {
         email,
         password,
       });
 
       const path = response.data.data.path;
 
-      localStorage.setItem("_role", response.data.data.role);
-      localStorage.setItem("_user", response.data.data.email);
-      localStorage.setItem("_tkn", response.data.data.token);
-      localStorage.setItem("_pth", path);
+      Cookies.set(cookies._role, response.data.data.role);
+      Cookies.set(cookies._user, response.data.data.email);
+      Cookies.set(cookies._tkn, response.data.data.token);
+      Cookies.set(cookies._pth, response.data.data.path);
 
       toast.success("Sesión iniciada");
-      navigate(`${routes.user}${path}`);
+      navigate(`${routes.user}/${path}/${userOptions.option1}`);
     } catch (error) {
       console.log(error);
       toast.error("Ocurrió un problema, inténtalo de nuevo mas tarde");

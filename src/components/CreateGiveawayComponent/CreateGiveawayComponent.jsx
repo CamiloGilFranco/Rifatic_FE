@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
+import { envVariables } from "../../constants/envVariables";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -33,10 +36,7 @@ const CreateGiveawayComponent = ({
   const [ticketPriceError, setTicketPriceError] = useState(false);
   const [termsAndConditionsError, setTermsAndConditionsError] = useState(false);
 
-  const api = import.meta.env.VITE_API_URL;
-  const token = localStorage.getItem("_tkn");
-
-  console.log(new Date(drawDate));
+  const token = Cookies.get(cookies._tkn);
 
   useEffect(() => {
     setDate(null);
@@ -150,12 +150,16 @@ const CreateGiveawayComponent = ({
       data.append("show_phone", showPhone);
       data.append("image", image, "image");
 
-      const response = await axios.post(`${api}giveaways`, data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `${envVariables.API_URL}giveaways`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const newGiveawaysList = [
         response.data.newGiveaway,

@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { envVariables } from "../../constants/envVariables";
 
 const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [name, setName] = useState("");
@@ -22,8 +23,6 @@ const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [errorTerms, setErrorTerms] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loader, setLoader] = useState(false);
-
-  const api = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,13 +86,16 @@ const RegisterFormComponent = ({ setShowForm, setToken }) => {
     try {
       setLoader(true);
 
-      const response = await axios.post(`${api}local/new-user`, {
-        name,
-        last_name: lastName,
-        phone,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${envVariables.API_URL}local/new-user`,
+        {
+          name,
+          last_name: lastName,
+          phone,
+          email,
+          password,
+        }
+      );
 
       setToken(response.data.token);
       setShowForm(false);

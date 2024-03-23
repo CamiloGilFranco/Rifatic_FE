@@ -3,5 +3,7 @@ export const routes = {
   registrate: "/registrate",
   iniciar_sesion: "/iniciar-sesion",
   userRoute: "/user/:userPath",
-  user: "/user/",
+  userRouteOption: "/user/:userPath/:option",
+  userRouteOptionThree: "/user/:userPath/:option/:detail",
+  user: "/user",
 };

@@ -7,6 +7,8 @@ import burger from "../../assets/burger.svg";
 import HeaderMenuComponent from "../HeaderMenuComponent/HeaderMenuComponent";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
@@ -17,10 +19,10 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const role = localStorage.getItem("_role");
-    const user = localStorage.getItem("_user");
-    const tkn = localStorage.getItem("_tkn");
-    const pth = localStorage.getItem("_pth");
+    const role = Cookies.get(cookies._role);
+    const user = Cookies.get(cookies._user);
+    const tkn = Cookies.get(cookies._tkn);
+    const pth = Cookies.get(cookies._pth);
 
     setPath(pth);
 
@@ -51,9 +53,9 @@ const Header = () => {
         ) : (
           <span
             className={styles.button_session_active}
-            onClick={() => navigate(`${routes.user}${path}`)}
+            onClick={() => navigate(`${routes.user}/${path}`)}
           >
-            {localStorage.getItem("_user")}
+            {Cookies.get(cookies._user)}
           </span>
         )}
 

@@ -3,26 +3,24 @@ import up from "../../assets/up.svg";
 import down from "../../assets/down.svg";
 import { useState } from "react";
 import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { routes } from "../../constants/routes";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
+import userOptions from "../../constants/userOtions";
 
-const UserNavBarComponent = ({
-  optionSelected,
-  setOptionSelected,
-  name,
-  lastName,
-}) => {
+const UserNavBarComponent = ({ name, lastName }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setOptionSelected(5);
+  const params = useParams();
 
-    localStorage.removeItem("_role");
-    localStorage.removeItem("_user");
-    localStorage.removeItem("_tkn");
-    localStorage.removeItem("_pth");
+  const handleLogout = () => {
+    Cookies.remove(cookies._role);
+    Cookies.remove(cookies._user);
+    Cookies.remove(cookies._tkn);
+    Cookies.remove(cookies._pth);
 
     navigate(routes.home);
   };
@@ -34,42 +32,69 @@ const UserNavBarComponent = ({
         <div className={styles.nav_buttons_container1}>
           <button
             className={`${styles.nav_button} ${
-              optionSelected === 1 ? styles.menu_button_active : ""
+              params.option === userOptions.option1
+                ? styles.menu_button_active
+                : ""
             }`}
-            onClick={() => setOptionSelected(1)}
+            onClick={() =>
+              navigate(
+                `${routes.user}/${Cookies.get(cookies._pth)}/${
+                  userOptions.option1
+                }`
+              )
+            }
           >
             Mis Sorteos
           </button>
           <button
             className={`${styles.nav_button} ${
-              optionSelected === 2 ? styles.menu_button_active : ""
+              params.option === userOptions.option2
+                ? styles.menu_button_active
+                : ""
             }`}
-            onClick={() => setOptionSelected(2)}
+            onClick={() =>
+              navigate(
+                `${routes.user}/${Cookies.get(cookies._pth)}/${
+                  userOptions.option2
+                }`
+              )
+            }
           >
             Crear Sorteo
           </button>
           <button
             className={`${styles.nav_button} ${
-              optionSelected === 3 ? styles.menu_button_active : ""
+              params.option === userOptions.option3
+                ? styles.menu_button_active
+                : ""
             }`}
-            onClick={() => setOptionSelected(3)}
+            onClick={() =>
+              navigate(
+                `${routes.user}/${Cookies.get(cookies._pth)}/${
+                  userOptions.option3
+                }`
+              )
+            }
           >
             Mi Perfil
           </button>
           <button
             className={`${styles.nav_button} ${
-              optionSelected === 4 ? styles.menu_button_active : ""
+              params.option === userOptions.option4
+                ? styles.menu_button_active
+                : ""
             }`}
-            onClick={() => setOptionSelected(4)}
+            onClick={() =>
+              navigate(
+                `${routes.user}/${Cookies.get(cookies._pth)}/${
+                  userOptions.option4
+                }`
+              )
+            }
           >
             Reportar Problema
           </button>
-          <button
-            className={`${styles.nav_button} ${
-              optionSelected === 5 ? styles.menu_button_active : ""
-            }`}
-            onClick={handleLogout}
-          >
+          <button className={`${styles.nav_button}`} onClick={handleLogout}>
             Cerrar Sesión
           </button>
         </div>
@@ -89,11 +114,7 @@ const UserNavBarComponent = ({
           </button>
         </div>
       </div>
-      <UserNavModalMenuComponent
-        optionSelected={optionSelected}
-        setOptionSelected={setOptionSelected}
-        showNavMenu={showNavMenu}
-      />
+      <UserNavModalMenuComponent showNavMenu={showNavMenu} />
     </div>
   );
 };

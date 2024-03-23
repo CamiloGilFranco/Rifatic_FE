@@ -3,6 +3,8 @@ import sun from "../../assets/light_theme.svg";
 import moon from "../../assets/dark_theme.svg";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
 
 const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
               console.log("ioughaosih");
             }}
           >
-            {localStorage.getItem("_user")}
+            {Cookies.get(cookies._user)}
           </span>
         )}
         {!logged ? (

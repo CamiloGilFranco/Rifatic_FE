@@ -5,18 +5,18 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
+import { envVariables } from "../../constants/envVariables";
 
 const RegisterCodeConfirmationComponent = ({ token }) => {
   const [verificationCode, setVerificationCode] = useState("");
 
-  const api = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`${api}local/verify`, {
+      const response = await axios.put(`${envVariables.API_URL}local/verify`, {
         token,
         verificationCode,
       });
