@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
+import userOptions from "../../constants/userOtions";
 
 const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
   const navigate = useNavigate();
@@ -28,8 +29,7 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
           <span
             className={styles.item}
             onClick={() => {
-              navigate(`${routes.user}${path}`);
-              console.log("ioughaosih");
+              navigate(`${routes.user}/${path}/${userOptions.option1}`);
             }}
           >
             {Cookies.get(cookies._user)}

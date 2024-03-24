@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import userOptions from "../../constants/userOtions";
 
-const UserNavBarComponent = ({ name, lastName }) => {
+const UserNavBarComponent = ({ name = "", lastName = "" }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
 
   const navigate = useNavigate();

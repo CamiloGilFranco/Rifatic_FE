@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import { envVariables } from "../../constants/envVariables";
+import { HandlerFetchError } from "../../utils/FetchErrors";
 
 const RegisterCodeConfirmationComponent = ({ token }) => {
   const [verificationCode, setVerificationCode] = useState("");
@@ -29,8 +30,7 @@ const RegisterCodeConfirmationComponent = ({ token }) => {
 
       navigate(routes.iniciar_sesion);
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      HandlerFetchError(error, navigate);
     }
   };
 

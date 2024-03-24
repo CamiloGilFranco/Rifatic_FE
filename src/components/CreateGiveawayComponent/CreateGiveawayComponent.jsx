@@ -10,6 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import { envVariables } from "../../constants/envVariables";
+import { HandlerFetchError } from "../../utils/FetchErrors";
+import { useNavigate } from "react-router-dom";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -37,6 +39,7 @@ const CreateGiveawayComponent = ({
   const [termsAndConditionsError, setTermsAndConditionsError] = useState(false);
 
   const token = Cookies.get(cookies._tkn);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setDate(null);
@@ -171,8 +174,7 @@ const CreateGiveawayComponent = ({
       toast.success("Tu rifa fue creada!!!");
       setOptionSelected(1);
     } catch (error) {
-      console.log(error);
-      toast.error("Algo salio mal, inténtalo de nuevo mas tarde");
+      HandlerFetchError(error, navigate);
     }
   };
 

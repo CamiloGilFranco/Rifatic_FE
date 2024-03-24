@@ -5,6 +5,8 @@ import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponen
 import { toast } from "react-toastify";
 import axios from "axios";
 import { envVariables } from "../../constants/envVariables";
+import { HandlerFetchError } from "../../utils/FetchErrors";
+import { useNavigate } from "react-router-dom";
 
 const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [name, setName] = useState("");
@@ -23,6 +25,8 @@ const RegisterFormComponent = ({ setShowForm, setToken }) => {
   const [errorTerms, setErrorTerms] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loader, setLoader] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,8 +104,7 @@ const RegisterFormComponent = ({ setShowForm, setToken }) => {
       setToken(response.data.token);
       setShowForm(false);
     } catch (error) {
-      console.log(error);
-      toast.error("No se puedo crear tu usuario, inténtalo de nuevo mas tarde");
+      HandlerFetchError(error, navigate);
     }
   };
 

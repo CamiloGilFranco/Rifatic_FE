@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import { envVariables } from "../../constants/envVariables";
 import userOptions from "../../constants/userOtions";
+import { HandlerFetchError } from "../../utils/FetchErrors";
 
 const LogInFormComponent = () => {
   const [email, setEmail] = useState("");
@@ -35,8 +36,7 @@ const LogInFormComponent = () => {
       toast.success("Sesión iniciada");
       navigate(`${routes.user}/${path}/${userOptions.option1}`);
     } catch (error) {
-      console.log(error);
-      toast.error("Ocurrió un problema, inténtalo de nuevo mas tarde");
+      HandlerFetchError(error, navigate);
     }
   };
 
