@@ -3,7 +3,7 @@ const userOptions = {
   option2: "crear_sorteo",
   option3: "mi_perfil",
   option4: "reportar_problema",
-  option4: "reportar_problema",
+  option5: "sorteo",
 };
 
 export default userOptions;

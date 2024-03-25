@@ -1,11 +1,16 @@
 import styles from "./MyRaffleCardComponent.module.scss";
 import share from "../../assets/share.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import facebook from "../../assets/facebook.svg";
 import instagram from "../../assets/instagram.svg";
 import copy from "../../assets/copy.svg";
 import wpp from "../../assets/wpp.svg";
 import imageGeneric from "../../assets/image-generic.svg";
+import { useNavigate, useParams } from "react-router-dom";
+import { routes } from "../../constants/routes";
+import userOptions from "../../constants/userOtions";
+import Cookies from "js-cookie";
+import cookies from "../../constants/cookies";
 
 const MyRaffleCardComponent = ({
   title,
@@ -22,23 +27,41 @@ const MyRaffleCardComponent = ({
   phoneNumber,
 }) => {
   const [optionsMenu, setOptionsMenu] = useState(false);
+  const [spanishState, setSpanishState] = useState("");
+  const [stateColor, setStateColor] = useState(styles.progress);
+  const [numberOfTickets, setNumberOfTickets] = useState("");
 
-  const raffleState = () => {
-    switch (state) {
-      case "finished":
-        return "Finalizado";
-      case "canceled":
-        return "Cancelado";
-      case "in progress":
-        return "En Progreso";
-      default:
-        return "";
+  const params = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (state) {
+      switch (state) {
+        case "finished":
+          setSpanishState("Finalizado");
+          setStateColor(styles.finished);
+          break;
+        case "canceled":
+          setSpanishState("Cancelado");
+          setStateColor(styles.canceled);
+          break;
+        case "in progress":
+          setSpanishState("En Progreso");
+          setStateColor(styles.progress);
+          break;
+        default:
+          break;
+      }
     }
-  };
+  }, [state]);
 
-  const numberOfTickets = () => {
-    return numberOfDigits === "- - -" ? 0 : 1 * 10 ** parseInt(numberOfDigits);
-  };
+  useEffect(() => {
+    if (numberOfDigits) {
+      setNumberOfTickets(
+        numberOfDigits === "- - -" ? 0 : 1 * 10 ** parseInt(numberOfDigits)
+      );
+    }
+  }, [numberOfDigits]);
 
   return (
     <div className={styles.my_raffle_card}>
@@ -93,12 +116,12 @@ const MyRaffleCardComponent = ({
         </span>
       </p>
       <span className={styles.tickets_amount_title}>Cantidad de boletas</span>
-      <span className={styles.tickets_amount}>{numberOfTickets()}</span>
+      <span className={styles.tickets_amount}>{numberOfTickets}</span>
       <div className={styles.tickets_info_container}>
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Disponibles</span>
           <span className={styles.tickets_amount}>
-            {state ? "en espera" : numberOfTickets()}
+            {state ? "en espera" : numberOfTickets}
           </span>
         </div>
         <div className={styles.tickets_info_sub_container}>
@@ -109,7 +132,9 @@ const MyRaffleCardComponent = ({
         </div>
       </div>
       {!!state ? (
-        <span className={styles.raffle_state}>{raffleState()}</span>
+        <span className={`${styles.raffle_state} ${stateColor}`}>
+          {spanishState}
+        </span>
       ) : null}
       {!!state ? (
         <span className={styles.raffle_winner_title}>Numero Ganador</span>
@@ -122,7 +147,7 @@ const MyRaffleCardComponent = ({
         <span className={styles.raffle_winner_number}>
           $
           {!!ticketPrice
-            ? (numberOfTickets() * parseInt(ticketPrice)).toLocaleString()
+            ? (numberOfTickets * parseInt(ticketPrice)).toLocaleString()
             : 0}
         </span>
       )}
@@ -133,7 +158,18 @@ const MyRaffleCardComponent = ({
       ) : null}
       {!!state ? (
         <div className={styles.buttons_container}>
-          <span className={styles.go_to_raffle_details}>Ver Sorteo</span>
+          <span
+            className={styles.go_to_raffle_details}
+            onClick={() =>
+              navigate(
+                `${routes.user}/${Cookies.get(cookies._pth)}/${
+                  userOptions.option5
+                }/${id}`
+              )
+            }
+          >
+            Ver Sorteo
+          </span>
           <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
         </div>
       ) : null}

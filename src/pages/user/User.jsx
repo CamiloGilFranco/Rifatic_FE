@@ -15,6 +15,7 @@ import { HandlerFetchError } from "../../utils/FetchErrors";
 import { envVariables } from "../../constants/envVariables";
 import { routes } from "../../constants/routes";
 import userOptions from "../../constants/userOtions";
+import RaffleDetails from "../../components/RaffleDetails/RaffleDetails";
 
 const User = () => {
   const [userData, setUserData] = useState({});
@@ -50,7 +51,7 @@ const User = () => {
       );
     }
 
-    if (Object.keys(params).length === 2) {
+    if (paramsKeys.length === 2) {
       switch (params.option) {
         case userOptions.option1:
           return (
@@ -71,6 +72,12 @@ const User = () => {
           return <ReportProblem />;
         default:
           return null;
+      }
+    }
+
+    if (paramsKeys.length === 3) {
+      if (params.option === userOptions.option5) {
+        return <RaffleDetails />;
       }
     }
   };

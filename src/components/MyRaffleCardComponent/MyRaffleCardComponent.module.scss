@@ -91,13 +91,22 @@
 }
 
 .raffle_state {
-  background-color: v.$rojo;
   border-radius: 5px;
   padding: 10px;
   font-weight: 700;
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 15px;
+}
+
+.finished {
+  background-color: v.$violeta;
+}
+.canceled {
+  background-color: v.$rojo;
+}
+.progress {
+  background-color: v.$amarillo;
 }
 
 .raffle_winner_title {
