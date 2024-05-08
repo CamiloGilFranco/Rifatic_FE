@@ -97,7 +97,24 @@ const RaffleDetails = () => {
         buyerPhone,
         raffle_id: raffleData._id,
       });
-      /* const response = await axios.post(`${envVariables.API_URL}`); */
+
+      const response = await axios.post(
+        `${envVariables.API_URL}sold_tickets`,
+        {
+          selectedNumbers,
+          buyerEmail,
+          buyerName,
+          buyerPhone,
+          raffle_id: raffleData._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
+          },
+        }
+      );
+
+      console.log(response.data);
     } catch (error) {
       HandlerFetchError(error, navigate);
     }
