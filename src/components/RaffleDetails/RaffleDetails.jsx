@@ -9,11 +9,13 @@ import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const RaffleDetails = () => {
   const [raffleData, setRaffleData] = useState({});
   const [numbersList, setNumbersList] = useState([]);
   const [selectedNumbers, setSelectedNumbers] = useState([]);
+  const [selectedNumbersSold, setSelectedNumbersSold] = useState([]);
   const [buyerName, setBuyerName] = useState("");
   const [buyerEmail, setBuyerEmail] = useState("");
   const [buyerPhone, setBuyerPhone] = useState("");
@@ -54,7 +56,13 @@ const RaffleDetails = () => {
       const ticketList = [];
       for (var i = 0; i <= limitNumber; i++) {
         var number = i.toString().padStart(numberOfDigits, "0");
-        ticketList.push(number);
+
+        const soldInfo = response.data.giveawayData.sold_tickets.find(
+          (soldNumber) => number === soldNumber.selected_number
+        );
+
+        const sold = soldInfo ? true : false;
+        ticketList.push({ number, sold, soldInfo });
       }
 
       setNumbersList(ticketList);
@@ -64,15 +72,42 @@ const RaffleDetails = () => {
     }
   };
 
+  console.log(numbersList);
+
   const handleSelectNumber = (number) => {
+    if (selectedNumbersSold.length) {
+      toast.error(
+        "tienes números seleccionados que ya fueron vendidos, debes deseleccionarlos para vender mas"
+      );
+      return;
+    }
+
     if (!selectedNumbers.includes(number)) {
       setSelectedNumbers([...selectedNumbers, number]);
     } else {
-      const selectedNumbersCopy = [...selectedNumbers];
-      const index = selectedNumbersCopy.indexOf(number);
-      selectedNumbersCopy.splice(index, 1);
-      console.log(selectedNumbersCopy);
+      const selectedNumbersCopy = [...selectedNumbers].filter(
+        (element) => element !== number
+      );
       setSelectedNumbers(selectedNumbersCopy);
+    }
+  };
+
+  const handleSelectSoldNumber = (number) => {
+    if (selectedNumbers.length) {
+      toast.error(
+        "tienes números seleccionados para vendidos, debes deseleccionarlos para seleccionar números vendidos"
+      );
+      return;
+    }
+
+    if (!selectedNumbersSold.includes(number)) {
+      setSelectedNumbersSold([...selectedNumbersSold, number]);
+    } else {
+      const selectedNumbersSoldCopy = [...selectedNumbersSold].filter(
+        (element) => element !== number
+      );
+
+      setSelectedNumbersSold(selectedNumbersSoldCopy);
     }
   };
 
@@ -141,27 +176,40 @@ const RaffleDetails = () => {
       <div className={styles.raffle_numbers_container}>
         <div className={styles.numbers_list_search_bar}></div>
         <div className={styles.numbers_list_container}>
-          {numbersList.map((number, numberKey) => {
+          {numbersList.map((numberData, numberKey) => {
             return (
-              <div className={styles.number_container} key={numberKey}>
-                <span className={styles.number}>{number}</span>
+              <div
+                className={`${styles.number_container} ${
+                  numberData.sold ? styles.sold_number : ""
+                }`}
+                key={numberKey}
+              >
+                <span className={styles.number}>{numberData.number}</span>
                 <span
                   className={styles.select_number_button}
-                  onClick={() => handleSelectNumber(number)}
+                  onClick={() => {
+                    numberData.sold
+                      ? handleSelectSoldNumber(numberData.number)
+                      : handleSelectNumber(numberData.number);
+                  }}
                 >
-                  {selectedNumbers.includes(number)
+                  {selectedNumbers.includes(numberData.number) ||
+                  selectedNumbersSold.includes(numberData.number)
                     ? "Deseleccionar"
                     : "Seleccionar"}
                 </span>
                 <span className={styles.number_box_extra_info}>
-                  {selectedNumbers.includes(number) ? "Seleccionado" : ""}
+                  {numberData.sold ? "Vendido" : ""}
+                  {selectedNumbers.includes(numberData.number)
+                    ? "Seleccionado"
+                    : ""}
                 </span>
               </div>
             );
           })}
         </div>
       </div>
-      {selectedNumbers.length ? (
+      {selectedNumbers.length || selectedNumbersSold.length ? (
         <div
           className={`${styles.selected_container} ${
             expandSelectedNumbers ? styles.show_selected_details : ""
@@ -170,7 +218,8 @@ const RaffleDetails = () => {
           <div className={styles.selected_content_container}>
             <div className={styles.selected_container_header}>
               <span className={styles.selected_container_title}>
-                {selectedNumbers.length} números seleccionados
+                {selectedNumbers.length || selectedNumbersSold.length} números
+                seleccionados
               </span>
               <div
                 className={`${styles.expand_selected_numbers_icon_container} ${
@@ -194,50 +243,65 @@ const RaffleDetails = () => {
                       </span>
                     );
                   })}
+                  {selectedNumbersSold.sort().map((number, index) => {
+                    return (
+                      <span className={styles.single_number} key={index}>
+                        {number}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
-              <div className={styles.sell_tickets_form}>
-                <span className={styles.sell_tickets_form_title}>
-                  Datos del Comprador
-                </span>
-                <form className={styles.buyer_form} onSubmit={handleSubmit}>
-                  <label htmlFor="buyer-names-input" className={styles.label}>
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    id="buyer-names-input"
-                    className={styles.input}
-                    value={buyerName}
-                    onChange={(e) => setBuyerName(e.target.value)}
-                  />
-                  <label htmlFor="buyer-email-input" className={styles.label}>
-                    Correo
-                  </label>
-                  <input
-                    type="text"
-                    id="buyer-email-input"
-                    className={styles.input}
-                    value={buyerEmail}
-                    onChange={(e) => setBuyerEmail(e.target.value)}
-                  />
-                  <label htmlFor="buyer-phone-input" className={styles.label}>
-                    Teléfono
-                  </label>
-                  <input
-                    type="text"
-                    id="buyer-phone-input"
-                    className={styles.input}
-                    value={buyerPhone}
-                    onChange={(e) => setBuyerPhone(e.target.value)}
-                  />
-                  <input
-                    type="submit"
-                    value={"Asignar Boletas"}
-                    className={styles.submit_button}
-                  />
-                </form>
-              </div>
+              {selectedNumbers.length ? (
+                <div className={styles.sell_tickets_form}>
+                  <span className={styles.sell_tickets_form_title}>
+                    Datos del Comprador
+                  </span>
+                  <form className={styles.buyer_form} onSubmit={handleSubmit}>
+                    <label htmlFor="buyer-names-input" className={styles.label}>
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      id="buyer-names-input"
+                      className={styles.input}
+                      value={buyerName}
+                      onChange={(e) => setBuyerName(e.target.value)}
+                    />
+                    <label htmlFor="buyer-email-input" className={styles.label}>
+                      Correo
+                    </label>
+                    <input
+                      type="text"
+                      id="buyer-email-input"
+                      className={styles.input}
+                      value={buyerEmail}
+                      onChange={(e) => setBuyerEmail(e.target.value)}
+                    />
+                    <label htmlFor="buyer-phone-input" className={styles.label}>
+                      Teléfono
+                    </label>
+                    <input
+                      type="text"
+                      id="buyer-phone-input"
+                      className={styles.input}
+                      value={buyerPhone}
+                      onChange={(e) => setBuyerPhone(e.target.value)}
+                    />
+                    <input
+                      type="submit"
+                      value={"Asignar Boletas"}
+                      className={styles.submit_button}
+                    />
+                  </form>
+                </div>
+              ) : (
+                <div className={styles.release_tickets_button_container}>
+                  <button className={styles.release_tickets_button}>
+                    Liberar Números
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -34,6 +34,10 @@
   justify-content: space-between;
 }
 
+.sold_number {
+  background-color: c.$verde;
+}
+
 .number {
   font-weight: 600;
 }
@@ -195,6 +199,30 @@
   border: none;
   border-radius: 5px;
   margin: 10px 0;
+
+  &:hover {
+    background-color: c.$morado;
+  }
+}
+
+.release_tickets_button_container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.release_tickets_button {
+  background-color: c.$violeta;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  align-self: center;
 
   &:hover {
     background-color: c.$morado;
