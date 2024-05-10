@@ -15,11 +15,13 @@ const RaffleDetails = () => {
   const [raffleData, setRaffleData] = useState({});
   const [numbersList, setNumbersList] = useState([]);
   const [selectedNumbers, setSelectedNumbers] = useState([]);
-  const [selectedNumbersSold, setSelectedNumbersSold] = useState([]);
+  const [selectedNumberSold, setSelectedNumberSold] = useState({});
   const [buyerName, setBuyerName] = useState("");
   const [buyerEmail, setBuyerEmail] = useState("");
   const [buyerPhone, setBuyerPhone] = useState("");
   const [expandSelectedNumbers, setExpandSelectedNumbers] = useState(false);
+
+  console.log(selectedNumberSold);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -75,7 +77,7 @@ const RaffleDetails = () => {
   console.log(numbersList);
 
   const handleSelectNumber = (number) => {
-    if (selectedNumbersSold.length) {
+    if (Object.keys(selectedNumberSold).length) {
       toast.error(
         "tienes números seleccionados que ya fueron vendidos, debes deseleccionarlos para vender mas"
       );
@@ -92,22 +94,20 @@ const RaffleDetails = () => {
     }
   };
 
-  const handleSelectSoldNumber = (number) => {
+  const handleSelectSoldNumber = (numberData) => {
     if (selectedNumbers.length) {
       toast.error(
-        "tienes números seleccionados para vendidos, debes deseleccionarlos para seleccionar números vendidos"
+        "tienes números seleccionados para ser asignados, debes deseleccionarlos para seleccionar números vendidos"
       );
       return;
     }
 
-    if (!selectedNumbersSold.includes(number)) {
-      setSelectedNumbersSold([...selectedNumbersSold, number]);
+    if (numberData.number === selectedNumberSold.number) {
+      setSelectedNumberSold({});
+      return;
     } else {
-      const selectedNumbersSoldCopy = [...selectedNumbersSold].filter(
-        (element) => element !== number
-      );
-
-      setSelectedNumbersSold(selectedNumbersSoldCopy);
+      setSelectedNumberSold(numberData);
+      setExpandSelectedNumbers(true);
     }
   };
 
@@ -149,10 +149,42 @@ const RaffleDetails = () => {
         }
       );
 
-      console.log(response.data);
+      const numbersListCopy = [...numbersList];
+
+      response.data.response.forEach((e) => {
+        const foundTicket = numbersListCopy.find(
+          (ticket) => ticket.number === e.selected_number
+        );
+
+        foundTicket.sold = true;
+        foundTicket.soldInfo = {
+          email: e.email,
+          full_name: e.full_name,
+          phone_number: e.phone_number,
+          selected_number: e.selected_number,
+        };
+      });
+
+      setNumbersList(numbersListCopy);
+      setSelectedNumbers([]);
+      setSelectedNumberSold({});
+
+      console.log(response.data.response);
     } catch (error) {
       HandlerFetchError(error, navigate);
     }
+  };
+
+  const handleReleaseTicket = (e) => {
+    e.preventDefault();
+
+    try {
+      axios.delete(`${envVariables.API_URL}sold_tickets`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
+        },
+      });
+    } catch (error) {}
   };
 
   return (
@@ -189,12 +221,12 @@ const RaffleDetails = () => {
                   className={styles.select_number_button}
                   onClick={() => {
                     numberData.sold
-                      ? handleSelectSoldNumber(numberData.number)
+                      ? handleSelectSoldNumber(numberData)
                       : handleSelectNumber(numberData.number);
                   }}
                 >
                   {selectedNumbers.includes(numberData.number) ||
-                  selectedNumbersSold.includes(numberData.number)
+                  selectedNumberSold.number === numberData.number
                     ? "Deseleccionar"
                     : "Seleccionar"}
                 </span>
@@ -209,7 +241,7 @@ const RaffleDetails = () => {
           })}
         </div>
       </div>
-      {selectedNumbers.length || selectedNumbersSold.length ? (
+      {selectedNumbers.length || Object.keys(selectedNumberSold).length ? (
         <div
           className={`${styles.selected_container} ${
             expandSelectedNumbers ? styles.show_selected_details : ""
@@ -218,8 +250,10 @@ const RaffleDetails = () => {
           <div className={styles.selected_content_container}>
             <div className={styles.selected_container_header}>
               <span className={styles.selected_container_title}>
-                {selectedNumbers.length || selectedNumbersSold.length} números
-                seleccionados
+                {selectedNumbers.length
+                  ? `${selectedNumbers.length} números
+                seleccionados`
+                  : ""}
               </span>
               <div
                 className={`${styles.expand_selected_numbers_icon_container} ${
@@ -230,29 +264,24 @@ const RaffleDetails = () => {
                 <KeyboardArrowUpIcon style={{ fontSize: 30 }} />
               </div>
             </div>
-            <div className={styles.selected_numbers_detail_container}>
-              <div className={styles.selected_numbers_list_container}>
-                <span className={styles.selected_numbers_title}>
-                  Números Seleccionados
-                </span>
-                <div className={styles.detail_numbers_container}>
-                  {selectedNumbers.sort().map((number, index) => {
-                    return (
-                      <span className={styles.single_number} key={index}>
-                        {number}
-                      </span>
-                    );
-                  })}
-                  {selectedNumbersSold.sort().map((number, index) => {
-                    return (
-                      <span className={styles.single_number} key={index}>
-                        {number}
-                      </span>
-                    );
-                  })}
+            {selectedNumbers.length ? (
+              <div className={styles.selected_numbers_detail_container}>
+                <div className={styles.selected_numbers_list_container}>
+                  <span className={styles.selected_numbers_title}>
+                    Números Seleccionados
+                  </span>
+
+                  <div className={styles.detail_numbers_container}>
+                    {selectedNumbers.sort().map((number, index) => {
+                      return (
+                        <span className={styles.single_number} key={index}>
+                          {number}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-              {selectedNumbers.length ? (
+
                 <div className={styles.sell_tickets_form}>
                   <span className={styles.sell_tickets_form_title}>
                     Datos del Comprador
@@ -295,14 +324,44 @@ const RaffleDetails = () => {
                     />
                   </form>
                 </div>
-              ) : (
-                <div className={styles.release_tickets_button_container}>
-                  <button className={styles.release_tickets_button}>
-                    Liberar Números
-                  </button>
+              </div>
+            ) : null}
+            {Object.keys(selectedNumberSold).length ? (
+              <div className={styles.selected_numbers_detail_container}>
+                <div className={styles.selected_numbers_list_container}>
+                  <span className={styles.selected_numbers_title}>
+                    Datos del Comprador
+                  </span>
+
+                  <div className={styles.buyer_data_container}>
+                    <span className={styles.buyer_data_item}>
+                      Nombre: {selectedNumberSold.soldInfo.full_name}
+                    </span>
+                    <span className={styles.buyer_data_item}>
+                      Teléfono: {selectedNumberSold.soldInfo.phone_number}
+                    </span>
+                    <span className={styles.buyer_data_item}>
+                      Email: {selectedNumberSold.soldInfo.email}
+                    </span>
+                    <span className={styles.buyer_data_item}>
+                      Numero seleccionado:{" "}
+                      {selectedNumberSold.soldInfo.selected_number}
+                    </span>
+                  </div>
                 </div>
-              )}
-            </div>
+
+                <form
+                  onSubmit={handleReleaseTicket}
+                  className={styles.release_button_container}
+                >
+                  <input
+                    type="submit"
+                    value={"Liberar Boleta"}
+                    className={styles.submit_button}
+                  />
+                </form>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : null}
