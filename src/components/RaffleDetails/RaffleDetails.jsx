@@ -14,12 +14,15 @@ import { toast } from "react-toastify";
 const RaffleDetails = () => {
   const [raffleData, setRaffleData] = useState({});
   const [numbersList, setNumbersList] = useState([]);
+  const [numbersListOrigin, setNumbersListOrigin] = useState([]);
   const [selectedNumbers, setSelectedNumbers] = useState([]);
   const [selectedNumberSold, setSelectedNumberSold] = useState({});
   const [buyerName, setBuyerName] = useState("");
   const [buyerEmail, setBuyerEmail] = useState("");
   const [buyerPhone, setBuyerPhone] = useState("");
   const [expandSelectedNumbers, setExpandSelectedNumbers] = useState(false);
+  const [findNumber, setFindNumber] = useState("");
+  const [filterBy, setFilterBy] = useState("Todos");
 
   const params = useParams();
   const navigate = useNavigate();
@@ -66,6 +69,7 @@ const RaffleDetails = () => {
       }
 
       setNumbersList(ticketList);
+      setNumbersListOrigin(ticketList);
       setRaffleData(response.data.giveawayData);
     } catch (error) {
       HandlerFetchError(error, navigate);
@@ -153,6 +157,7 @@ const RaffleDetails = () => {
       });
 
       setNumbersList(numbersListCopy);
+      setNumbersListOrigin(numbersListCopy);
       setSelectedNumbers([]);
       setSelectedNumberSold({});
     } catch (error) {
@@ -191,8 +196,44 @@ const RaffleDetails = () => {
       foundNumber.soldInfo = undefined;
 
       setNumbersList(numbersMap);
+      setNumbersListOrigin(numbersMap);
     } catch (error) {
       HandlerFetchError(error, navigate);
+    }
+  };
+
+  const handleFindNumber = (e) => {
+    setFilterBy("Todos");
+    const input = e.target.value.replace(/\D/g, "");
+    setFindNumber(input);
+
+    const filteredList = numbersListOrigin.filter((numberItem) =>
+      numberItem.number.includes(input)
+    );
+
+    setNumbersList(filteredList);
+  };
+
+  console.log(numbersList);
+
+  const handleFilterBy = (e) => {
+    setFindNumber("");
+    setFilterBy(e.target.value);
+
+    switch (e.target.value) {
+      case "Vendidos":
+        setNumbersList(
+          numbersListOrigin.filter((numberItem) => numberItem.sold)
+        );
+        break;
+      case "Disponibles":
+        setNumbersList(
+          numbersListOrigin.filter((numberItem) => !numberItem.sold)
+        );
+        break;
+      default:
+        setNumbersList(numbersListOrigin);
+        break;
     }
   };
 
@@ -215,7 +256,29 @@ const RaffleDetails = () => {
         />
       </div>
       <div className={styles.raffle_numbers_container}>
-        <div className={styles.numbers_list_search_bar}></div>
+        <div className={styles.numbers_list_search_bar}>
+          <input
+            type="text"
+            className={styles.find_ticket_input}
+            placeholder="Buscar Número"
+            onChange={handleFindNumber}
+            value={findNumber}
+          />
+          <div className="">
+            <span className={styles.filter_by_text}>Filtrar por: </span>
+            <select
+              name="filter-by"
+              id=""
+              className={styles.filter_by_select}
+              onChange={handleFilterBy}
+              value={filterBy}
+            >
+              <option value="Todos">Todos</option>
+              <option value="Vendidos">Vendidos</option>
+              <option value="Disponibles">Disponibles</option>
+            </select>
+          </div>
+        </div>
         <div className={styles.numbers_list_container}>
           {numbersList.map((numberData, numberKey) => {
             return (

@@ -13,6 +13,31 @@
 }
 
 .numbers_list_search_bar {
+  margin: 10px;
+  border: 3px solid c.$morado;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.find_ticket_input {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 30px;
+}
+
+.filter_by_text {
+  font-size: 16px;
+}
+
+.filter_by_select {
+  text-align: center;
+  height: 30px;
+  font-size: 16px;
 }
 
 .numbers_list_container {
