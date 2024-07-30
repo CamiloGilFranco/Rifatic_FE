@@ -1,8 +1,27 @@
-# React + Vite
+# Tareas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- actualizar tarjeta de rifa al vender o liberar tickets
+- crear buscador de tickets y filtrado
+- correos al vender y liberar tickets
+- error en botón con correo electrónico en header
+- validación de formulario de vender tickets
+- validación de formulario de crear usuario
+- validación de formulario de inicio de sesión
+- funcionalidad de cancelar sorteo
+- revisar por que no se borran los sorteos eliminados del array en la tabla de usuarios
+- funcionalidad de reportar problemas
+- agregar pantalla de mi perfil
+- no permitir vender ni liberar tickets 24 horas antes del sorteo
+- crear pantalla de consulta de sorteo a usuarios no inscritos
+- crear medio de contacto para que un usuario pueda comprar tickets (interno, wpp, email)
+- crear funcionalidad de compartir sorteo en redes
+- crear pantalla de administración ?????????
+- crear funcionalidad de finalización de sorteos
+- crear funcionalidad de reportar sorteo y usuario
+- crear funcionalidad de inhabilitar usuario al tener 3 reportes
+- crear funcionalidad de calificación a usuarios
+- crear funcionalidad de donaciones
+- crear seeders para rellenar base de datos (loterías)
+- eliminar posibilidad de tema oscuro
+- crear loader
+- lazy loading
