@@ -21,8 +21,6 @@ const RaffleDetails = () => {
   const [buyerPhone, setBuyerPhone] = useState("");
   const [expandSelectedNumbers, setExpandSelectedNumbers] = useState(false);
 
-  console.log(selectedNumberSold);
-
   const params = useParams();
   const navigate = useNavigate();
 
@@ -74,8 +72,6 @@ const RaffleDetails = () => {
     }
   };
 
-  console.log(numbersList);
-
   const handleSelectNumber = (number) => {
     if (Object.keys(selectedNumberSold).length) {
       toast.error(
@@ -124,15 +120,6 @@ const RaffleDetails = () => {
     }
 
     try {
-      console.log({
-        tkn: Cookies.get(cookies._tkn),
-        selectedNumbers,
-        buyerEmail,
-        buyerName,
-        buyerPhone,
-        raffle_id: raffleData._id,
-      });
-
       const response = await axios.post(
         `${envVariables.API_URL}sold_tickets`,
         {
@@ -168,23 +155,45 @@ const RaffleDetails = () => {
       setNumbersList(numbersListCopy);
       setSelectedNumbers([]);
       setSelectedNumberSold({});
-
-      console.log(response.data.response);
     } catch (error) {
       HandlerFetchError(error, navigate);
     }
   };
 
-  const handleReleaseTicket = (e) => {
+  const handleReleaseTicket = async (e) => {
     e.preventDefault();
 
     try {
-      axios.delete(`${envVariables.API_URL}sold_tickets`, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
-        },
-      });
-    } catch (error) {}
+      const deletedTicket = await axios.delete(
+        `${envVariables.API_URL}sold_tickets`,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
+          },
+          data: {
+            selected_number: selectedNumberSold,
+            raffle_id: raffleData._id,
+          },
+        }
+      );
+
+      setSelectedNumberSold({});
+      setExpandSelectedNumbers(false);
+
+      const numbersMap = [...numbersList];
+
+      const foundNumber = numbersMap.find(
+        (numberItem) =>
+          numberItem.number === deletedTicket.data.deleted_data.selected_number
+      );
+
+      foundNumber.sold = false;
+      foundNumber.soldInfo = undefined;
+
+      setNumbersList(numbersMap);
+    } catch (error) {
+      HandlerFetchError(error, navigate);
+    }
   };
 
   return (
