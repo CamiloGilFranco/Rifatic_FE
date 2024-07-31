@@ -23,6 +23,7 @@ const RaffleDetails = () => {
   const [expandSelectedNumbers, setExpandSelectedNumbers] = useState(false);
   const [findNumber, setFindNumber] = useState("");
   const [filterBy, setFilterBy] = useState("Todos");
+  const [ticketsSold, setTicketsSold] = useState(0);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -39,6 +40,16 @@ const RaffleDetails = () => {
       setExpandSelectedNumbers(false);
     }
   }, [selectedNumbers]);
+
+  useEffect(() => {
+    if (!numbersList.length) {
+      return;
+    }
+
+    setTicketsSold(
+      numbersListOrigin.filter((numberItem) => numberItem.sold).length
+    );
+  }, [numbersListOrigin]);
 
   const getRaffleData = async () => {
     try {
@@ -214,8 +225,6 @@ const RaffleDetails = () => {
     setNumbersList(filteredList);
   };
 
-  console.log(numbersList);
-
   const handleFilterBy = (e) => {
     setFindNumber("");
     setFilterBy(e.target.value);
@@ -247,12 +256,13 @@ const RaffleDetails = () => {
           description={raffleData.description}
           drawDate={raffleData.draw_date}
           numberOfDigits={raffleData.number_of_digits}
+          numberOfSold={ticketsSold}
           lottery={raffleData.lottery}
           ticketPrice={raffleData.ticket_price}
           state={raffleData.state}
           winningNumber={raffleData.winning_number}
           showPhone={raffleData.show_phone}
-          phoneNumber={raffleData.phone_number}
+          phoneNumber={raffleData?.user?.phone}
         />
       </div>
       <div className={styles.raffle_numbers_container}>

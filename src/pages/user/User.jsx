@@ -54,12 +54,7 @@ const User = () => {
     if (paramsKeys.length === 2) {
       switch (params.option) {
         case userOptions.option1:
-          return (
-            <MyRafflesComponent
-              giveaways={userData.giveaways}
-              phoneNumber={userData.phone}
-            />
-          );
+          return <MyRafflesComponent phoneNumber={userData.phone} />;
         case userOptions.option2:
           return (
             <CreateGiveawayComponent

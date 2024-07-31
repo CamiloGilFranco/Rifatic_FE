@@ -19,6 +19,7 @@ const MyRaffleCardComponent = ({
   description,
   drawDate,
   numberOfDigits,
+  numberOfSold = 0,
   lottery,
   ticketPrice,
   state,
@@ -121,14 +122,12 @@ const MyRaffleCardComponent = ({
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Disponibles</span>
           <span className={styles.tickets_amount}>
-            {state ? "en espera" : numberOfTickets}
+            {numberOfTickets - numberOfSold}
           </span>
         </div>
         <div className={styles.tickets_info_sub_container}>
           <span className={styles.tickets_amount_title}>Vendidas</span>
-          <span className={styles.tickets_amount}>
-            {state ? "en espera" : "0"}
-          </span>
+          <span className={styles.tickets_amount}>{numberOfSold}</span>
         </div>
       </div>
       {!!state ? (
