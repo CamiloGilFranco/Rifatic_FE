@@ -1,12 +1,15 @@
 import AdminNavBar from "../../components/AdminNavBar/AdminNavBar";
-import Header from "../../components/Header/Header";
+import AdminResults from "../../components/AdminResults/AdminResults";
 import styles from "./Admin.module.scss";
 
 const Admin = () => {
   return (
-    <div>
-      <Header />
+    <div className={styles.admin_page}>
       <AdminNavBar />
+
+      <div className={styles.content_container}>
+        <AdminResults />
+      </div>
     </div>
   );
 };

@@ -2,14 +2,16 @@ import { useState } from "react";
 import styles from "./AdminNavBar.module.scss";
 import logo from "../../assets/logo.png";
 import {
-  MdOnlinePrediction,
+  MdOutlineAdminPanelSettings,
   MdOutlineDashboard,
-  MdOutlineDataset,
+  MdOutlineReport,
 } from "react-icons/md";
-import { FaLessThan, FaProjectDiagram, FaRegUser } from "react-icons/fa";
-import { LuBrainCircuit } from "react-icons/lu";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaLessThan, FaRegAddressCard } from "react-icons/fa";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { LiaDonateSolid } from "react-icons/lia";
+import { GiCardAceSpades } from "react-icons/gi";
+import { IoDiceOutline, IoSpeedometerOutline } from "react-icons/io5";
+import { FiUsers } from "react-icons/fi";
 
 const AdminNavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -68,97 +70,129 @@ const AdminNavBar = () => {
 
         <div
           className={`${styles.button}
-            ${option === "datasets" ? styles.button_selected : ""}
+            ${option === "resultados" ? styles.button_selected : ""}
             ${!showMenu ? styles.button_on_hide : ""} 
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/datasets`);
+            navigate(`${routes.userRedirect}/resultados`);
             setShowMenu(false);
           }}
         >
-          <MdOutlineDataset className={styles.button_icon} />
+          <IoSpeedometerOutline className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>Datasets</span>
+            <span className={styles.button_text}>Resultados</span>
           ) : null}
         </div>
 
         <div
           className={`${styles.button}
-            ${option === "projects" ? styles.button_selected : ""}
+            ${option === "sorteos" ? styles.button_selected : ""}
             ${!showMenu ? styles.button_on_hide : ""} 
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/projects`);
+            navigate(`${routes.userRedirect}/sorteos`);
             setShowMenu(false);
           }}
         >
-          <FaProjectDiagram className={styles.button_icon} />
+          <GiCardAceSpades className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>Projects</span>
+            <span className={styles.button_text}>Sorteos</span>
           ) : null}
         </div>
 
         <div
           className={`${styles.button}
-            ${option === "predicts" ? styles.button_selected : ""}
+            ${option === "usuarios" ? styles.button_selected : ""}
             ${!showMenu ? styles.button_on_hide : ""} 
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/predicts`);
+            navigate(`${routes.userRedirect}/usuarios`);
             setShowMenu(false);
           }}
         >
-          <MdOnlinePrediction className={styles.button_icon} />
+          <FiUsers className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>Predicts</span>
+            <span className={styles.button_text}>Usuarios</span>
           ) : null}
         </div>
 
         <div
           className={`${styles.button}
-            ${option === "artificial_brains" ? styles.button_selected : ""}
+            ${option === "reportes" ? styles.button_selected : ""}
             ${!showMenu ? styles.button_on_hide : ""} 
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/artificial_brains`);
+            navigate(`${routes.userRedirect}/reportes`);
             setShowMenu(false);
           }}
         >
-          <LuBrainCircuit className={styles.button_icon} />
+          <MdOutlineReport className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>Artificial Brains</span>
+            <span className={styles.button_text}>Reportes</span>
           ) : null}
         </div>
 
         <div
           className={`${styles.button}
-            ${option === "marketplace" ? styles.button_selected : ""}
+            ${option === "loterias" ? styles.button_selected : ""}
             ${!showMenu ? styles.button_on_hide : ""} 
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/marketplace`);
+            navigate(`${routes.userRedirect}/loterias`);
             setShowMenu(false);
           }}
         >
-          <FaCartShopping className={styles.button_icon} />
+          <IoDiceOutline className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>MarketPlace</span>
+            <span className={styles.button_text}>Loterías</span>
           ) : null}
         </div>
 
         <div
           className={`${styles.button}
             ${!showMenu ? styles.button_on_hide : ""} 
-            ${option === "configuration" ? styles.button_selected : ""}
+            ${option === "donaciones" ? styles.button_selected : ""}
             `}
           onClick={() => {
-            navigate(`${routes.userRedirect}/configuration`);
+            navigate(`${routes.userRedirect}/donaciones`);
             setShowMenu(false);
           }}
         >
-          <FaRegUser className={styles.button_icon} />
+          <LiaDonateSolid className={styles.button_icon} />
           {showMenu ? (
-            <span className={styles.button_text}>Configuration</span>
+            <span className={styles.button_text}>Donaciones</span>
+          ) : null}
+        </div>
+
+        <div
+          className={`${styles.button}
+            ${!showMenu ? styles.button_on_hide : ""} 
+            ${option === "administradores" ? styles.button_selected : ""}
+            `}
+          onClick={() => {
+            navigate(`${routes.userRedirect}/administradores`);
+            setShowMenu(false);
+          }}
+        >
+          <MdOutlineAdminPanelSettings className={styles.button_icon} />
+          {showMenu ? (
+            <span className={styles.button_text}>Administradores</span>
+          ) : null}
+        </div>
+
+        <div
+          className={`${styles.button}
+            ${!showMenu ? styles.button_on_hide : ""} 
+            ${option === "mi_perfil" ? styles.button_selected : ""}
+            `}
+          onClick={() => {
+            navigate(`${routes.userRedirect}/mi_perfil`);
+            setShowMenu(false);
+          }}
+        >
+          <FaRegAddressCard className={styles.button_icon} />
+          {showMenu ? (
+            <span className={styles.button_text}>Mi Perfil</span>
           ) : null}
         </div>
 

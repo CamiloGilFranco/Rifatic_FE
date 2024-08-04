@@ -21,13 +21,14 @@
 - crear pantalla de administración ?????????
 
   - dashboard
-  - resultados
-  - sorteos
-  - usuarios
-  - reportes
-  - loterías
-  - donaciones
-  - administradores
+  - resultados (ultimos resultados, resolver sorteo)
+  - sorteos (buscar sorteos activos y terminados)
+  - usuarios (buscar usuarios con informacion)
+  - reportes (ver ultumos reportes con su estado)
+  - loterías (normalizacion de loterias disponibles )
+  - donaciones (listado de dondaciones con informacion)
+  - administradores (lista de admins)
+  - mi perfil (actualizar datos)
 
 - crear funcionalidad de finalización de sorteos
 - crear funcionalidad de reportar sorteo y usuario
