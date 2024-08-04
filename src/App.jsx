@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import User from "./pages/user/User";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import UserRedirect from "./pages/user/UserRedirect";
+import Admin from "./pages/admin/admin";
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route path={routes.admin} element={<Admin />} />
       </Routes>
       <ToastContainer
         className={toastStyle}

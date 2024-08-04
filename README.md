@@ -1,5 +1,9 @@
 # Tareas
 
+- eliminar mui
+- cambiar colores
+- crear estado de login
+- eliminar user_path
 - funcionalidad de cancelar sorteo
 - validación de formulario de vender tickets
 - validación de formulario de crear usuario
@@ -13,7 +17,18 @@
 - crear pantalla de consulta de sorteo a usuarios no inscritos
 - crear medio de contacto para que un usuario pueda comprar tickets (interno, wpp, email)
 - crear funcionalidad de compartir sorteo en redes
+
 - crear pantalla de administración ?????????
+
+  - dashboard
+  - resultados
+  - sorteos
+  - usuarios
+  - reportes
+  - loterías
+  - donaciones
+  - administradores
+
 - crear funcionalidad de finalización de sorteos
 - crear funcionalidad de reportar sorteo y usuario
 - crear funcionalidad de inhabilitar usuario al tener 3 reportes

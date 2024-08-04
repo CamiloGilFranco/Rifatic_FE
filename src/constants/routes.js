@@ -6,4 +6,5 @@ export const routes = {
   userRouteOption: "/user/:userPath/:option",
   userRouteOptionThree: "/user/:userPath/:option/:detail",
   user: "/user",
+  admin: "/admin",
 };
