@@ -1,9 +1,11 @@
+@use "../../styles/colors.scss" as c;
+
 .admin_page {
   display: flex;
 }
 
 .content_container {
-  background-color: blueviolet;
+  background-color: c.$secondaryColor;
   width: 100%;
   padding: 10px 20px 10px 30px;
 }
