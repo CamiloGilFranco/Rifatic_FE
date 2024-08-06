@@ -3,10 +3,63 @@
 .admin_results {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
+
+/* -------------------------------------------------------- */
 
 .last_results_container {
+  border: 3px solid c.$borderColor;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
 }
 
-.correct_result_container {
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.table_container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.results_table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.thead {
+  background-color: c.$secondaryBackgroundColor;
+}
+
+.header_tr {
+}
+
+.header_th {
+  border: solid 1px c.$borderColor;
+  width: 150px;
+  padding: 5px 10px;
+}
+
+.tbody {
+}
+
+.body_tr {
+}
+
+.body_td {
+  border: solid 1px c.$borderColor;
+  width: 150px;
+  padding: 1px 10px;
+}
+
+.results_header_container {
+}
+
+.results_item_container {
 }

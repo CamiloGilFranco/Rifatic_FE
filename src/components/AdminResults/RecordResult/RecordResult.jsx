@@ -2,8 +2,10 @@ import { useState } from "react";
 import styles from "./RecordResult.module.scss";
 import DatePicker from "react-datepicker";
 
-const RecordResult = () => {
+const RecordResult = ({ record = false, upload = false }) => {
   const [date, setDate] = useState(null);
+
+  console.log({ record, upload });
 
   return (
     <div className={styles.record_result_container}>
@@ -51,7 +53,9 @@ const RecordResult = () => {
           <input type="text" className={styles.winner_number_input} />
         </div>
       </div>
-      <button className={styles.record_winner_button}>Registrar Ganador</button>
+      <button className={styles.record_winner_button}>
+        {`${record ? "Registrar" : "Corregir"}`} Ganador
+      </button>
     </div>
   );
 };
