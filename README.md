@@ -1,6 +1,7 @@
 # Tareas
 
 - eliminar mui
+- eliminar imágenes svg
 - cambiar colores
 - crear estado de login
 - eliminar user_path
@@ -21,14 +22,27 @@
 - crear pantalla de administración ?????????
 
   - dashboard
-  - resultados (ultimos resultados, resolver sorteo)
-  - sorteos (buscar sorteos activos y terminados)
-  - usuarios (buscar usuarios con informacion)
-  - reportes (ver ultumos reportes con su estado)
-  - loterías (normalizacion de loterias disponibles )
-  - donaciones (listado de dondaciones con informacion)
-  - administradores (lista de admins)
-  - mi perfil (actualizar datos)
+  - resultados (últimos resultados, resolver sorteo)
+  - sorteos
+    - buscar sorteos activos y terminados
+    - por defecto muestra los últimos actualizados
+    - tiene buscador por id, estado, fecha de creación, fecha de sorteo, mas vendidos,titulo, email, usuario
+    - muestra:id, nombre, creador userName, fecha inicio, botón de detalles
+  - usuarios
+    - buscar usuarios con información
+    - buscar por: usuario, correo
+    - muestra: usuario, correo, cantidad de sorteos
+  - reportes
+    - ver últimos reportes con su estado
+    - buscar por fecha, estado
+  - loterías (normalización de loterías disponibles )
+    - ver disponibles
+    - crear lotería con nombre y dia de semana
+    - eliminar lotería
+  - donaciones
+    - listado de donaciones con información
+  - administradores (como tacanaire)
+  - mi perfil (como tacanaire)
 
 - crear funcionalidad de finalización de sorteos
 - crear funcionalidad de reportar sorteo y usuario

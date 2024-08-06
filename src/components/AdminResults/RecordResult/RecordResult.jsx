@@ -5,11 +5,11 @@ import DatePicker from "react-datepicker";
 const RecordResult = ({ record = false, upload = false }) => {
   const [date, setDate] = useState(null);
 
-  console.log({ record, upload });
-
   return (
     <div className={styles.record_result_container}>
-      <span className={styles.title}>Registrar Resultado</span>
+      <span className={styles.title}>
+        {record ? "Registrar" : "Corregir"} Resultado
+      </span>
       <div className={styles.draw_options_container}>
         <div className={styles.date_picker_container}>
           <label htmlFor="" className={styles.input_label}>
