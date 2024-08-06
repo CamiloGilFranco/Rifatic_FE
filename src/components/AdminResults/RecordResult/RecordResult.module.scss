@@ -87,16 +87,17 @@
 
 .record_winner_button {
   background-color: c.$mainColor;
+  border: 1px solid c.$mainColor;
   font-size: 18px;
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
-  border: none;
   align-self: center;
 
   &:hover {
-    background-color: c.$secondaryColor;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }
