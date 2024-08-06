@@ -6,4 +6,23 @@
   box-sizing: border-box;
   font-family: sans-serif;
   color: c.$fontColor;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: c.$secondaryBackgroundColor;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: c.$secondaryBackgroundColor;
+    background-color: c.$mainColor;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: c.$borderColor;
+  }
 }
