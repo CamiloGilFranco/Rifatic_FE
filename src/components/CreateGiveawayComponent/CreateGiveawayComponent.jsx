@@ -1,5 +1,4 @@
 import styles from "./CreateGiveawayComponent.module.scss";
-import addImage from "../../assets/image.svg";
 import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -12,6 +11,7 @@ import cookies from "../../constants/cookies";
 import { envVariables } from "../../constants/envVariables";
 import { HandlerFetchError } from "../../utils/FetchErrors";
 import { useNavigate } from "react-router-dom";
+import { RiImageAddLine } from "react-icons/ri";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -220,7 +220,7 @@ const CreateGiveawayComponent = ({
           htmlFor="new-raffle-image-input"
           className={styles.image_icon_container}
         >
-          <img src={addImage} alt="" className={styles.image_icon} />
+          <RiImageAddLine className={styles.image_icon} />
         </label>
         <input
           type="file"

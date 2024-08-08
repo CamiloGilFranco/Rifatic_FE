@@ -39,7 +39,8 @@
 }
 
 .options_icon {
-  height: 18px;
+  height: 20px;
+  width: 20px;
 }
 
 .raffle_id {
@@ -51,6 +52,11 @@
   max-width: 100%;
   max-height: 200px;
   margin: 15px 0;
+}
+
+.raffle_image_icon {
+  width: 200px;
+  height: 200px;
 }
 
 .raffle_description {
@@ -181,8 +187,8 @@
 }
 
 .item_icon {
-  max-width: 22px;
-  max-height: 22px;
+  width: 22px;
+  height: 22px;
 }
 
 .item_text {

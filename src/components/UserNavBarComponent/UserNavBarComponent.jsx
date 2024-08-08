@@ -1,6 +1,4 @@
 import styles from "./UserNavBarComponent.module.scss";
-import up from "../../assets/up.svg";
-import down from "../../assets/down.svg";
 import { useState } from "react";
 import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,6 +6,7 @@ import { routes } from "../../constants/routes";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import userOptions from "../../constants/userOtions";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const UserNavBarComponent = ({ name = "", lastName = "" }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -107,9 +106,9 @@ const UserNavBarComponent = ({ name = "", lastName = "" }) => {
           >
             Menu{" "}
             {!showNavMenu ? (
-              <img src={down} alt="" className={styles.arrow_icon} />
+              <IoIosArrowDown className={styles.arrow_icon} />
             ) : (
-              <img src={up} alt="" className={styles.arrow_icon} />
+              <IoIosArrowUp className={styles.arrow_icon} />
             )}
           </button>
         </div>

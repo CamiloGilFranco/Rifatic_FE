@@ -1,28 +1,26 @@
 import styles from "./Footer.module.scss";
-import instagram from "../../assets/instagram.svg";
-import youtube from "../../assets/youtube.svg";
-import facebook from "../../assets/facebook.svg";
-import tiktok from "../../assets/tiktok.svg";
 import logo from "../../assets/logo.png";
+import { IoLogoFacebook } from "react-icons/io";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.social_media_container}>
         <div className={styles.social_media_item}>
-          <img src={instagram} alt="" className={styles.social_logo} />
+          <FaInstagram className={styles.social_logo} />
           <span className={styles.social_media_text}>Instagram</span>
         </div>
         <div className={styles.social_media_item}>
-          <img src={facebook} alt="" className={styles.social_logo} />
+          <IoLogoFacebook className={styles.social_logo} />
           <span className={styles.social_media_text}>Facebook</span>
         </div>
         <div className={styles.social_media_item}>
-          <img src={youtube} alt="" className={styles.social_logo} />
+          <FaYoutube className={styles.social_logo} />
           <span className={styles.social_media_text}>Youtube</span>
         </div>
         <div className={styles.social_media_item}>
-          <img src={tiktok} alt="" className={styles.social_logo} />
+          <FaTiktok className={styles.social_logo} />
           <span className={styles.social_media_text}>TikTok</span>
         </div>
       </div>

@@ -1,6 +1,5 @@
 # Tareas
 
-- eliminar imágenes svg
 - cambiar colores
 - crear estado de login
 - eliminar user_path

@@ -1,6 +1,4 @@
 import styles from "./HeaderMenuComponent.module.scss";
-import sun from "../../assets/light_theme.svg";
-import moon from "../../assets/dark_theme.svg";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import Cookies from "js-cookie";
@@ -44,12 +42,6 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
           </span>
         ) : null}
         <span className={styles.item}>Donar</span>
-        <img
-          src={theme ? sun : moon}
-          alt="dark theme"
-          onClick={() => setTheme(!theme)}
-          className={styles.theme_button}
-        />
       </div>
     </div>
   );

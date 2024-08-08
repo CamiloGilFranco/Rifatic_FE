@@ -1,7 +1,7 @@
 import styles from "./MainStepsBannerComponent.module.scss";
-import img1 from "../../assets/cash1.svg";
-import img2 from "../../assets/cash2.svg";
-import img3 from "../../assets/cash3.svg";
+import { FaHandHoldingDollar } from "react-icons/fa6";
+import { LiaMoneyBillWaveSolid } from "react-icons/lia";
+import { HiOutlineTicket } from "react-icons/hi";
 
 const MainStepsBannerComponent = () => {
   return (
@@ -9,7 +9,7 @@ const MainStepsBannerComponent = () => {
       <div className={styles.main_steps_banner_cards}>
         <div className={styles.single_container}>
           <div className={styles.image_container}>
-            <img src={img1} alt="" className={styles.item_image} />
+            <HiOutlineTicket className={styles.item_image} />
           </div>
           <h2 className={styles.item_subtitle}>Crea tu talonario</h2>
           <p className={styles.item_text}>
@@ -19,7 +19,7 @@ const MainStepsBannerComponent = () => {
         </div>
         <div className={styles.single_container}>
           <div className={styles.image_container}>
-            <img src={img2} alt="" className={styles.item_image} />
+            <LiaMoneyBillWaveSolid className={styles.item_image} />
           </div>
           <h2 className={styles.item_subtitle}>Crea tu talonario</h2>
           <p className={styles.item_text}>
@@ -29,7 +29,7 @@ const MainStepsBannerComponent = () => {
         </div>
         <div className={styles.single_container}>
           <div className={styles.image_container}>
-            <img src={img3} alt="" className={styles.item_image} />
+            <FaHandHoldingDollar className={styles.item_image} />
           </div>
           <h2 className={styles.item_subtitle}>Crea tu talonario</h2>
           <p className={styles.item_text}>

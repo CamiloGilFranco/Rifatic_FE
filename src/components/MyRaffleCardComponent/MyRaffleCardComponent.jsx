@@ -1,16 +1,15 @@
 import styles from "./MyRaffleCardComponent.module.scss";
-import share from "../../assets/share.svg";
 import { useEffect, useState } from "react";
-import facebook from "../../assets/facebook.svg";
-import instagram from "../../assets/instagram.svg";
-import copy from "../../assets/copy.svg";
-import wpp from "../../assets/wpp.svg";
-import imageGeneric from "../../assets/image-generic.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import userOptions from "../../constants/userOtions";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
+import { MdContentCopy } from "react-icons/md";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { IoLogoFacebook } from "react-icons/io";
+import { IoShareSocial } from "react-icons/io5";
+import { FaRegImage } from "react-icons/fa6";
 
 const MyRaffleCardComponent = ({
   title,
@@ -77,7 +76,7 @@ const MyRaffleCardComponent = ({
             className={styles.options_icon_container}
             onClick={() => setOptionsMenu(!optionsMenu)}
           >
-            <img src={share} alt="" className={styles.options_icon} />
+            <IoShareSocial className={styles.options_icon} />
           </div>
         ) : null}
       </div>
@@ -86,17 +85,17 @@ const MyRaffleCardComponent = ({
       ) : (
         <span className={styles.raffle_id}>ID: - - - </span>
       )}
-      <img
-        src={
-          !!image && typeof image === "string"
-            ? image
-            : !!image
-            ? URL.createObjectURL(image)
-            : imageGeneric
-        }
-        alt=""
-        className={styles.raffle_image}
-      />
+      {!!image && typeof image === "string" ? (
+        image
+      ) : !!image ? (
+        <img
+          src={URL.createObjectURL(image)}
+          alt=""
+          className={styles.raffle_image}
+        />
+      ) : (
+        <FaRegImage className={styles.raffle_image_icon} />
+      )}
       {description ? (
         <p className={styles.raffle_description}>{description}</p>
       ) : (
@@ -175,19 +174,19 @@ const MyRaffleCardComponent = ({
       {optionsMenu ? (
         <div className={styles.share_list}>
           <div className={styles.list_item}>
-            <img src={wpp} alt="" className={styles.item_icon} />
+            <FaWhatsapp className={styles.item_icon} />
             <span className={styles.item_text}>WhatsApp</span>
           </div>
           <div className={styles.list_item}>
-            <img src={facebook} alt="" className={styles.item_icon} />
+            <IoLogoFacebook className={styles.item_icon} />
             <span className={styles.item_text}>Facebook</span>
           </div>
           <div className={styles.list_item}>
-            <img src={instagram} alt="" className={styles.item_icon} />
+            <FaInstagram className={styles.item_icon} />
             <span className={styles.item_text}>Instagram</span>
           </div>
           <div className={styles.list_item}>
-            <img src={copy} alt="" className={styles.item_icon} />
+            <MdContentCopy className={styles.item_icon} />
             <span className={styles.item_text}>Copiar Link</span>
           </div>
         </div>

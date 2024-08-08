@@ -1,6 +1,6 @@
 import styles from "./WhyUseComponent.module.scss";
 import image from "../../assets/whyUsePhoto.jpg";
-import item from "../../assets/arrowItem.svg";
+import { TbArrowLeftFromArc } from "react-icons/tb";
 
 const WhyUseComponent = () => {
   return (
@@ -12,28 +12,28 @@ const WhyUseComponent = () => {
         </div>
         <div className={styles.items_container}>
           <div className={styles.item}>
-            <img src={item} alt="arrow_icon" className={styles.item_icon} />
+            <TbArrowLeftFromArc className={styles.item_icon} />
             <span className={styles.item_text}>
               Rifatic es la mejor plataforma para la organización y
               administración de tus rifas
             </span>
           </div>
           <div className={styles.item}>
-            <img src={item} alt="arrow_icon" className={styles.item_icon} />
+            <TbArrowLeftFromArc className={styles.item_icon} />
             <span className={styles.item_text}>
               Rifatic es la mejor plataforma para la organización y
               administración de tus rifas
             </span>
           </div>
           <div className={styles.item}>
-            <img src={item} alt="arrow_icon" className={styles.item_icon} />
+            <TbArrowLeftFromArc className={styles.item_icon} />
             <span className={styles.item_text}>
               Rifatic es la mejor plataforma para la organización y
               administración de tus rifas
             </span>
           </div>
           <div className={styles.item}>
-            <img src={item} alt="arrow_icon" className={styles.item_icon} />
+            <TbArrowLeftFromArc className={styles.item_icon} />
             <span className={styles.item_text}>
               Rifatic es la mejor plataforma para la organización y
               administración de tus rifas
