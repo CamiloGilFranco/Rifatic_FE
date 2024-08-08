@@ -7,9 +7,9 @@ import { envVariables } from "../../constants/envVariables";
 import axios from "axios";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { IoIosArrowUp } from "react-icons/io";
 
 const RaffleDetails = () => {
   const [raffleData, setRaffleData] = useState({});
@@ -343,7 +343,7 @@ const RaffleDetails = () => {
                 }`}
                 onClick={() => setExpandSelectedNumbers(!expandSelectedNumbers)}
               >
-                <KeyboardArrowUpIcon style={{ fontSize: 30 }} />
+                <IoIosArrowUp style={{ fontSize: 30 }} />
               </div>
             </div>
             {selectedNumbers.length ? (

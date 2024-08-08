@@ -1,6 +1,5 @@
 # Tareas
 
-- eliminar mui
 - eliminar imágenes svg
 - cambiar colores
 - crear estado de login
