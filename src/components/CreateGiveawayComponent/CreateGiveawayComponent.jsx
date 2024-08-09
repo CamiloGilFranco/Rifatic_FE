@@ -291,7 +291,6 @@ const CreateGiveawayComponent = ({
           Fecha del Sorteo
         </label>
         <DatePicker
-          showIcon
           selected={date}
           onChange={(date) => setDate(date)}
           className={styles.one_line_input}

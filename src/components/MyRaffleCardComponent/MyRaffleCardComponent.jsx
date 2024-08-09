@@ -86,7 +86,7 @@ const MyRaffleCardComponent = ({
         <span className={styles.raffle_id}>ID: - - - </span>
       )}
       {!!image && typeof image === "string" ? (
-        image
+        <img src={image} alt="" className={styles.raffle_image} />
       ) : !!image ? (
         <img
           src={URL.createObjectURL(image)}

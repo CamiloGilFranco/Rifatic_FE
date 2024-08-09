@@ -1,10 +1,11 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .register_form_component {
   min-height: calc(100vh - 270px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: c.$secondaryColor;
 }
 
 .logo {
@@ -18,7 +19,7 @@
 }
 
 .form {
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
   min-width: 370px;
   width: 50%;
   display: flex;
@@ -43,7 +44,8 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
+  background-color: c.$secondaryColor;
 }
 
 .terms_conditions_check_container {
@@ -65,26 +67,28 @@
 
 .terms_conditions_link {
   cursor: pointer;
-  color: v.$morado;
+  color: c.$mainColor;
   font-weight: 600;
 }
 
 .error_message {
-  color: red;
+  color: c.$rejectedColor;
   font-weight: 600;
 }
 
 .submit_button {
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   font-size: 20px;
   padding: 5px;
-  color: white;
   font-weight: 600;
   border-radius: 10px;
   margin-top: 15px;
   cursor: pointer;
+  border: none;
+  height: 34px;
 
   &:hover {
-    background-color: v.$morado;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }

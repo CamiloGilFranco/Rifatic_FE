@@ -1,4 +1,4 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .header_menu {
   position: fixed;
@@ -6,7 +6,7 @@
   top: 70px;
   height: calc(100vh - 70px);
   width: 100%;
-  border-top: 1px solid black;
+  border-top: 1px solid c.$secondaryColor;
   transition: transform 0.3s ease;
   transform: translate(-100%, 0);
 }
@@ -16,13 +16,13 @@
 }
 
 .background {
-  background-color: #0009;
+  background-color: rgba($color: c.$secondaryColor, $alpha: 0.5);
   height: 100%;
   width: 100%;
 }
 
 .menu_container {
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   height: 100%;
   width: 375px;
   position: absolute;
@@ -36,8 +36,7 @@
 }
 
 .item {
-  background-color: v.$morado;
-  color: white;
+  background-color: c.$secondaryBackgroundColor;
   width: 100%;
   font-size: 25px;
   display: flex;
@@ -47,9 +46,8 @@
   border: 1px solid transparent;
 
   &:hover {
-    color: v.$negro-azulado;
-    background-color: v.$blanco-oscuro;
-    border: 1px solid v.$negro-puro;
+    background-color: c.$secondaryColor;
+    border: 1px solid c.$borderColor;
   }
 }
 

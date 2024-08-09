@@ -1,4 +1,4 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .register_code_component {
   min-height: calc(100vh - 270px);
@@ -7,6 +7,7 @@
   align-items: center;
   padding: 25px;
   justify-content: space-between;
+  background-color: c.$secondaryColor;
 }
 
 .main_message {
@@ -21,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
   border-radius: 10px;
   padding: 10px;
   gap: 10px;
@@ -35,20 +36,25 @@
 .input_code {
   font-size: 20px;
   text-align: center;
-  padding: 3px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid c.$borderColor;
+  background-color: c.$secondaryColor;
 }
 
 .verify_button {
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   font-size: 20px;
   padding: 5px;
-  color: white;
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+  height: 37px;
+  border: none;
 
   &:hover {
-    background-color: v.$morado;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }
 

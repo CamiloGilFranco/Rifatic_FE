@@ -1,4 +1,4 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .terms_and_conditions_component {
   position: fixed;
@@ -9,10 +9,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .background {
-  background-color: #0008;
+  background-color: c.$modalBackgroundColor;
   width: 100%;
   height: 100%;
 }
@@ -20,9 +21,9 @@
 .modal_container {
   width: 80%;
   height: 80%;
-  background-color: white;
+  background-color: c.$secondaryColor;
   position: absolute;
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
   border-radius: 15px;
   padding: 20px;
 }
@@ -33,7 +34,7 @@
   align-items: center;
   overflow-y: scroll;
   height: 85%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid c.$mainColor;
 }
 
 .title {
@@ -67,15 +68,17 @@
 }
 
 .accept_button {
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   font-size: 20px;
   padding: 5px;
-  color: white;
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+  height: 37px;
+  border: none;
 
   &:hover {
-    background-color: v.$morado;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }

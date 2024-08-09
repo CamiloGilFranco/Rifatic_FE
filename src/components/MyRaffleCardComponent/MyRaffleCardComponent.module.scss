@@ -1,8 +1,8 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .my_raffle_card {
   width: 350px;
-  border: 3px solid v.$morado;
+  border: 3px solid c.$borderColor;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 }
 
 .options_icon_container {
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   border-radius: 100%;
   width: 30px;
   height: 30px;
@@ -34,7 +34,8 @@
   cursor: pointer;
 
   &:hover {
-    background-color: v.$morado;
+    border: 1px solid c.$borderColor;
+    background-color: c.$secondaryBackgroundColor;
   }
 }
 
@@ -106,13 +107,13 @@
 }
 
 .finished {
-  background-color: v.$violeta;
+  background-color: c.$finishedColor;
 }
 .canceled {
-  background-color: v.$rojo;
+  background-color: c.$rejectedColor;
 }
 .progress {
-  background-color: v.$amarillo;
+  background-color: c.$processColor;
 }
 
 .raffle_winner_title {
@@ -143,8 +144,7 @@
 }
 
 .go_to_raffle_details {
-  background-color: v.$violeta;
-  color: white;
+  background-color: c.$mainColor;
   font-size: 18px;
   font-weight: 600;
   padding: 5px 0;
@@ -155,10 +155,9 @@
 }
 
 .cancel_raffle {
-  color: white;
   font-size: 18px;
   font-weight: 600;
-  background-color: v.$rojo;
+  background-color: c.$rejectedColor;
   padding: 5px 0;
   border-radius: 10px;
   width: 150px;
@@ -167,8 +166,8 @@
 }
 
 .share_list {
-  background-color: v.$violeta;
-  border: 2px solid black;
+  background-color: c.$mainColor;
+  border: 2px solid c.$borderColor;
   position: absolute;
   right: 10px;
   top: 50px;
@@ -182,7 +181,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: v.$morado;
+    background-color: c.$secondaryBackgroundColor;
   }
 }
 
@@ -192,7 +191,6 @@
 }
 
 .item_text {
-  color: white;
   font-weight: 600;
   font-size: 18px;
 }

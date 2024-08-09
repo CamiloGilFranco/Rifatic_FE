@@ -1,12 +1,12 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .user_nav_modal {
   flex-direction: column;
   align-items: center;
   padding: 5px;
   gap: 5px;
-  background-color: v.$morado;
-  border-top: 1px black solid;
+  background-color: c.$cardBackgroundColor;
+  border-top: 1px c.$borderColor solid;
   animation-name: showList;
   animation-duration: 0.3s;
   animation-fill-mode: both;
@@ -19,8 +19,8 @@
   align-items: center;
   padding: 5px;
   gap: 5px;
-  background-color: v.$morado;
-  border-top: 1px black solid;
+  background-color: c.$cardBackgroundColor;
+  border-top: 1px c.$mainHover solid;
   animation-name: hideList;
   animation-duration: 0.3s;
   animation-fill-mode: both;
@@ -55,19 +55,18 @@
   width: 100%;
   font-size: 18px;
   font-weight: 600;
-  color: white;
-  background-color: v.$violeta;
+  background-color: c.$mainColor;
   cursor: pointer;
-  border-top: 2px solid grey;
-  border-left: 2px solid grey;
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 2px solid c.$mainHover;
+  border-left: 2px solid c.$mainHover;
+  border-bottom: 2px solid c.$borderColor;
+  border-right: 2px solid c.$borderColor;
 }
 
 .menu_button_active {
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid grey;
-  border-right: 2px solid grey;
-  background-color: v.$negro-azulado;
+  border-top: 2px solid c.$borderColor;
+  border-left: 2px solid c.$borderColor;
+  border-bottom: 2px solid c.$mainHover;
+  border-right: 2px solid c.$mainHover;
+  background-color: c.$secondaryBackgroundColor;
 }

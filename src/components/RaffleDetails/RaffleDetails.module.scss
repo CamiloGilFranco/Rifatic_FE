@@ -1,4 +1,4 @@
-@use "../../styles/variables.module.scss" as c;
+@use "../../styles/colors.scss" as c;
 
 .raffle_details {
   display: flex;
@@ -14,7 +14,7 @@
 
 .numbers_list_search_bar {
   margin: 10px;
-  border: 3px solid c.$morado;
+  border: 3px solid c.$borderColor;
   border-radius: 10px;
   height: 50px;
   display: flex;
@@ -25,7 +25,7 @@
 .find_ticket_input {
   text-align: center;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
   font-size: 16px;
   height: 30px;
 }
@@ -50,7 +50,7 @@
 
 .number_container {
   width: 100px;
-  border: solid c.$negro-puro 1px;
+  border: solid c.$borderColor 1px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@
 }
 
 .sold_number {
-  background-color: c.$verde;
+  background-color: c.$finishedColor;
 }
 
 .number {
@@ -70,15 +70,12 @@
 .select_number_button {
   font-size: 12px;
   border-radius: 5px;
-  border: solid 1px c.$gris-azulado;
+  border: solid 1px c.$borderColor;
   padding: 5px;
   cursor: pointer;
-  color: c.$gris-azulado;
 
   &:hover {
-    border: solid 1px c.$negro-puro;
-    color: c.$negro-puro;
-    background-color: c.$gris-azulado;
+    background-color: c.$mainHover;
   }
 }
 
@@ -109,8 +106,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background-color: c.$violeta;
-  color: c.$blanco-puro;
+  background-color: c.$mainColor;
 }
 
 .selected_container_title {
@@ -127,15 +123,16 @@
   cursor: pointer;
 
   &:hover {
-    background-color: c.$morado;
+    border: 1px solid c.$borderColor;
+    background-color: c.$secondaryBackgroundColor;
   }
 }
 
 .selected_numbers_detail_container {
   display: flex;
-  background-color: c.$blanco-puro;
-  border-left: 1px solid c.$negro-puro;
-  border-right: 1px solid c.$negro-puro;
+  background-color: c.$cardBackgroundColor;
+  border-left: 1px solid c.$mainColor;
+  border-right: 1px solid c.$mainColor;
 }
 
 .selected_numbers_title {
@@ -155,7 +152,7 @@
 }
 
 .single_number {
-  border: solid 1px c.$negro-puro;
+  border: solid 1px c.$borderColor;
   padding: 3px;
   border-radius: 5px;
   font-size: 25px;
@@ -171,7 +168,7 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border-right: 1px solid c.$negro-puro;
+  border-right: 1px solid c.$mainColor;
 }
 
 .rotate_icon {
@@ -210,23 +207,25 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid c.$borderColor;
+  background-color: c.$cardBackgroundColor;
 }
 
 .submit_button {
-  color: c.$blanco-puro;
-  background-color: c.$violeta;
+  background-color: c.$mainColor;
   cursor: pointer;
   font-size: 16px;
-  padding: 5px 10px;
+  padding: 0px 10px;
   width: fit-content;
   align-self: center;
   border: none;
   border-radius: 5px;
   margin: 10px 0;
+  height: 29px;
 
   &:hover {
-    background-color: c.$morado;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }
 
@@ -238,8 +237,7 @@
 }
 
 .release_tickets_button {
-  background-color: c.$violeta;
-  color: white;
+  background-color: c.$mainColor;
   font-size: 18px;
   font-weight: 600;
   padding: 10px;
@@ -250,7 +248,7 @@
   align-self: center;
 
   &:hover {
-    background-color: c.$morado;
+    background-color: c.$secondaryBackgroundColor;
   }
 }
 

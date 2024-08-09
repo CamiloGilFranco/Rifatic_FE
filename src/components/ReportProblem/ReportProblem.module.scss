@@ -1,4 +1,4 @@
-@use "../../styles/variables.module.scss" as v;
+@use "../../styles/colors.scss" as c;
 
 .report_problem {
   min-height: calc(100vh - 350px);
@@ -22,16 +22,16 @@
   max-width: 500px;
   resize: none;
   height: 250px;
-  border: solid 3px v.$morado;
+  border: solid 3px c.$borderColor;
   border-radius: 15px;
   padding: 10px;
   font-size: 16px;
   margin-top: 15px;
+  background-color: c.$secondaryColor;
 }
 
 .send_button {
-  background-color: v.$violeta;
-  color: white;
+  background-color: c.$mainColor;
   font-size: 18px;
   font-weight: 600;
   padding: 5px 0;
@@ -41,7 +41,10 @@
   cursor: pointer;
   border: none;
   margin-top: 12px;
+  height: 31px;
+
   &:hover {
-    background-color: v.$morado;
+    background-color: c.$secondaryBackgroundColor;
+    border: 1px solid c.$borderColor;
   }
 }

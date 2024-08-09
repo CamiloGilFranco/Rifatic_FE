@@ -1,8 +1,8 @@
-@use "../../styles/variables.module.scss";
+@use "../../styles/colors.scss" as c;
 @import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
 
 .container {
-  background-color: variables.$violeta;
+  background-color: c.$mainColor;
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,6 @@
 .title {
   font-family: "Concert One", cursive;
   font-size: 50px;
-  color: variables.$blanco-puro;
 }
 
 .buttons_container {
@@ -34,9 +33,8 @@
 }
 
 .button {
-  background-color: variables.$morado;
+  background-color: c.$secondaryBackgroundColor;
   font-size: 20px;
-  color: variables.$blanco-puro;
   width: 125px;
   display: flex;
   justify-content: center;
@@ -49,16 +47,14 @@
   }
 
   &:hover {
-    color: variables.$negro-azulado;
-    background-color: variables.$blanco-oscuro;
-    border: 1px solid variables.$negro-puro;
+    background-color: c.$secondaryColor;
+    border: 1px solid c.$borderColor;
   }
 }
 
 .button_session_active {
-  background-color: variables.$morado;
+  background-color: c.$secondaryBackgroundColor;
   font-size: 20px;
-  color: variables.$blanco-puro;
   padding: 0 10px;
   display: flex;
   justify-content: center;
@@ -71,9 +67,8 @@
   }
 
   &:hover {
-    color: variables.$negro-azulado;
-    background-color: variables.$blanco-oscuro;
-    border: 1px solid variables.$negro-puro;
+    background-color: c.$secondaryColor;
+    border: 1px solid c.$borderColor;
   }
 }
 
@@ -93,7 +88,7 @@
 .burger_container {
   height: 50px;
   width: 50px;
-  background-color: variables.$morado;
+  background-color: c.$secondaryBackgroundColor;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +101,7 @@
   }
 
   &:hover {
-    background-color: #421d7a;
+    background-color: c.$secondaryColor;
   }
 }
 
@@ -116,5 +111,5 @@
 }
 
 .burger_active {
-  background-color: #421d7a;
+  background-color: c.$secondaryColor;
 }
