@@ -1,16 +1,15 @@
 # Tareas
 
-- cambiar colores
 - crear estado de login
-- eliminar user_path
 - funcionalidad de cancelar sorteo
 - validación de formulario de vender tickets
 - validación de formulario de crear usuario
 - validación de formulario de inicio de sesión
+- error en botón con correo electrónico en header
 - revisar por que no se borran los sorteos eliminados del array en la tabla de usuarios
 - no permitir vender ni liberar tickets ni crear sorteos 24 horas antes del sorteo
 - correos al vender y liberar tickets
-- error en botón con correo electrónico en header
+- eliminar user_path
 - funcionalidad de reportar problemas
 - agregar pantalla de mi perfil
 - crear pantalla de consulta de sorteo a usuarios no inscritos
