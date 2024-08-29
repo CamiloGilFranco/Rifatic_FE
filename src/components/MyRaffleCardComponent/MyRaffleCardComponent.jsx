@@ -10,6 +10,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io";
 import { IoShareSocial } from "react-icons/io5";
 import { FaRegImage } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const MyRaffleCardComponent = ({
   title,
@@ -31,8 +32,8 @@ const MyRaffleCardComponent = ({
   const [stateColor, setStateColor] = useState(styles.progress);
   const [numberOfTickets, setNumberOfTickets] = useState("");
 
-  const params = useParams();
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.authSlice);
 
   useEffect(() => {
     if (state) {
@@ -159,11 +160,7 @@ const MyRaffleCardComponent = ({
           <span
             className={styles.go_to_raffle_details}
             onClick={() =>
-              navigate(
-                `${routes.user}/${Cookies.get(cookies._pth)}/${
-                  userOptions.option5
-                }/${id}`
-              )
+              navigate(`${routes.user}/${userOptions.option5}/${id}`)
             }
           >
             Ver Sorteo

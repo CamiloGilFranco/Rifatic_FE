@@ -1,6 +1,5 @@
 # Tareas
 
-- crear estado de login
 - funcionalidad de cancelar sorteo
 - validación de formulario de vender tickets
 - validación de formulario de crear usuario
@@ -9,7 +8,6 @@
 - revisar por que no se borran los sorteos eliminados del array en la tabla de usuarios
 - no permitir vender ni liberar tickets ni crear sorteos 24 horas antes del sorteo
 - correos al vender y liberar tickets
-- eliminar user_path
 - funcionalidad de reportar problemas
 - agregar pantalla de mi perfil
 - crear pantalla de consulta de sorteo a usuarios no inscritos

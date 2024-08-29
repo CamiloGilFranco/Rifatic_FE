@@ -16,6 +16,7 @@ import { envVariables } from "../../constants/envVariables";
 import { routes } from "../../constants/routes";
 import userOptions from "../../constants/userOtions";
 import RaffleDetails from "../../components/RaffleDetails/RaffleDetails";
+import { useSelector } from "react-redux";
 
 const User = () => {
   const [userData, setUserData] = useState({});
@@ -23,14 +24,29 @@ const User = () => {
   const navigate = useNavigate();
 
   const params = useParams();
-  const token = Cookies.get(cookies._tkn);
+  const auth = useSelector((state) => state.authSlice);
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  useEffect(() => {
+    let paramsKeys = Object.keys(params);
+
+    if (paramsKeys.length === 1) {
+      navigate(`${routes.user}/${userOptions.option1}`);
+    }
+  }, []);
 
   const getUserInfo = async () => {
     try {
-      const response = await axios.get(`${envVariables.API_URL}users/path`, {
-        headers: { Authorization: `Bearer ${token}` },
-        params: { path: params.userPath },
-      });
+      const response = await axios.get(
+        `${envVariables.API_URL}users/get-user-info`,
+        {
+          headers: { Authorization: `Bearer ${auth._tkn}` },
+          params: { email: auth._email },
+        }
+      );
 
       setUserData(response.data.userData);
     } catch (error) {
@@ -38,20 +54,10 @@ const User = () => {
     }
   };
 
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
   const showUserComponent = () => {
     let paramsKeys = Object.keys(params);
 
     if (paramsKeys.length === 1) {
-      navigate(
-        `${routes.user}/${Cookies.get(cookies._pth)}/${userOptions.option1}`
-      );
-    }
-
-    if (paramsKeys.length === 2) {
       switch (params.option) {
         case userOptions.option1:
           return <MyRafflesComponent phoneNumber={userData.phone} />;
@@ -70,7 +76,7 @@ const User = () => {
       }
     }
 
-    if (paramsKeys.length === 3) {
+    if (paramsKeys.length === 2) {
       if (params.option === userOptions.option5) {
         return <RaffleDetails />;
       }

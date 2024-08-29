@@ -7,29 +7,25 @@ import { routes } from "../../constants/routes";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [logged, setLogged] = useState(false);
-  const [path, setPath] = useState("");
 
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.authSlice);
+
+  const email = Cookies.get(cookies._email);
 
   useEffect(() => {
-    const role = Cookies.get(cookies._role);
-    const user = Cookies.get(cookies._user);
-    const tkn = Cookies.get(cookies._tkn);
-    const pth = Cookies.get(cookies._pth);
-
-    setPath(pth);
-
-    if (!!role && !!user && !!tkn && !!pth) {
+    if (email) {
       setLogged(true);
     } else {
       setLogged(false);
     }
-  }, []);
+  }, [auth]);
 
   return (
     <div className={styles.container}>
@@ -51,9 +47,9 @@ const Header = () => {
         ) : (
           <span
             className={styles.button_session_active}
-            onClick={() => navigate(`${routes.user}/${path}`)}
+            onClick={() => navigate(`${routes.user}`)}
           >
-            {Cookies.get(cookies._user)}
+            {Cookies.get(cookies._email)}
           </span>
         )}
 
@@ -81,7 +77,6 @@ const Header = () => {
         setTheme={setTheme}
         mobileMenu={mobileMenu}
         logged={logged}
-        path={path}
       />
     </div>
   );

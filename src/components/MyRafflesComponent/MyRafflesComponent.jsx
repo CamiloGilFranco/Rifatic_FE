@@ -8,12 +8,14 @@ import axios from "axios";
 import { envVariables } from "../../constants/envVariables";
 import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
+import { useSelector } from "react-redux";
 
 const MyRafflesComponent = ({ phoneNumber }) => {
   const [showList, setShowList] = useState(false);
   const [giveaways, setGiveaways] = useState([]);
 
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.authSlice);
 
   useEffect(() => {
     if (giveaways && giveaways.length !== 0) {
@@ -34,7 +36,7 @@ const MyRafflesComponent = ({ phoneNumber }) => {
       const response = await axios.get(
         `${envVariables.API_URL}giveaways/user`,
         {
-          headers: { Authorization: `Bearer ${Cookies.get(cookies._tkn)}` },
+          headers: { Authorization: `Bearer ${auth._tkn}` },
         }
       );
 

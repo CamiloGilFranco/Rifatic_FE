@@ -12,6 +12,7 @@ import { envVariables } from "../../constants/envVariables";
 import { HandlerFetchError } from "../../utils/FetchErrors";
 import { useNavigate } from "react-router-dom";
 import { RiImageAddLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -38,7 +39,9 @@ const CreateGiveawayComponent = ({
   const [ticketPriceError, setTicketPriceError] = useState(false);
   const [termsAndConditionsError, setTermsAndConditionsError] = useState(false);
 
-  const token = Cookies.get(cookies._tkn);
+  const auth = useSelector((state) => state.authSlice);
+
+  const token = auth._tkn;
   const navigate = useNavigate();
 
   useEffect(() => {

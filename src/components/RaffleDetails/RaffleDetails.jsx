@@ -10,6 +10,7 @@ import cookies from "../../constants/cookies";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { IoIosArrowUp } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 const RaffleDetails = () => {
   const [raffleData, setRaffleData] = useState({});
@@ -27,6 +28,7 @@ const RaffleDetails = () => {
 
   const params = useParams();
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.authSlice);
 
   useEffect(() => {
     getRaffleData();
@@ -56,7 +58,7 @@ const RaffleDetails = () => {
       const response = await axios.get(
         `${envVariables.API_URL}giveaways/single`,
         {
-          headers: { Authorization: `Bearer ${Cookies.get(cookies._tkn)}` },
+          headers: { Authorization: `Bearer ${auth._tkn}` },
           params: { id: params.detail },
         }
       );
@@ -146,7 +148,7 @@ const RaffleDetails = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
+            Authorization: `Bearer ${auth._tkn}`,
           },
         }
       );
@@ -184,7 +186,7 @@ const RaffleDetails = () => {
         `${envVariables.API_URL}sold_tickets`,
         {
           headers: {
-            Authorization: `Bearer ${Cookies.get(cookies._tkn)}`,
+            Authorization: `Bearer ${auth._tkn}`,
           },
           data: {
             selected_number: selectedNumberSold,

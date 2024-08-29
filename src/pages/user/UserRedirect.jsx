@@ -8,7 +8,7 @@ const UserRedirect = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`${routes.user}/${Cookies.get(cookies._pth)}`);
+    navigate(`${routes.user}/my-raffles`);
   }, []);
 
   return;

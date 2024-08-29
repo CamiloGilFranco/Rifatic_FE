@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import userOptions from "../../constants/userOtions";
 
-const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
+const HeaderMenuComponent = ({ mobileMenu, logged }) => {
   const navigate = useNavigate();
 
   return (
@@ -27,10 +27,10 @@ const HeaderMenuComponent = ({ theme, setTheme, mobileMenu, logged, path }) => {
           <span
             className={styles.item}
             onClick={() => {
-              navigate(`${routes.user}/${path}/${userOptions.option1}`);
+              navigate(`${routes.user}/${userOptions.option1}`);
             }}
           >
-            {Cookies.get(cookies._user)}
+            {Cookies.get(cookies._email)}
           </span>
         )}
         {!logged ? (

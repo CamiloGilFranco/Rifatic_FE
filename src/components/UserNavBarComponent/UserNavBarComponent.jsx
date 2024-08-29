@@ -7,19 +7,27 @@ import Cookies from "js-cookie";
 import cookies from "../../constants/cookies";
 import userOptions from "../../constants/userOtions";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { authData } from "../../store/slices/authSlice";
 
 const UserNavBarComponent = ({ name = "", lastName = "" }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const params = useParams();
 
   const handleLogout = () => {
-    Cookies.remove(cookies._role);
-    Cookies.remove(cookies._user);
     Cookies.remove(cookies._tkn);
-    Cookies.remove(cookies._pth);
+    Cookies.remove(cookies._email);
+
+    dispatch(
+      authData({
+        _tkn: "",
+        _role: "",
+        _email: "",
+      })
+    );
 
     navigate(routes.home);
   };
@@ -35,13 +43,7 @@ const UserNavBarComponent = ({ name = "", lastName = "" }) => {
                 ? styles.menu_button_active
                 : ""
             }`}
-            onClick={() =>
-              navigate(
-                `${routes.user}/${Cookies.get(cookies._pth)}/${
-                  userOptions.option1
-                }`
-              )
-            }
+            onClick={() => navigate(`${routes.user}/${userOptions.option1}`)}
           >
             Mis Sorteos
           </button>
@@ -51,13 +53,7 @@ const UserNavBarComponent = ({ name = "", lastName = "" }) => {
                 ? styles.menu_button_active
                 : ""
             }`}
-            onClick={() =>
-              navigate(
-                `${routes.user}/${Cookies.get(cookies._pth)}/${
-                  userOptions.option2
-                }`
-              )
-            }
+            onClick={() => navigate(`${routes.user}/${userOptions.option2}`)}
           >
             Crear Sorteo
           </button>
@@ -67,13 +63,7 @@ const UserNavBarComponent = ({ name = "", lastName = "" }) => {
                 ? styles.menu_button_active
                 : ""
             }`}
-            onClick={() =>
-              navigate(
-                `${routes.user}/${Cookies.get(cookies._pth)}/${
-                  userOptions.option3
-                }`
-              )
-            }
+            onClick={() => navigate(`${routes.user}/${userOptions.option3}`)}
           >
             Mi Perfil
           </button>
@@ -83,13 +73,7 @@ const UserNavBarComponent = ({ name = "", lastName = "" }) => {
                 ? styles.menu_button_active
                 : ""
             }`}
-            onClick={() =>
-              navigate(
-                `${routes.user}/${Cookies.get(cookies._pth)}/${
-                  userOptions.option4
-                }`
-              )
-            }
+            onClick={() => navigate(`${routes.user}/${userOptions.option4}`)}
           >
             Reportar Problema
           </button>

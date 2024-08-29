@@ -10,12 +10,15 @@ import cookies from "../../constants/cookies";
 import { envVariables } from "../../constants/envVariables";
 import userOptions from "../../constants/userOtions";
 import { HandlerFetchError } from "../../utils/FetchErrors";
+import { useDispatch } from "react-redux";
+import { authData } from "../../store/slices/authSlice";
 
 const LogInFormComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,15 +29,19 @@ const LogInFormComponent = () => {
         password,
       });
 
-      const path = response.data.data.path;
+      dispatch(
+        authData({
+          _tkn: response.data.data.token,
+          _role: response.data.data.role,
+          _email: response.data.data.email,
+        })
+      );
 
-      Cookies.set(cookies._role, response.data.data.role);
-      Cookies.set(cookies._user, response.data.data.email);
+      Cookies.set(cookies._email, response.data.data.email);
       Cookies.set(cookies._tkn, response.data.data.token);
-      Cookies.set(cookies._pth, response.data.data.path);
 
       toast.success("Sesión iniciada");
-      navigate(`${routes.user}/${path}/${userOptions.option1}`);
+      navigate(`${routes.user}/${userOptions.option1}`);
     } catch (error) {
       HandlerFetchError(error, navigate);
     }
