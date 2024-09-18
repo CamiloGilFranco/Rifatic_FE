@@ -35,6 +35,7 @@ export default [
       ],
       "react/prop-types": "off",
       "react-hooks/exhaustive-deps": "off",
+      "no-implicit-coercion": ["error", { boolean: false }],
     },
   },
 ];

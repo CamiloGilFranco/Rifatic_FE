@@ -1,16 +1,16 @@
 import styles from "./MyRaffleCardComponent.module.scss";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import userOptions from "../../constants/userOtions";
-import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
 import { MdContentCopy } from "react-icons/md";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io";
 import { IoShareSocial } from "react-icons/io5";
 import { FaRegImage } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { envVariables } from "./../../constants/envVariables";
 
 const MyRaffleCardComponent = ({
   title,
@@ -75,11 +75,12 @@ const MyRaffleCardComponent = ({
             Authorization: `Bearer ${auth._tkn}`,
           },
           data: {
-            selected_number: selectedNumberSold,
-            raffle_id: raffleData._id,
+            raffle_id: id,
           },
         }
       );
+
+      console.log(canceledRaffle.data);
     } catch (error) {
       console.log(error);
     }
