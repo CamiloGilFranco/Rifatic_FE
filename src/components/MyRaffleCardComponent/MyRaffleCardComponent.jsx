@@ -64,6 +64,27 @@ const MyRaffleCardComponent = ({
     }
   }, [numberOfDigits]);
 
+  const handleCancelRaffle = async () => {
+    console.log("cancelando...", id);
+
+    try {
+      const canceledRaffle = await axios.delete(
+        `${envVariables.API_URL}sold_tickets`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth._tkn}`,
+          },
+          data: {
+            selected_number: selectedNumberSold,
+            raffle_id: raffleData._id,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
@@ -165,7 +186,9 @@ const MyRaffleCardComponent = ({
           >
             Ver Sorteo
           </span>
-          <span className={styles.cancel_raffle}>Cancelar Sorteo</span>
+          <span className={styles.cancel_raffle} onClick={handleCancelRaffle}>
+            Cancelar Sorteo
+          </span>
         </div>
       ) : null}
       {optionsMenu ? (
