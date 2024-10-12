@@ -1,6 +1,10 @@
 # Tareas
 
 - funcionalidad de cancelar sorteo
+- poner regiones en todo el código
+- cambiar los throw error por respuesta insatisfactoria
+- centralizar consultas a api
+- error al crear sorteo
 - validación de formulario de vender tickets
 - validación de formulario de crear usuario
 - validación de formulario de inicio de sesión

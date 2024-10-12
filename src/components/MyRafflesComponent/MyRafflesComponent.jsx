@@ -6,8 +6,6 @@ import { HandlerFetchError } from "../../utils/FetchErrors";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { envVariables } from "../../constants/envVariables";
-import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
 import { useSelector } from "react-redux";
 
 const MyRafflesComponent = ({ phoneNumber }) => {
@@ -67,6 +65,8 @@ const MyRafflesComponent = ({ phoneNumber }) => {
                 winningNumber={raffle.winning_number}
                 showPhone={raffle.show_phone}
                 phoneNumber={phoneNumber}
+                setGiveaways={setGiveaways}
+                giveaways={giveaways}
               />
             );
           })}

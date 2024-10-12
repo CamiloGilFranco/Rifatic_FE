@@ -11,6 +11,7 @@ import { FaRegImage } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { envVariables } from "./../../constants/envVariables";
+import { toast } from "react-toastify";
 
 const MyRaffleCardComponent = ({
   title,
@@ -26,6 +27,8 @@ const MyRaffleCardComponent = ({
   winningNumber,
   showPhone,
   phoneNumber,
+  setGiveaways,
+  giveaways,
 }) => {
   const [optionsMenu, setOptionsMenu] = useState(false);
   const [spanishState, setSpanishState] = useState("");
@@ -34,6 +37,8 @@ const MyRaffleCardComponent = ({
 
   const navigate = useNavigate();
   const auth = useSelector((state) => state.authSlice);
+
+  console.log(numberOfSold);
 
   useEffect(() => {
     if (state) {
@@ -67,9 +72,14 @@ const MyRaffleCardComponent = ({
   const handleCancelRaffle = async () => {
     console.log("cancelando...", id);
 
+    if (numberOfSold) {
+      toast.error("No puedes cancelar sorteos con tickets vendidos");
+      return;
+    }
+
     try {
       const canceledRaffle = await axios.delete(
-        `${envVariables.API_URL}sold_tickets`,
+        `${envVariables.API_URL}giveaways/cancel`,
         {
           headers: {
             Authorization: `Bearer ${auth._tkn}`,
@@ -80,21 +90,29 @@ const MyRaffleCardComponent = ({
         }
       );
 
+      const filteredGiveaways = giveaways.filter(
+        (giveaway) => giveaway._id !== id
+      );
+
+      setGiveaways(filteredGiveaways);
+
       console.log(canceledRaffle.data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  console.log(giveaways);
+
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
-        {!!title ? (
+        {title ? (
           <h1 className={styles.raffle_title}>{title}</h1>
         ) : (
           <h1 className={styles.raffle_title}>- - -</h1>
         )}
-        {!!state ? (
+        {state ? (
           <div
             className={styles.options_icon_container}
             onClick={() => setOptionsMenu(!optionsMenu)}
@@ -103,14 +121,14 @@ const MyRaffleCardComponent = ({
           </div>
         ) : null}
       </div>
-      {!!state ? (
+      {state ? (
         <span className={styles.raffle_id}>ID: {id}</span>
       ) : (
         <span className={styles.raffle_id}>ID: - - - </span>
       )}
-      {!!image && typeof image === "string" ? (
+      {image && typeof image === "string" ? (
         <img src={image} alt="" className={styles.raffle_image} />
-      ) : !!image ? (
+      ) : image ? (
         <img
           src={URL.createObjectURL(image)}
           alt=""
@@ -152,22 +170,22 @@ const MyRaffleCardComponent = ({
           <span className={styles.tickets_amount}>{numberOfSold}</span>
         </div>
       </div>
-      {!!state ? (
+      {state ? (
         <span className={`${styles.raffle_state} ${stateColor}`}>
           {spanishState}
         </span>
       ) : null}
-      {!!state ? (
+      {state ? (
         <span className={styles.raffle_winner_title}>Numero Ganador</span>
       ) : (
         <span className={styles.raffle_winner_title}>Ganancia Estimada</span>
       )}
-      {!!state ? (
+      {state ? (
         <span className={styles.raffle_winner_number}>{winningNumber}</span>
       ) : (
         <span className={styles.raffle_winner_number}>
           $
-          {!!ticketPrice
+          {ticketPrice
             ? (numberOfTickets * parseInt(ticketPrice)).toLocaleString()
             : 0}
         </span>
@@ -177,7 +195,7 @@ const MyRaffleCardComponent = ({
           Contacto: <span className={styles.contact_number}>{phoneNumber}</span>
         </span>
       ) : null}
-      {!!state ? (
+      {state ? (
         <div className={styles.buttons_container}>
           <span
             className={styles.go_to_raffle_details}
