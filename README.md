@@ -1,6 +1,5 @@
 # Tareas
 
-- funcionalidad de cancelar sorteo
 - poner regiones en todo el código
 - cambiar los throw error por respuesta insatisfactoria
 - centralizar consultas a api
