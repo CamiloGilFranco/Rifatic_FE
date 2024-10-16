@@ -15,14 +15,14 @@ const Admin = () => {
       <AdminNavBar />
 
       <div className={styles.content_container}>
-        <AdminResults />
+        {/* <AdminResults /> */}
         <Raffles />
-        <AdminUsers />
-        <AdminReports />
-        <AdminLotteries />
-        <AdminDonations />
-        <AdminAdministrators />
-        <AdminMyProfile />
+        {/* <AdminUsers /> */}
+        {/* <AdminReports /> */}
+        {/* <AdminLotteries /> */}
+        {/* <AdminDonations /> */}
+        {/* <AdminAdministrators /> */}
+        {/* <AdminMyProfile />s */}
       </div>
     </div>
   );

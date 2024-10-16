@@ -24,8 +24,8 @@
   - sorteos
     - buscar sorteos activos y terminados
     - por defecto muestra los últimos actualizados
-    - tiene buscador por id, estado, fecha de creación, fecha de sorteo, mas vendidos,titulo, email, usuario
-    - muestra:id, nombre, creador userName, fecha inicio, botón de detalles
+    - tiene buscador por id, estado, fecha de creación, fecha de sorteo, mas o menos vendidos,titulo, email
+    - muestra:nombre, estado, creador , botón de ir a detalles
   - usuarios
     - buscar usuarios con información
     - buscar por: usuario, correo
