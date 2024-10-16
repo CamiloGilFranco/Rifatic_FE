@@ -29,11 +29,12 @@
   - usuarios
     - buscar usuarios con información
     - buscar por: usuario, correo
-    - muestra: usuario, correo, cantidad de sorteos
+    - muestra: usuario, correo, cantidad de sorteos, cantidad de ventas
   - reportes
     - ver últimos reportes con su estado
     - buscar por fecha, estado
-  - loterías (normalización de loterías disponibles )
+    - resolver reporte
+  - loterías (normalización de loterías disponibles (sujeto a cambio) )
     - ver disponibles
     - crear lotería con nombre y dia de semana
     - eliminar lotería
