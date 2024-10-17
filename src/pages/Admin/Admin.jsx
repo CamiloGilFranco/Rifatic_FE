@@ -16,8 +16,8 @@ const Admin = () => {
 
       <div className={styles.content_container}>
         {/* <AdminResults /> */}
-        <Raffles />
-        {/* <AdminUsers /> */}
+        {/* <Raffles /> */}
+        <AdminUsers />
         {/* <AdminReports /> */}
         {/* <AdminLotteries /> */}
         {/* <AdminDonations /> */}

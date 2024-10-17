@@ -5,23 +5,6 @@ import { TiDeleteOutline } from "react-icons/ti";
 
 //#region listas constantes
 
-const mock = [
-  { title: "titulo 1", state: "estado 1", email: "email 1" },
-  { title: "titulo 2", state: "estado 1", email: "email 1" },
-  {
-    title:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit facilis doloremque ipsum quam. Quasi ipsum aliquid officiis adipisci fugit voluptatum eaque aliquam magni facilis. Quam voluptates fugit similique libero ullam?",
-    state: "estado 1",
-    email:
-      "adriancamilogilfrancoymayraalejandrabernalmaldonado@trabajadoresdedigitalwareadvisori.empresa.com",
-  },
-  { title: "titulo 3", state: "estado 1", email: "email 1" },
-  { title: "titulo 4", state: "estado 1", email: "email 1" },
-  { title: "titulo 5", state: "estado 1", email: "email 1" },
-  { title: "titulo 6", state: "estado 1", email: "email 1" },
-  { title: "titulo 7", state: "estado 1", email: "email 1" },
-];
-
 const filterTypes = [
   "Titulo",
   "ID",
@@ -41,6 +24,7 @@ const Raffles = () => {
   const [filterType, setFilterType] = useState("");
   const [filterValue, setFilterValue] = useState("");
   const [filtersList, setFiltersList] = useState([]);
+  const [rafflesList, setRafflesList] = useState([]);
 
   //#region getInput
   const getInput = () => {
@@ -134,7 +118,9 @@ const Raffles = () => {
 
   //#region handleAddFilter
 
-  const handleAddFilter = () => {
+  const handleAddFilter = (e) => {
+    e.preventDefault();
+
     if (!filterType || !filterValue) {
       toast.error("Debes agregar el tipo de filtro y su valor");
       return;
@@ -161,7 +147,9 @@ const Raffles = () => {
 
   //#region handleSubmit
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!filtersList.length) {
       toast.error("No tienes filtros a aplicar");
       return;
@@ -256,7 +244,7 @@ const Raffles = () => {
           <span className={styles.item_status}>Status</span>
           <span className={styles.see_details_button}></span>
         </div>
-        {mock.map((item, itemIndex) => {
+        {rafflesList.map((item, itemIndex) => {
           return (
             <div className={styles.raffle_item} key={itemIndex}>
               <span className={styles.item_name}>{item.title}</span>
