@@ -28,7 +28,7 @@ const filterTypes = [
   "Email",
   "Cantidad de sorteos",
   "Cantidad de Ventas",
-  "Actividad", //--> ultimo actualizado o primero actualizado
+  "Actividad",
   "Fecha de Creación",
 ];
 

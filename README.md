@@ -31,9 +31,9 @@
     - buscar por: usuario, correo
     - muestra: usuario, correo, cantidad de sorteos, cantidad de ventas
   - reportes
-    - ver últimos reportes con su estado
-    - buscar por fecha, estado
-    - resolver reporte
+    - ver últimos reportes con su estado (nombre de creador, estado,fecha de solicitud )
+    - buscar por fecha, estado, email
+    - resolver reporte (modal que muestra nombre de creador, estado, fecha de solicitud, descripción, según el estado respuesta o input pra responder)
   - loterías (normalización de loterías disponibles (sujeto a cambio) )
     - ver disponibles
     - crear lotería con nombre y dia de semana
