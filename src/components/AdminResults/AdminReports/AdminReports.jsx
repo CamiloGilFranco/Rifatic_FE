@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./AdminReports.module.scss";
 import { toast } from "react-toastify";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
+import SolveReportModal from "./SolveReportModal/SolveReportModal";
 
 const reportsList = [
   {
@@ -82,7 +83,8 @@ const reportsList = [
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut accusamus delectus animi odio aliquam iure esse corporis molestiae deserunt veniam quae quas voluptatibus cupiditate, nihil enim necessitatibus, suscipit consequatur quis?",
     report_state: "Resuelto",
-    response: "",
+    response:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut accusamus delectus animi odio aliquam iure esse corporis molestiae deserunt veniam quae quas voluptatibus cupiditate, nihil enim necessitatibus, suscipit consequatur quis?",
     created_at: "01-01-2020",
   },
 ];
@@ -95,6 +97,14 @@ const AdminReports = () => {
   const [filtersList, setFiltersList] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [filterValue, setFilterValue] = useState("");
+  const [showSolveModal, setShowSolveModal] = useState(false);
+  const [selectedReport, setSelectedReport] = useState({});
+
+  useEffect(() => {
+    if (!showSolveModal) {
+      setSelectedReport({});
+    }
+  }, [showSolveModal]);
 
   //#region handleSubmit
 
@@ -292,13 +302,22 @@ const AdminReports = () => {
               <span className={styles.see_details_button}>
                 <MdOutlineRemoveRedEye
                   className={styles.details_icon}
-                  onClick={() => toast.warn("no hay pantalla de detalles")}
+                  onClick={() => {
+                    setSelectedReport(item);
+                    setShowSolveModal(true);
+                  }}
                 />
               </span>
             </div>
           );
         })}
       </div>
+      {showSolveModal && (
+        <SolveReportModal
+          report={selectedReport}
+          setShowSolveModal={setShowSolveModal}
+        />
+      )}
     </div>
   );
 };
