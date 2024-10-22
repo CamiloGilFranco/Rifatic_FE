@@ -18,9 +18,9 @@ const Admin = () => {
         {/* <AdminResults /> */}
         {/* <Raffles /> */}
         {/* <AdminUsers /> */}
-        <AdminReports />
+        {/* <AdminReports /> */}
         {/* <AdminLotteries /> */}
-        {/* <AdminDonations /> */}
+        <AdminDonations />
         {/* <AdminAdministrators /> */}
         {/* <AdminMyProfile />s */}
       </div>

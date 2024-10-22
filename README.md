@@ -39,7 +39,8 @@
     - crear lotería con nombre y dia de semana
     - eliminar lotería
   - donaciones
-    - listado de donaciones con información
+    - listado de donaciones con información, muestra: correo,nombre, monto
+    - filtrar por nombre, correo, monto, mas o menos donado
   - administradores (como tacanaire)
   - mi perfil (como tacanaire)
 
