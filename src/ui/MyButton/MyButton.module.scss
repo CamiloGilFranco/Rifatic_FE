@@ -1,0 +1,26 @@
+.actionButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:hover {
+    box-shadow: var(--button-shadow);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.icon_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

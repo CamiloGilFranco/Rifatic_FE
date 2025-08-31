@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
 import { envVariables } from "../../constants/envVariables";
 import { HandlerFetchError } from "../../utils/FetchErrors";
 import { useNavigate } from "react-router-dom";
@@ -236,7 +234,7 @@ const CreateGiveawayComponent = ({
             setImage(event.target.files[0]);
           }}
         />
-        <span className={styles.image_name}>{!!image ? image.name : ""}</span>
+        <span className={styles.image_name}>{image ? image.name : ""}</span>
         {imageError ? (
           <span className={styles.error_message}>
             **La rifa debe tener una imagen
