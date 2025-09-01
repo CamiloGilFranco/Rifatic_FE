@@ -11,11 +11,11 @@ const HeroSection = () => {
     >
       <div
         className={styles.bubbleA}
-        style={{ background: `rgba(${theme.accent}, 0.2)` }}
+        style={{ background: `${theme.accent}40` }}
       />
       <div
         className={styles.bubbleB}
-        style={{ background: `rgba(${theme.primary}, 0.2)` }}
+        style={{ background: `${theme.primary}40` }}
       />
 
       <div className={styles.container}>

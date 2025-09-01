@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import RegisterFormComponent from "../../components/RegisterFormComponent/RegisterFormComponent";
 import RegisterCodeConfirmationComponent from "../../components/RegistercodeconfirmationComponent/RegistercodeconfirmationComponent";
@@ -16,8 +15,6 @@ const Registrate = () => {
       ) : (
         <RegisterCodeConfirmationComponent token={token} />
       )}
-
-      <Footer />
     </div>
   );
 };

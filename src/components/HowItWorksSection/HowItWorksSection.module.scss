@@ -1,0 +1,74 @@
+.section {
+  padding: 5rem 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.title {
+  font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.subtitle {
+  font-size: 1.25rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid;
+  border-radius: 0.75rem;
+  transition: border-color 150ms ease;
+
+  &:hover {
+    border-color: var(--card-hover) !important;
+  }
+}
+
+.cardContent {
+  padding: 2rem;
+  text-align: center;
+}
+
+.iconCircle {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+}
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.cardText {
+  line-height: 1.7;
+}
+.cardStep {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

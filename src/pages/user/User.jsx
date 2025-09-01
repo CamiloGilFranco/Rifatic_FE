@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import UserNavBarComponent from "../../components/UserNavBarComponent/UserNavBarComponent";
 import styles from "./User.module.scss";
 import MyRafflesComponent from "../../components/MyRafflesComponent/MyRafflesComponent";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
 import CreateGiveawayComponent from "../../components/CreateGiveawayComponent/CreateGiveawayComponent";
 import ReportProblem from "../../components/ReportProblem/ReportProblem";
-import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
 import { HandlerFetchError } from "../../utils/FetchErrors";
 import { envVariables } from "../../constants/envVariables";
 import { routes } from "../../constants/routes";
@@ -88,7 +84,6 @@ const User = () => {
       <Header />
       <UserNavBarComponent name={userData.name} lastName={userData.last_name} />
       {showUserComponent()}
-      <Footer />
     </div>
   );
 };
