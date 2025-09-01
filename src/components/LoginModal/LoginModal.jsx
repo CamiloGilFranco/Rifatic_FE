@@ -71,6 +71,7 @@ const LoginModal = () => {
         text="Iniciar Sesión"
         icon="login"
         event={() => setOpen(true)}
+        backgroundColor={theme.bgLight}
       />
 
       {open && (

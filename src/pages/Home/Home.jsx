@@ -4,13 +4,15 @@ import MainStepsBannerComponent from "../../components/MainStepsBannerComponent/
 import WhyUseComponent from "../../components/WhyUseComponent/WhyUseComponent";
 import Footer from "../../components/Footer/Footer";
 import HeaderV2 from "../../components/HeaderV2/HeaderV2";
+import HeroSection from "../../components/HeroSection/HeroSection";
 
 const Home = () => {
   return (
     <div>
       <HeaderV2 />
-      <Header />
+      <HeroSection />
       {/* 
+      <Header />
       <MainBannerComponent />
       <MainStepsBannerComponent />
       <WhyUseComponent />

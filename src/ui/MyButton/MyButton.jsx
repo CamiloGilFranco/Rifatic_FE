@@ -25,9 +25,9 @@ const MyButton = ({
       className={styles.actionButton}
       onClick={event}
       style={{
-        borderColor: lineColor || backgroundColor || theme.bgLight,
-        "--hover-color": hoverColor,
-        backgroundColor: backgroundColor || theme.bgLight,
+        borderColor: lineColor || backgroundColor || theme.primary,
+        "--hover-color": hoverColor || backgroundColor,
+        backgroundColor: backgroundColor || "transparent",
         height,
         width,
         color: fontColor || theme.textDark,
