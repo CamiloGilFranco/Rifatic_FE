@@ -1,30 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./LoginModal.module.scss";
 import MyButton from "../../ui/MyButton/MyButton";
-import InputField from "../../ui/InputField/InputField";
-import { useDispatch, useSelector } from "react-redux";
-import { post } from "../../api/queries";
-import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
-import { useNavigate } from "react-router-dom";
-import { authData } from "../../store/slices/authSlice";
-import { toast } from "react-toastify";
-import { routes } from "../../constants/routes";
-import userOptions from "../../constants/userOtions";
-import { HandlerFetchError } from "../../utils/FetchErrors";
-import apiRoutes from "../../api/apiRoutes";
+import { useSelector } from "react-redux";
+import LoginForm from "../LoginForm/LoginForm";
+import SingupForm from "./../SingupForm/SingupForm";
+import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
+import SingupVerification from "../SingupVerification/SingupVerification";
+import appName from "../../constants/appName";
+
+const modulesData = {
+  login: {
+    title: "Iniciar Sesión",
+    subtitle: "Accede a tu cuenta",
+    form: LoginForm,
+  },
+  signup: {
+    title: "Crear Cuenta",
+    subtitle: `Unete a ${appName}`,
+    form: SingupForm,
+  },
+  verification: {
+    title: "Verificar Cuenta",
+    subtitle: "Ingresa el código de verificación",
+    form: SingupVerification,
+  },
+  terminos: {
+    title: "Crear Cuenta",
+    subtitle: `Unete a ${appName}`,
+    form: TermsAndConditionsModalComponent,
+  },
+};
 
 const LoginModal = () => {
   const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+  const [showModule, setShowModule] = useState("login");
 
   const dialogRef = useRef(null);
-  const emailRef = useRef(null);
 
   const theme = useSelector((state) => state.themeSlice);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const ModuleSelected = useMemo(() => {
+    return modulesData[showModule].form;
+  }, [showModule]);
 
   useEffect(() => {
     function onKey(e) {
@@ -32,38 +50,9 @@ const LoginModal = () => {
     }
     if (open) {
       window.addEventListener("keydown", onKey);
-      setTimeout(() => emailRef.current?.focus(), 0);
     }
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const loginResponse = await post({
-        path: apiRoutes.login,
-        payload: { email, password },
-        auth: false,
-      });
-
-      dispatch(
-        authData({
-          _tkn: loginResponse.data.token,
-          _role: loginResponse.data.role,
-          _email: loginResponse.data.email,
-        })
-      );
-
-      Cookies.set(cookies._email, loginResponse.data.email);
-      Cookies.set(cookies._tkn, loginResponse.data.token);
-
-      toast.success("Sesión iniciada");
-      navigate(`${routes.user}/${userOptions.option1}`);
-    } catch (error) {
-      HandlerFetchError(error, navigate);
-    }
-  };
 
   return (
     <>
@@ -95,13 +84,13 @@ const LoginModal = () => {
               style={{ background: theme.bgLight, color: theme.textDark }}
             >
               <h2 id="login-title" className={styles.title}>
-                Iniciar Sesión
+                {modulesData[showModule].title}
               </h2>
               <p
                 className={styles.subtitle}
                 style={{ color: theme.textMiddle }}
               >
-                Accede a tu cuenta
+                {modulesData[showModule].subtitle}
               </p>
               <button
                 className={styles.close}
@@ -112,66 +101,12 @@ const LoginModal = () => {
                 ×
               </button>
             </div>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <label htmlFor="email" style={{ color: theme.textDark }}>
-                Correo Electrónico
-              </label>
-              <InputField
-                icon="mail"
-                type="email"
-                placeholder="tu@email.com"
-                inputRef={emailRef}
-                id="email"
-                value={email}
-                setter={(value) => {
-                  setEmail(value);
-                }}
-              />
 
-              <label htmlFor="password" style={{ color: theme.textDark }}>
-                Contraseña
-              </label>
-              <InputField
-                icon="password"
-                type="password"
-                placeholder="••••••••"
-                id="password"
-                value={password}
-                setter={(value) => {
-                  setPassword(value);
-                }}
-              />
-
-              <MyButton
-                text="Iniciar Sesión"
-                backgroundColor={theme.intence}
-                fontColor={theme.bgLight}
-                type="submit"
-              />
-
-              <div className={styles.links}>
-                <a
-                  href="#"
-                  className={styles.link}
-                  style={{ color: theme.intence }}
-                >
-                  ¿Olvidaste tu contraseña?
-                </a>
-                <p
-                  className={styles.secondaryText}
-                  style={{ color: theme.textMiddle }}
-                >
-                  ¿No tienes cuenta?{" "}
-                  <a
-                    href="#"
-                    className={styles.linkStrong}
-                    style={{ color: theme.intence }}
-                  >
-                    Regístrate aquí
-                  </a>
-                </p>
-              </div>
-            </form>
+            <ModuleSelected
+              token={token}
+              setToken={setToken}
+              setShowModule={setShowModule}
+            />
           </div>
         </div>
       )}

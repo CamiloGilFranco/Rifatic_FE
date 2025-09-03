@@ -6,12 +6,15 @@ import {
   BsFacebook,
   BsGear,
   BsInstagram,
+  BsKey,
   BsLightningCharge,
   BsLinkedin,
   BsLock,
   BsPeople,
+  BsPerson,
   BsShieldCheck,
   BsStars,
+  BsTelephone,
   BsTrophy,
   BsTwitter,
 } from "react-icons/bs";
@@ -54,6 +57,12 @@ const IconSelector = ({ name }) => {
       return <BsInstagram />;
     case "linkedin":
       return <BsLinkedin />;
+    case "person":
+      return <BsPerson />;
+    case "phone":
+      return <BsTelephone />;
+    case "key":
+      return <BsKey />;
 
     default:
       return;

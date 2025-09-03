@@ -17,6 +17,7 @@ export const lightTheme = {
   modalShadow: "0 20px 60px rgba(0, 0, 0, 0.2)",
   focusShadow: "0 0 0 4px rgba(99, 102, 241, 0.15)",
   buttonShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+  error: "#da5b5b",
 };
 
 export const darkTheme = {

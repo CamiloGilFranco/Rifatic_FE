@@ -1,40 +1,11 @@
 @use "../../styles/colors.scss" as c;
 
-.terms_and_conditions_component {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.background {
-  background-color: c.$modalBackgroundColor;
-  width: 100%;
-  height: 100%;
-}
-
-.modal_container {
-  width: 80%;
-  height: 80%;
-  background-color: c.$secondaryColor;
-  position: absolute;
-  border: 1px solid c.$borderColor;
-  border-radius: 15px;
-  padding: 20px;
-}
-
 .text_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
   height: 85%;
-  border-bottom: 1px solid c.$mainColor;
+  padding: 1rem;
 }
 
 .title {
@@ -58,27 +29,4 @@
 .list {
   list-style-type: circle;
   list-style-position: outside;
-}
-
-.button_container {
-  height: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.accept_button {
-  background-color: c.$mainColor;
-  font-size: 20px;
-  padding: 5px;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  height: 37px;
-  border: none;
-
-  &:hover {
-    background-color: c.$secondaryBackgroundColor;
-    border: 1px solid c.$borderColor;
-  }
 }
