@@ -53,3 +53,12 @@
 - eliminar posibilidad de tema oscuro
 - crear loader
 - lazy loading
+
+# sorteos
+
+rifa
+redes sociales
+amigo secreto
+selector de ganadores aleatorio
+ruleta de premios multiples (empresas)
+generador de parejas o grupos
