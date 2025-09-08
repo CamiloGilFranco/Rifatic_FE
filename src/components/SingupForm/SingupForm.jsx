@@ -110,7 +110,6 @@ const SingupForm = ({ setToken, setShowModule }) => {
     <form className={styles.form} onSubmit={handleSubmit}>
       <InputField
         icon="person"
-        type="text"
         placeholder="Juan"
         id="nombres"
         value={nombres}
@@ -124,7 +123,6 @@ const SingupForm = ({ setToken, setShowModule }) => {
 
       <InputField
         icon="person"
-        type="text"
         placeholder="Perez"
         id="apellidos"
         value={apellidos}
@@ -137,7 +135,6 @@ const SingupForm = ({ setToken, setShowModule }) => {
 
       <InputField
         icon="phone"
-        type="tel"
         placeholder="124567890"
         id="telefono"
         value={telefono}

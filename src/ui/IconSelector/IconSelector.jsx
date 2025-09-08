@@ -17,6 +17,9 @@ import {
   BsTelephone,
   BsTrophy,
   BsTwitter,
+  BsUpload,
+  BsFileEarmark,
+  BsX,
 } from "react-icons/bs";
 import { CiPlay1 } from "react-icons/ci";
 import { IoIosLogIn } from "react-icons/io";
@@ -63,6 +66,12 @@ const IconSelector = ({ name }) => {
       return <BsTelephone />;
     case "key":
       return <BsKey />;
+    case "upload":
+      return <BsUpload />;
+    case "file":
+      return <BsFileEarmark />;
+    case "close":
+      return <BsX />;
 
     default:
       return;

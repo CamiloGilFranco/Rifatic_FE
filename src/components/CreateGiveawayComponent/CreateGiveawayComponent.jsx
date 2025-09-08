@@ -11,6 +11,7 @@ import { HandlerFetchError } from "../../utils/FetchErrors";
 import { useNavigate } from "react-router-dom";
 import { RiImageAddLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
+import RaffleForm from "../RaffleForm/RaffleForm";
 
 const CreateGiveawayComponent = ({
   phoneNumber,
@@ -36,6 +37,33 @@ const CreateGiveawayComponent = ({
   const [numberOfDigitsError, setNumberOfDigitsError] = useState(false);
   const [ticketPriceError, setTicketPriceError] = useState(false);
   const [termsAndConditionsError, setTermsAndConditionsError] = useState(false);
+
+  const [formData, setFormData] = useState({
+    raffleType: "",
+    title: "",
+    image: null,
+    description: "",
+    lottery: "",
+    drawDate: "",
+    numberOfDigits: "",
+    ticketPrice: "",
+    showPhone: false,
+    termsAndConditions: false,
+    postURL: "",
+    winnersNumber: "",
+    substitutesNumber: "",
+    commentContent: [""],
+    limitDate: "",
+    multipleParticipations: false,
+    validateFollows: [""],
+    mentionsNumber: "",
+    listType: "",
+    participantsList: [{ name: "", email: "" }],
+    sweeten: false,
+    sweetenFrequency: "",
+    minimumPrice: "",
+    AddOrganizerName: false,
+  });
 
   const auth = useSelector((state) => state.authSlice);
 
@@ -202,6 +230,7 @@ const CreateGiveawayComponent = ({
   return (
     <div className={styles.create_giveaway}>
       <form className={styles.new_raffle_form}>
+        <RaffleForm setFormData={setFormData} />
         <h2 className={styles.card_title}>Nueva Rifa</h2>
         <label htmlFor="" className={styles.label}>
           Titulo del Premio

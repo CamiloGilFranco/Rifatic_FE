@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const InputField = ({
   icon,
-  type = "button",
+  type = "text",
   placeholder,
   value,
   setter,

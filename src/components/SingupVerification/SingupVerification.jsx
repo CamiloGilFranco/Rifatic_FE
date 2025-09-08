@@ -56,7 +56,6 @@ const SingupVerification = ({ token, setShowModule }) => {
       <InputField
         inputRef={codeRef}
         icon="key"
-        type="text"
         placeholder="xxxxxx"
         id="code"
         value={code}

@@ -57,8 +57,47 @@
 # sorteos
 
 rifa
+
+- R tipo de sorteo
+- R titulo del premio
+- R imagen
+- R descripcion
+- R loteria
+- R fecha del sorteo
+- R numero de cifras (1,2,3 o 4)
+- R precio de cada numero
+- R mostrar numero de telefono (check)
+
 redes sociales
+
+- R tipo de sorteo
+- R nombre del sorteo
+- R imagen
+- R url de publicacion
+- R numero de ganadores
+- R numero de suplentes
+- R filtrar contenido del comentario
+- R contenido del comentario
+- R filtrar fecha limite
+- R permitir multiples participaciones
+- R validar que sigan la cuentas
+- R filtrar numero de menciones (numero)
+
 amigo secreto
-selector de ganadores aleatorio
-ruleta de premios multiples (empresas)
-generador de parejas o grupos
+
+- R tipo de sorteo
+- R imagen
+- R nombre del evento (title)
+- R cargar participantes o enviar invitaciones
+- R cantidad de participantes o cargar csv con lista de participantes
+  - R si se selecciona cantidad de participantes generar inputs para nombres y correos de participantes
+  - R si se selecciona cargar csv mostrar tabla de participantes que estan en el csv con nombre y correo
+- R ¿endulzar? (check)
+  - R si endulzar mostrar input para obtener cada cuantos dias se endulza
+- R feha de entrega de regalos
+- R valor minimo de regalos
+- Ragregar nombre del organizador a las notificaciones (check)
+
+  selector de ganadores aleatorio
+  ruleta de premios multiples (empresas)
+  generador de parejas o grupos
