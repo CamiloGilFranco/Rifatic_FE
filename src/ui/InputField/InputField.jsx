@@ -17,12 +17,6 @@ const InputField = ({
 
   return (
     <div className={styles.inputField}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo
-        sapiente alias consequuntur laboriosam quam eaque nobis eos deleniti
-        cumque earum nisi distinctio voluptatum, blanditiis libero rem eum
-        delectus similique at.
-      </p>
       {label && (
         <label
           htmlFor={id}

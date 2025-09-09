@@ -24,7 +24,11 @@ const SelectInput = ({
     const c = String(color).trim();
     if (c.startsWith("#")) {
       let hex = c.slice(1);
-      if (hex.length === 3) hex = hex.split("").map((ch) => ch + ch).join("");
+      if (hex.length === 3)
+        hex = hex
+          .split("")
+          .map((ch) => ch + ch)
+          .join("");
       const int = parseInt(hex, 16);
       const r = (int >> 16) & 255;
       const g = (int >> 8) & 255;
