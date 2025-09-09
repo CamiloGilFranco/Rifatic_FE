@@ -1,0 +1,105 @@
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.field {
+  position: relative;
+}
+
+.fieldIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.select {
+  width: 100%;
+  padding: 0.625rem 0.75rem 0.625rem 2.25rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--hover-color) !important;
+    box-shadow: var(--focus-shadow);
+  }
+}
+
+.error {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* Custom dropdown styles */
+.customSelect {
+  position: relative;
+  border: 1px solid;
+  border-radius: 0.5rem;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem 0.625rem 2.25rem;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  cursor: default;
+}
+
+.triggerLabel {
+  color: inherit;
+  text-align: left;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid currentColor;
+  transition: transform 0.15s ease;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  margin-top: 0.25rem;
+  background: inherit;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  max-height: 12rem;
+  overflow: auto;
+  padding: 0.25rem 0;
+}
+
+.option {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: var(--option-hover, rgba(0, 0, 0, 0.04));
+}
