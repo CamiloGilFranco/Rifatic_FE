@@ -1,10 +1,9 @@
-import styles from "./InputField.module.scss";
+import styles from "./TextAreaInput.module.scss";
 import IconSelector from "../IconSelector/IconSelector";
 import { useSelector } from "react-redux";
 
-const InputField = ({
+const TextAreaInput = ({
   icon,
-  type = "text",
   placeholder,
   value,
   setter,
@@ -12,17 +11,13 @@ const InputField = ({
   id,
   label,
   error,
+  rows = 4,
+  maxLength,
 }) => {
   const theme = useSelector((state) => state.themeSlice);
 
   return (
     <div className={styles.inputField}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo
-        sapiente alias consequuntur laboriosam quam eaque nobis eos deleniti
-        cumque earum nisi distinctio voluptatum, blanditiis libero rem eum
-        delectus similique at.
-      </p>
       {label && (
         <label
           htmlFor={id}
@@ -36,14 +31,15 @@ const InputField = ({
         <span className={styles.fieldIcon} style={{ color: theme.textMiddle }}>
           {icon && <IconSelector name={icon} />}
         </span>
-        <input
+        <textarea
           ref={inputRef}
-          type={type}
+          id={id}
           placeholder={placeholder}
-          className={styles.input}
+          className={styles.textarea}
           onChange={(e) => setter(e.target.value)}
           value={value}
-          id={id}
+          rows={rows}
+          maxLength={maxLength}
           style={{
             borderColor: error ? theme.error : theme.textMiddle,
             backgroundColor: theme.bgLight,
@@ -52,8 +48,13 @@ const InputField = ({
           }}
         />
       </div>
+      {error && (
+        <p className={styles.error} style={{ color: theme.error }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 };
 
-export default InputField;
+export default TextAreaInput;

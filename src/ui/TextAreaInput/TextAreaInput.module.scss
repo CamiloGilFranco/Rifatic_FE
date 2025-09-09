@@ -1,0 +1,41 @@
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.field {
+  position: relative;
+}
+
+.fieldIcon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem 0.625rem 2.25rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  resize: none;
+  min-height: 4rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--hover-color) !important;
+    box-shadow: var(--focus-shadow);
+  }
+}
+
+.error {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
