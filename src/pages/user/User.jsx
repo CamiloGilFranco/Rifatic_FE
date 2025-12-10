@@ -34,6 +34,8 @@ const User = () => {
     }
   }, []);
 
+  //TODO dejar datos de usuario en auth
+
   const getUserInfo = async () => {
     try {
       const response = await axios.get(
@@ -43,6 +45,8 @@ const User = () => {
           params: { email: auth._email },
         }
       );
+
+      console.log(response.data);
 
       setUserData(response.data.userData);
     } catch (error) {

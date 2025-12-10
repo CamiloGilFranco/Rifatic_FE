@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 const DateInput = ({
   label,
   id,
-  selected,
-  onChange,
+  value,
+  setter,
   placeholderText = "dd/mm/yyyy",
   minDate,
   filterDate,
@@ -29,7 +29,7 @@ const DateInput = ({
         ref={ref}
         id={id}
         onClick={onClick}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
         value={value}
         placeholder={placeholder}
         className={styles.input}
@@ -64,8 +64,8 @@ const DateInput = ({
 
         <DatePicker
           id={id}
-          selected={selected}
-          onChange={onChange}
+          selected={value}
+          onChange={(val) => setter(val)}
           placeholderText={placeholderText}
           minDate={minDate}
           filterDate={filterDate}

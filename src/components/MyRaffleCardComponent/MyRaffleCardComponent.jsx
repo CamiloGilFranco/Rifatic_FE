@@ -104,6 +104,18 @@ const MyRaffleCardComponent = ({
 
   console.log(giveaways);
 
+  const formatDrawDate = (date) => {
+    if (!date) return "00/00/00";
+    if (date instanceof Date && !isNaN(date)) {
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = String(date.getFullYear()).slice(-2);
+      return `${day}/${month}/${year}`;
+    }
+    // Si llega como string, devolver tal cual
+    return date;
+  };
+
   return (
     <div className={styles.my_raffle_card}>
       <div className={styles.first_container}>
@@ -144,8 +156,8 @@ const MyRaffleCardComponent = ({
       )}
       <p className={styles.raffle_details}>
         Juega el{" "}
-        <span className={styles.single_detail}>{drawDate || "00/00/00"}</span>,
-        con las ultimas{" "}
+        <span className={styles.single_detail}>{formatDrawDate(drawDate)}</span>
+        , con las ultimas{" "}
         <span className={styles.single_detail}>{numberOfDigits || "0"}</span>{" "}
         cifras de la{" "}
         <span className={styles.single_detail}>{lottery || "- - -"}</span>

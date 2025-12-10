@@ -23,6 +23,7 @@ import {
 } from "react-icons/bs";
 import { CiPlay1 } from "react-icons/ci";
 import { IoIosLogIn } from "react-icons/io";
+import { MdAttachMoney } from "react-icons/md";
 
 const IconSelector = ({ name }) => {
   switch (name) {
@@ -72,6 +73,8 @@ const IconSelector = ({ name }) => {
       return <BsFileEarmark />;
     case "close":
       return <BsX />;
+    case "money":
+      return <MdAttachMoney />;
 
     default:
       return;

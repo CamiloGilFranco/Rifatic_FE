@@ -7,4 +7,5 @@ export const routes = {
   userRouteOptionThree: "/user/:option/:detail",
   user: "/user",
   admin: "/admin",
+  myRaffles: "/user/mis_sorteos",
 };
