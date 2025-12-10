@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./TermsAndConditionsModalComponent.module.scss";
-import appName from "./../../constants/appName";
-import MyButton from "../../ui/MyButton/MyButton";
+import appName from "./../../constants/appName.js";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
 
 const TermsAndConditionsModalComponent = ({ setShowModule }) => {
   const theme = useSelector((state) => state.themeSlice);

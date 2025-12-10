@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styles from "./RegisterFormComponent.module.scss";
 import logo from "../../assets/logo.png";
-import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
+import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent.jsx";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { envVariables } from "../../constants/envVariables";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { envVariables } from "../../constants/envVariables.js";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate } from "react-router-dom";
 
 const RegisterFormComponent = ({ setShowForm, setToken }) => {

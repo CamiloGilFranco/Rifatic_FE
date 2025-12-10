@@ -1,12 +1,12 @@
 import styles from "../LoginModal/LoginModal.module.scss";
 import { useEffect, useRef, useState } from "react";
-import InputField from "../../ui/InputField/InputField";
+import InputField from "../../ui/InputField/InputField.jsx";
 import { useSelector } from "react-redux";
-import MyButton from "../../ui/MyButton/MyButton";
-import { HandlerFetchError } from "../../utils/FetchErrors";
-import { post } from "../../api/queries";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
+import { post } from "../../api/queries.js";
 import { useNavigate } from "react-router-dom";
-import apiRoutes from "../../api/apiRoutes";
+import apiRoutes from "../../api/apiRoutes.js";
 
 const SingupForm = ({ setToken, setShowModule }) => {
   const [nombres, setNombres] = useState("");

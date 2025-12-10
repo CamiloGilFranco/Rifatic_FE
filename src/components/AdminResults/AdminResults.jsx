@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./AdminResults.module.scss";
-import RecordResult from "./RecordResult/RecordResult";
+import RecordResult from "./RecordResult/RecordResult.jsx";
 
 const AdminResults = () => {
   return (

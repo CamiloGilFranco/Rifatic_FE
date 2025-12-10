@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
+import { routes } from "../../constants/routes.js";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
+import cookies from "../../constants/cookies.js";
 
 const UserRedirect = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./CTASection.module.scss";
-import MyButton from "../../ui/MyButton/MyButton";
-import IconSelector from "../../ui/IconSelector/IconSelector";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
+import IconSelector from "../../ui/IconSelector/IconSelector.jsx";
 
 const CTASection = () => {
   const theme = useSelector((state) => state.themeSlice);

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { envVariables } from "../constants/envVariables";
-import store from "../store/store";
+import { envVariables } from "../constants/envVariables.js";
+import store from "../store/store.js";
 
 export const post = async ({ path, payload, auth = true }) => {
   const globalState = store.getState();

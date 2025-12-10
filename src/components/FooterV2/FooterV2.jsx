@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./FooterV2.module.scss";
-import IconSelector from "../../ui/IconSelector/IconSelector";
-import appName from "../../constants/appName";
+import IconSelector from "../../ui/IconSelector/IconSelector.jsx";
+import appName from "../../constants/appName.js";
 
 const FooterV2 = () => {
   const theme = useSelector((state) => state.themeSlice);

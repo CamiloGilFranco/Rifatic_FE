@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { routes } from "./constants/routes";
-import Home from "./pages/Home/Home";
-import Registrate from "./pages/registrate/registrate";
+import { routes } from "./constants/routes.js";
+import Home from "./pages/Home/Home.jsx";
+import Registrate from "./pages/registrate/registrate.jsx";
 import toastStyle from "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import User from "./pages/user/User";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import UserRedirect from "./pages/user/UserRedirect";
-import Admin from "./pages/admin/admin";
+import User from "./pages/user/User.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import UserRedirect from "./pages/user/UserRedirect.jsx";
+import Admin from "./pages/Admin/Admin.jsx";
 
 function App() {
   return (

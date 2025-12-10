@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../LoginModal/LoginModal.module.scss";
-import InputField from "../../ui/InputField/InputField";
+import InputField from "../../ui/InputField/InputField.jsx";
 import { useEffect, useRef, useState } from "react";
-import { post } from "../../api/queries";
-import apiRoutes from "../../api/apiRoutes";
-import { authData } from "../../store/slices/authSlice";
-import cookies from "../../constants/cookies";
+import { post } from "../../api/queries.js";
+import apiRoutes from "../../api/apiRoutes.js";
+import { authData } from "../../store/slices/authSlice.js";
+import cookies from "../../constants/cookies.js";
 import Cookies from "js-cookie";
-import { routes } from "../../constants/routes";
-import userOptions from "../../constants/userOtions";
+import { routes } from "../../constants/routes.js";
+import userOptions from "../../constants/userOtions.js";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { HandlerFetchError } from "../../utils/FetchErrors";
-import MyButton from "../../ui/MyButton/MyButton";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
 
 const LoginForm = ({ setShowModule }) => {
   const [email, setEmail] = useState("");

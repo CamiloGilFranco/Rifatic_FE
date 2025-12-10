@@ -1,11 +1,11 @@
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
-import HeaderMenuComponent from "../HeaderMenuComponent/HeaderMenuComponent";
+import HeaderMenuComponent from "../HeaderMenuComponent/HeaderMenuComponent.jsx";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
+import { routes } from "../../constants/routes.js";
 import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
+import cookies from "../../constants/cookies.js";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useSelector } from "react-redux";
 

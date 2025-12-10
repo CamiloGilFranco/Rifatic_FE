@@ -1,14 +1,14 @@
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import cookies from "../../constants/cookies";
+import cookies from "../../constants/cookies.js";
 import { toast } from "react-toastify";
-import { routes } from "../../constants/routes";
+import { routes } from "../../constants/routes.js";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import axios from "axios";
-import { envVariables } from "../../constants/envVariables";
-import { authData } from "../../store/slices/authSlice";
+import { envVariables } from "../../constants/envVariables.js";
+import { authData } from "../../store/slices/authSlice.js";
 
 const PrivateRoute = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);

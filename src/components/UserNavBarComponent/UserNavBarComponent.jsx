@@ -1,14 +1,14 @@
 import styles from "./UserNavBarComponent.module.scss";
 import { useState } from "react";
-import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent";
+import UserNavModalMenuComponent from "../UserNavModalMenuComponent/UserNavModalMenuComponent.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { routes } from "../../constants/routes";
+import { routes } from "../../constants/routes.js";
 import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
-import userOptions from "../../constants/userOtions";
+import cookies from "../../constants/cookies.js";
+import userOptions from "../../constants/userOtions.js";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { authData } from "../../store/slices/authSlice";
+import { authData } from "../../store/slices/authSlice.js";
 
 const UserNavBarComponent = ({ name = "", lastName = "" }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);

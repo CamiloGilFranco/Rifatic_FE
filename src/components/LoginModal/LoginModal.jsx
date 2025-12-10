@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./LoginModal.module.scss";
-import MyButton from "../../ui/MyButton/MyButton";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
 import { useSelector } from "react-redux";
-import LoginForm from "../LoginForm/LoginForm";
-import SingupForm from "./../SingupForm/SingupForm";
-import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent";
-import SingupVerification from "../SingupVerification/SingupVerification";
-import appName from "../../constants/appName";
+import LoginForm from "../LoginForm/LoginForm.jsx";
+import SingupForm from "./../SingupForm/SingupForm.jsx";
+import TermsAndConditionsModalComponent from "../TermsAndConditionsModalComponent/TermsAndConditionsModalComponent.jsx";
+import SingupVerification from "../SingupVerification/SingupVerification.jsx";
+import appName from "../../constants/appName.js";
 
 const modulesData = {
   login: {

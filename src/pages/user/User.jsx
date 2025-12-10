@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import UserNavBarComponent from "../../components/UserNavBarComponent/UserNavBarComponent";
+import Header from "../../components/Header/Header.jsx";
+import UserNavBarComponent from "../../components/UserNavBarComponent/UserNavBarComponent.jsx";
 import styles from "./User.module.scss";
-import MyRafflesComponent from "../../components/MyRafflesComponent/MyRafflesComponent";
+import MyRafflesComponent from "../../components/MyRafflesComponent/MyRafflesComponent.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import CreateGiveawayComponent from "../../components/CreateGiveawayComponent/CreateGiveawayComponent";
-import ReportProblem from "../../components/ReportProblem/ReportProblem";
-import { HandlerFetchError } from "../../utils/FetchErrors";
-import { envVariables } from "../../constants/envVariables";
-import { routes } from "../../constants/routes";
-import userOptions from "../../constants/userOtions";
-import RaffleDetails from "../../components/RaffleDetails/RaffleDetails";
+import CreateGiveawayComponent from "../../components/CreateGiveawayComponent/CreateGiveawayComponent.jsx";
+import ReportProblem from "../../components/ReportProblem/ReportProblem.jsx";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
+import { envVariables } from "../../constants/envVariables.js";
+import { routes } from "../../constants/routes.js";
+import userOptions from "../../constants/userOtions.js";
+import RaffleDetails from "../../components/RaffleDetails/RaffleDetails.jsx";
 import { useSelector } from "react-redux";
 
 const User = () => {

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import CheckInput from "../../ui/CheckInput/CheckInput";
-import DateInput from "../../ui/DateInput/DateInput";
-import FileInput from "../../ui/FileInput/FileInput";
-import InputField from "../../ui/InputField/InputField";
-import SelectInput from "../../ui/SelectInput/SelectInput";
-import TextAreaInput from "../../ui/TextAreaInput/TextAreaInput";
+import CheckInput from "../../ui/CheckInput/CheckInput.jsx";
+import DateInput from "../../ui/DateInput/DateInput.jsx";
+import FileInput from "../../ui/FileInput/FileInput.jsx";
+import InputField from "../../ui/InputField/InputField.jsx";
+import SelectInput from "../../ui/SelectInput/SelectInput.jsx";
+import TextAreaInput from "../../ui/TextAreaInput/TextAreaInput.jsx";
 import styles from "./ClasicRaffleForm.module.scss";
 
 const loteries = [

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styles from "./HeroSection.module.scss";
-import MyButton from "../../ui/MyButton/MyButton";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
 
 const HeroSection = () => {
   const theme = useSelector((state) => state.themeSlice);

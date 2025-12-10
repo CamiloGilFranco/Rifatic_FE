@@ -4,9 +4,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
-import { envVariables } from "../../constants/envVariables";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { routes } from "../../constants/routes.js";
+import { envVariables } from "../../constants/envVariables.js";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 
 const RegisterCodeConfirmationComponent = ({ token }) => {
   const [verificationCode, setVerificationCode] = useState("");

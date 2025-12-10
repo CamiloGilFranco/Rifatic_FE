@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styles from "./MyButton.module.scss";
-import IconSelector from "../IconSelector/IconSelector";
+import IconSelector from "../IconSelector/IconSelector.jsx";
 
 const MyButton = ({
   text = "",

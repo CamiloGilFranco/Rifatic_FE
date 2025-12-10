@@ -1,9 +1,9 @@
 import styles from "./HeaderMenuComponent.module.scss";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
+import { routes } from "../../constants/routes.js";
 import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
-import userOptions from "../../constants/userOtions";
+import cookies from "../../constants/cookies.js";
+import userOptions from "../../constants/userOtions.js";
 
 const HeaderMenuComponent = ({ mobileMenu, logged }) => {
   const navigate = useNavigate();

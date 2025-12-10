@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styles from "./FeaturesSection.module.scss";
-import IconSelector from "../../ui/IconSelector/IconSelector";
+import IconSelector from "../../ui/IconSelector/IconSelector.jsx";
 
 const features = [
   {

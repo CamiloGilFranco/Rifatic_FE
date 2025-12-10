@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import InputField from "../../ui/InputField/InputField";
+import InputField from "../../ui/InputField/InputField.jsx";
 import styles from "./SingupVerification.module.scss";
 import { useSelector } from "react-redux";
-import MyButton from "../../ui/MyButton/MyButton";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import apiRoutes from "../../api/apiRoutes";
-import { put } from "../../api/queries";
+import apiRoutes from "../../api/apiRoutes.js";
+import { put } from "../../api/queries.js";
 
 const SingupVerification = ({ token, setShowModule }) => {
   const [code, setCode] = useState("");

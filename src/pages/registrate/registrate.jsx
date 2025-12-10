@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "../../components/Header/Header";
-import RegisterFormComponent from "../../components/RegisterFormComponent/RegisterFormComponent";
-import RegisterCodeConfirmationComponent from "../../components/RegistercodeconfirmationComponent/RegistercodeconfirmationComponent";
+import Header from "../../components/Header/Header.jsx";
+import RegisterFormComponent from "../../components/RegisterFormComponent/RegisterFormComponent.jsx";
+import RegisterCodeConfirmationComponent from "../../components/RegisterCodeConfirmationComponent/RegisterCodeConfirmationComponent.jsx";
 
 const Registrate = () => {
   const [showForm, setShowForm] = useState(true);

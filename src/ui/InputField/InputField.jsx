@@ -1,5 +1,5 @@
 import styles from "./InputField.module.scss";
-import IconSelector from "../IconSelector/IconSelector";
+import IconSelector from "../IconSelector/IconSelector.jsx";
 import { useSelector } from "react-redux";
 
 const InputField = ({

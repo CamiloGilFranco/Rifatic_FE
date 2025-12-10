@@ -1,8 +1,8 @@
 import styles from "./MyRaffleCardComponent.module.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
-import userOptions from "../../constants/userOtions";
+import { routes } from "../../constants/routes.js";
+import userOptions from "../../constants/userOtions.js";
 import { MdContentCopy } from "react-icons/md";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io";
@@ -10,7 +10,7 @@ import { IoShareSocial } from "react-icons/io5";
 import { FaRegImage } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { envVariables } from "./../../constants/envVariables";
+import { envVariables } from "./../../constants/envVariables.js";
 import { toast } from "react-toastify";
 
 const MyRaffleCardComponent = ({

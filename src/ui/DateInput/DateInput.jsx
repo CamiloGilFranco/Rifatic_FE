@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import DatePicker from "react-datepicker";
 import styles from "./DateInput.module.scss";
-import IconSelector from "../IconSelector/IconSelector";
+import IconSelector from "../IconSelector/IconSelector.jsx";
 import { useSelector } from "react-redux";
 
 const DateInput = ({

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
+import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent.jsx";
 import styles from "./RaffleDetails.module.scss";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { envVariables } from "../../constants/envVariables";
+import { envVariables } from "../../constants/envVariables.js";
 import axios from "axios";
 import Cookies from "js-cookie";
-import cookies from "../../constants/cookies";
+import cookies from "../../constants/cookies.js";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { IoIosArrowUp } from "react-icons/io";

@@ -1,8 +1,8 @@
 import styles from "./RaffleForm.module.scss";
-import SelectInput from "../../ui/SelectInput/SelectInput";
-import ClasicRaffleForm from "../ClasicRaffleForm/ClasicRaffleForm";
+import SelectInput from "../../ui/SelectInput/SelectInput.jsx";
+import ClasicRaffleForm from "../ClasicRaffleForm/ClasicRaffleForm.jsx";
 import { useMemo } from "react";
-import SocialMediaRaffleForm from "../SocialMediaRaffleForm/SocialMediaRaffleForm";
+import SocialMediaRaffleForm from "../SocialMediaRaffleForm/SocialMediaRaffleForm.jsx";
 
 const raffleTypes = ["Rifa", "Giveaway de Instagram", "Amigo Secreto"];
 

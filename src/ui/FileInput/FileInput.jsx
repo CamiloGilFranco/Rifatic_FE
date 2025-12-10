@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
 import styles from "./FileInput.module.scss";
-import IconSelector from "../IconSelector/IconSelector";
+import IconSelector from "../IconSelector/IconSelector.jsx";
 
 const FileInput = ({
   onFileSelect = () => {}, // Valor por defecto

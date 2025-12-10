@@ -1,11 +1,11 @@
 import styles from "./MyRafflesComponent.module.scss";
 import logo from "../../assets/logo.png";
-import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
+import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent.jsx";
 import { useEffect, useState } from "react";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { envVariables } from "../../constants/envVariables";
+import { envVariables } from "../../constants/envVariables.js";
 import { useSelector } from "react-redux";
 
 const MyRafflesComponent = ({ phoneNumber }) => {

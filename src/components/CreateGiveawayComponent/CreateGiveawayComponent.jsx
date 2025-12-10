@@ -1,16 +1,16 @@
 import styles from "./CreateGiveawayComponent.module.scss";
-import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent";
+import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent.jsx";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import { envVariables } from "../../constants/envVariables";
-import { HandlerFetchError } from "../../utils/FetchErrors";
+import { envVariables } from "../../constants/envVariables.js";
+import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import RaffleForm from "../RaffleForm/RaffleForm";
-import { routes } from "../../constants/routes";
+import RaffleForm from "../RaffleForm/RaffleForm.jsx";
+import { routes } from "../../constants/routes.js";
 
 const emptyForm = {
   raffleType: "",
