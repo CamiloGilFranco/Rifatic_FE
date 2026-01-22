@@ -1,12 +1,12 @@
 import styles from "./MyRafflesComponent.module.scss";
 import logo from "../../assets/logo.png";
-import MyRaffleCardComponent from "../MyRaffleCardComponent/MyRaffleCardComponent.jsx";
 import { useEffect, useState } from "react";
 import { HandlerFetchError } from "../../utils/FetchErrors.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { envVariables } from "../../constants/envVariables.js";
 import { useSelector } from "react-redux";
+import RaffleCard from "../RaffleCard/RaffleCard.jsx";
 
 const MyRafflesComponent = ({ phoneNumber }) => {
   const [showList, setShowList] = useState(false);
@@ -50,7 +50,7 @@ const MyRafflesComponent = ({ phoneNumber }) => {
         <div className={styles.my_raffles_list}>
           {giveaways.map((raffle, index) => {
             return (
-              <MyRaffleCardComponent
+              <RaffleCard
                 key={index}
                 title={raffle.title}
                 id={raffle._id}

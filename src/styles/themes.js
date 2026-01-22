@@ -1,9 +1,11 @@
 export const lightTheme = {
   primary: "#646cff",
-  primaryHover: "#535bf2",
+  primaryLight: "#646cff20",
+  primaryHover: "#585ecbff",
   intence: "#4f46e5",
   bgDark: "#242424",
   bgLight: "#ffffff",
+  bgForeground: "#efefef",
   textDark: "#213547",
   textMiddle: "#6b7280",
   textLight: "rgba(255, 255, 255, 0.87)",

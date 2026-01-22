@@ -11,6 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import RaffleForm from "../RaffleForm/RaffleForm.jsx";
 import { routes } from "../../constants/routes.js";
+import CheckInput from "../../ui/CheckInput/CheckInput.jsx";
+import MyButton from "../../ui/MyButton/MyButton.jsx";
+import RaffleCard from "../RaffleCard/RaffleCard.jsx";
 
 const emptyForm = {
   raffleType: "",
@@ -40,13 +43,12 @@ const emptyForm = {
 };
 
 const CreateGiveawayComponent = ({ phoneNumber }) => {
-  const [termsAndConditions, setTermsAndConditions] = useState(false);
-
   const [formData, setFormData] = useState({ ...emptyForm });
 
   console.log(formData);
 
   const auth = useSelector((state) => state.authSlice);
+  const theme = useSelector((state) => state.themeSlice);
 
   const token = auth._tkn;
   const navigate = useNavigate();
@@ -121,6 +123,17 @@ const CreateGiveawayComponent = ({ phoneNumber }) => {
           showPhone={formData.showPhone}
           phoneNumber={phoneNumber}
         />
+        <RaffleCard
+          title={formData.title}
+          image={formData.image}
+          description={formData.description}
+          drawDate={formData.drawDate}
+          numberOfDigits={formData.numberOfDigits}
+          lottery={formData.lottery}
+          ticketPrice={formData.ticketPrice}
+          showPhone={formData.showPhone}
+          phoneNumber={phoneNumber}
+        />
       </div>
       <div className={styles.terms_conditions_container}>
         <li>
@@ -137,24 +150,26 @@ const CreateGiveawayComponent = ({ phoneNumber }) => {
           RIFATIC no se encarga del recaudo de dinero ni de la entrega del
           premio.
         </li>
-        <div className={styles.check_container}>
-          <input
-            type="checkbox"
-            checked={termsAndConditions}
-            onChange={() => setTermsAndConditions(!termsAndConditions)}
-            className={styles.terms_checkbox}
-            id="new-raffle-terms-checkbox"
+        <CheckInput
+          label={"Acepto los Términos y Condiciones"}
+          checked={formData.termsAndConditions}
+          setter={(value) =>
+            setFormData((prev) => ({
+              ...prev,
+              termsAndConditions: value,
+            }))
+          }
+        />
+
+        <div className={styles.button_container}>
+          <MyButton
+            text="Crear Rifa"
+            backgroundColor={theme.primary}
+            fontColor={theme.textLight}
+            width={150}
+            event={handleSubmit}
           />
-          <label
-            htmlFor="new-raffle-terms-checkbox"
-            className={styles.terms_label}
-          >
-            Acepto los Términos y Condiciones
-          </label>
         </div>
-        <button className={styles.create_raffle_button} onClick={handleSubmit}>
-          Crear Rifa
-        </button>
       </div>
     </div>
   );

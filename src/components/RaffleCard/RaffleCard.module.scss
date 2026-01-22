@@ -1,0 +1,462 @@
+@use "../../styles/colors.scss" as c;
+
+.raffle_card {
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid;
+}
+
+.header_section {
+  position: relative;
+  width: 100%;
+}
+
+.image_wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.raffle_image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.image_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_icon {
+  font-size: 100px;
+  opacity: 0.3;
+}
+
+.image_overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  pointer-events: none;
+}
+
+.status_badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.progress {
+  background: rgba(251, 191, 36, 0.95);
+  color: #000;
+}
+
+.finished {
+  background: rgba(16, 185, 129, 0.95);
+  color: #fff;
+}
+
+.canceled {
+  background: rgba(239, 68, 68, 0.95);
+  color: #fff;
+}
+
+.share_button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+
+  &:hover {
+    background: var(--hoverColor) !important;
+  }
+}
+
+.content_section {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.raffle_id {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price_box {
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+}
+
+.price_label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price_value {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.info_section {
+  padding: 12px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.draw_info {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.tickets_section {
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tickets_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tickets_label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tickets_stats {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.progress_bar_container {
+  width: 100%;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress_bar {
+  height: 100%;
+
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.tickets_detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ticket_stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat_value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.stat_label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.earnings_box {
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px dashed;
+}
+
+.earnings_label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.earnings_value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.contact_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.contact_label {
+  font-weight: 600;
+}
+
+.contact_value {
+  font-weight: 700;
+}
+
+.action_buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.view_button {
+  color: c.$fontColor;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(c.$mainColor, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(c.$mainColor, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.cancel_button {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid #ef4444;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #ef4444;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.share_menu {
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  background: rgba(c.$secondaryColor, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(c.$borderColor, 0.3);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.share_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 600;
+  color: c.$fontColor;
+  white-space: nowrap;
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(c.$mainColor, 0.2) 0%,
+      rgba(c.$secondaryBackgroundColor, 0.2) 100%
+    );
+    transform: translateX(4px);
+  }
+}
+
+.share_icon {
+  font-size: 20px;
+  color: c.$mainColor;
+}
+
+@media (max-width: 768px) {
+  .raffle_card {
+    max-width: 100%;
+  }
+
+  .image_wrapper {
+    height: 240px;
+  }
+
+  .content_section {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .price_value {
+    font-size: 28px;
+  }
+
+  .action_buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .share_menu {
+    right: 16px;
+    top: 60px;
+  }
+}
